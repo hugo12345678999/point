@@ -161,10 +161,10 @@ const PointAdm = (props) => {
           <Input
             placeholder={"DIGITE O TOKEN DO MERCADO PAGO"}
             value={data.tokenpoint}
-            id="tokenpoint"
+            id="DIGITE O TOKEN DO MERCADO PAGO"
             type="text"
-            name="tokenpoint"
-            autoComplete="tokenpoint"
+            name="DIGITE O TOKEN DO MERCADO PAGO"
+            autoComplete="DIGITE O TOKEN DO MERCADO PAGO"
             onChange={(event) => {
               handleChange("tokenpoint", event.target.value);
             }}
