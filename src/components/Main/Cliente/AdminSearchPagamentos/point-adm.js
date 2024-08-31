@@ -108,7 +108,7 @@ const PointAdm = (props) => {
       {isLoading && <LoadingAction />}
       <div className="Admin_PagamentosSearch_header">
         <div className="Admin_PagamentosSearch_header_left">
-          <div className="Admin_Dashboard_staBlockTitle">Editar Máquina</div>
+          <div className="Admin_Dashboard_staBlockTitle">CONFIGURAR MAQUINA POINT PRO 2</div>
         </div>
 
         <Button
