@@ -132,7 +132,7 @@ const PointAdm = (props) => {
             NOME DA POINT:
           </label>
           <Input
-            placeholder={"Máquina 1"}
+            placeholder={"DIGITE O NOME DA MAQUINA COM O ID"}
             value={data.nomepoint}
             id="nomepoint"
             type="text"
@@ -156,10 +156,10 @@ const PointAdm = (props) => {
             className="Admin_Update_Pagamento_itemFieldLabel"
             htmlFor="descricao"
           >
-           TOKEN POINT
+           TOKEN POINT MERCADO PAGO
           </label>
           <Input
-            placeholder={"Máquina da padaria de juquinha"}
+            placeholder={"DIGITE O TOKEN DO MERCADO PAGO"}
             value={data.tokenpoint}
             id="tokenpoint"
             type="text"
@@ -187,17 +187,6 @@ const PointAdm = (props) => {
           disabled={isLoading}
         >
           SALVAR ALTERAÇÕES
-        </Button>
-        <Button
-          className="Admin_Update_Pagamento_deleteBtn"
-          onClick={() => {
-            navigate(`${links.CLIENTES_MAQUINAS_DELETE_FORNECEDOR}/${id}`, {
-              state: location.state,
-            });
-          }}
-          disabled={isLoading}
-        >
-          EXCLUIR MÁQUINA
         </Button>
       </div>
     </div>
