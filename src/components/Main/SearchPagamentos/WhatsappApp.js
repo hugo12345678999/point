@@ -18,7 +18,7 @@ const WhatsappApp = () => {
           });
         }}
       >
-        CONFIGURAR1234567
+        CONFIGURAR WHATSAPP
       </Button>
     </div>
   );
