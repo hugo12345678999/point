@@ -123,7 +123,7 @@ const WhatsappApp = (props) => {
   const getPaymentsPeriod = (dataInicio, dataFim) => {
     if (id.trim() !== "") {
       setLoadingTable(true);
-      const url = `${process.env.REACT_APP_SERVIDOR}/pagamentos-periodo/${id}`;
+      const url = `${process.env.REACT_APP_SERVIDOR}/pagamentos-periodo-api/${id}`;
       axios
         .post(
           url,
@@ -172,17 +172,17 @@ const WhatsappApp = (props) => {
       ),
     },
     {
-      title: "Forma de pagamento",
+      title: "TIPO DE PROCESSO",
       dataIndex: "tipo",
       key: "tipo",
       render: (tipo, record) => (
         <span>
           {tipo === "bank_transfer"
             ? "PIX"
-            : tipo === "PELUCIA"
-            ? "Especie"
+            : tipo === "CASH"
+            ? "SAIU PELUCIA"
             : tipo === "debit_card"
-            ? "Débito"
+            ? "COLOCOU A PELUCIA "
             : tipo === "credit_card"
             ? "Crédito"
             : ""}
