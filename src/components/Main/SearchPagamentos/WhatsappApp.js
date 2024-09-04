@@ -239,20 +239,7 @@ const WhatsappApp = (props) => {
     return numStr.padStart(length, '0');
   };
 
-  const onRelatorioHandler = () => {
-    if (!dataInicio && !dataFim) {
-      setNotiMessage({
-        type: "error",
-        message:
-          "selecione no calendario a esquerda a data de inicio e firm para gerar o relatorio para essa maquina!",
-      });
-    } else {
-      navigate(`${links.RELATORIO}/${id}`, {
-        state: { maquinaInfos, dataInicio, dataFim },
-      });
-    }
-  };
-
+ 
   return (
     <div className="PagamentosSearch_container">
       {isLoading && <LoadingAction />}
