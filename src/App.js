@@ -136,8 +136,8 @@ function App() {
                 </PrivateRoute>
               }
             />
-             <Route
-              path={`${links.WHATSAPP}/:id`}
+            <Route
+              path={`${links.WHATSAPP_MAQUINA}/:id`}
               element={
                 <PrivateRoute>
                   <Main>
