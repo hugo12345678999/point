@@ -15,11 +15,18 @@ const WhatsappApp = () => {
     navigate(`${links.EDIT_WHATSAPP_MAQUINA}/${id}`);
   };
 
+
+
+  
   return (
     <div className="ConfigurarWhatsapp_container">
       <Button
         className="ConfigurarWhatsapp_button"
-        onClick={handleConfigurarWhatsapp}
+        onClick={() => {
+          navigate(`${links.FORNECEDOR_SEARCH_CANAIS}/${id}`, {
+            state: location.state,
+          });
+        }}
       >
         CONFIGURAR WHATSAPP
       </Button>
