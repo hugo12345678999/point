@@ -367,14 +367,14 @@ const AdminEditPagamento = (props) => {
 
         {/* New buttons */}
         <Button
-          className="Admin_Update_Pagamento_telemetriaBtn"
+          className="Admin_Update_Pagamento_saveBtn"
           onClick={handleTelemetria}
           disabled={isLoading}
         >
           ATIVAR TELEMETRIA
         </Button>
         <Button
-          className="Admin_Update_Pagamento_whatsappBtn"
+          className="Admin_Update_Pagamento_saveBtn"
           onClick={handleWhatsApp}
           disabled={isLoading}
         >
