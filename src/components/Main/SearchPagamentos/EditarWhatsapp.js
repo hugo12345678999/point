@@ -20,12 +20,8 @@ const EditarWhatsapp = (props) => {
   const [data, setData] = useState({
     nome: maquinaInfos?.nome ?? "",
     descricao: maquinaInfos?.descricao ?? "",
-    estoque: Number(maquinaInfos?.estoque) ?? 0,
-    estado: Number(maquinaInfos?.estado) ?? 0,
-    contadorcredito: Number(maquinaInfos?.contadorcredito) ?? 0,
-    contadorpelucia: Number(maquinaInfos?.contadorpelucia) ?? 0,
-    store_id: Number(maquinaInfos?.storeId) ?? 0,
-    valorDoPulso: maquinaInfos?.pulso ?? 0,
+    whatsapp: maquinaInfos?.whatsapp ?? "",
+    apikey: maquinaInfos?.apikey ?? "",
   });
   const [errors, setErrors] = useState({});
 
@@ -57,10 +53,10 @@ const EditarWhatsapp = (props) => {
       errorsTemp.descricao = "Este campo é obrigatório";
     }
 
-    if (data.valorDoPulso < 0) {
+    if (data.whatsapp.trim() === "") {
       errorsTemp.valorDoPulso = "Este campo é obrigatório";
     }
-    if (data.estoque < 0) {
+    if (data.apikey.trim() === "") {
       errorsTemp.estoque = "Estoque é obrigatório";
     }
     if (Object.keys(errorsTemp).length > 0) {
@@ -76,12 +72,8 @@ const EditarWhatsapp = (props) => {
           id,
           nome: data.nome,
           descricao: data.descricao,
-          estoque: Number(data.estoque),
-
-          contadorcredito: Number(data.contadorcredito),
-          contadorpelucia: Number(data.contadorpelucia),
-          store_id: String(data.store_id),
-          valorDoPulso: data.valorDoPulso,
+          whatsapp: data.whatsapp,
+          apikey: data.apikey,
         },
         {
           headers: {
@@ -160,16 +152,14 @@ const EditarWhatsapp = (props) => {
           {errors.nome && (
             <div className="Update_Pagamento_itemFieldError">{errors.nome}</div>
           )}
+          
         </div>
         <div className="Update_Pagamento_itemField">
-          <label
-            className="Update_Pagamento_itemFieldLabel"
-            htmlFor="descricao"
-          >
-            Descricão:
+          <label className="Update_Pagamento_itemFieldLabel" htmlFor="nome">
+            descricao:
           </label>
           <Input
-            placeholder={"Máquina"}
+            placeholder={"Máquina 1"}
             value={data.descricao}
             id="descricao"
             type="text"
@@ -178,38 +168,62 @@ const EditarWhatsapp = (props) => {
             onChange={(event) => {
               handleChange("descricao", event.target.value);
             }}
-            className={`${
-              !!errors.descricao ? "Update_Pagamento_inputError" : ""
-            }`}
+            className={`${!!errors.descricao ? "Update_Pagamento_inputError" : ""}`}
           />
           {errors.descricao && (
+            <div className="Update_Pagamento_itemFieldError">{errors.descricao}</div>
+          )}
+          
+        </div>
+        <div className="Update_Pagamento_itemField">
+          <label
+            className="Update_Pagamento_itemFieldLabel"
+            htmlFor="whatsapp"
+          >
+            NUMERO DO WHATSAPP:
+          </label>
+          <Input
+            placeholder={"Máquina"}
+            value={data.whatsapp}
+            id="whatsapp"
+            type="number"
+            name="whatsapp"
+            autoComplete="whatsapp"
+            onChange={(event) => {
+              handleChange("whatsapp", event.target.value);
+            }}
+            className={`${
+              !!errors.whatsapp ? "Update_Pagamento_inputError" : ""
+            }`}
+          />
+          {errors.whatsapp && (
             <div className="Update_Pagamento_itemFieldError">
-              {errors.descricao}
+              {errors.whatsapp}
             </div>
           )}
         </div>
        
         <div className="Update_Pagamento_itemField">
           <label className="Update_Pagamento_itemFieldLabel" htmlFor="contadorcredito">
-            RELOGIO CREDITO:
+            API KEY 
           </label>
           <Input
             placeholder={"1.50"}
-            value={data.contadorcredito}
-            id="contadorcredito"
+            value={data.apikey}
+            id="apikey"
             type="number"
-            name="contadorcredito"
-            autoComplete="contadorcredito"
+            name="apikey"
+            autoComplete="apikey"
             onChange={(event) => {
-              handleChange("contadorcredito", event.target.value);
+              handleChange("apikey", event.target.value);
             }}
             className={`${
-              !!errors.contadorcredito ? "Update_Pagamento_inputError" : ""
+              !!errors.apikey ? "Update_Pagamento_inputError" : ""
             }`}
           />
-          {errors.estoque && (
+          {errors.apikey && (
             <div className="Update_Pagamento_itemFieldError">
-              {errors.contadorcredito}
+              {errors.apikey}
             </div>
           )}
         </div>
