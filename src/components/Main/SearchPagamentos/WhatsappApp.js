@@ -298,12 +298,6 @@ const WhatsappApp = (props) => {
           />
         </div>
         <div className="PagamentosSearch_footer">
-          <Button
-            className="PagamentosSearch_relatorioBtn"
-            onClick={onRelatorioHandler}
-          >
-            Gerar Relatório
-          </Button>
         </div>
       </div>
     </div>
