@@ -30,7 +30,6 @@ import Relatorio from "./components/Main/Relatorio/Relatorio/Relatorio";
 import TokenHelpPage from "./components/Main/TokenHelpPage/TokenHelpPage";
 import AdminPagamentosSearch from "./components/Main/Cliente/AdminSearchPagamentos/AdminPagamentosSearch";
 
-import AdminPagamentosWhatsapp from "./components/Main/Cliente/AdminSearchPagamentos/AdminPagamentosWhatsapp";
 import AdminEditPagamento from "./components/Main/Cliente/AdminSearchPagamentos/AdminEditPagamento";
 import AdminDeletePagamento from "./components/Main/Cliente/AdminSearchPagamentos/AdminDeletePagamento";
 import ConfigSignIn from "./components/Auth/Config/ConfigSignIn/ConfigSignIn";
