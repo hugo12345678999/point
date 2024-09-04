@@ -1,8 +1,11 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
+import LoadingAction from "../../../themes/LoadingAction/LoadingAction";
+import "./PagamentosSearch.css";
 import { Button, Col, Input, Row, Table } from "antd";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import moment from "moment";
+import _, { debounce } from "lodash";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
@@ -16,15 +19,19 @@ import {
   AiFillDelete,
   AiFillDollarCircle,
 } from "react-icons/ai";
+import qr_code_icon from "../../../assets/images/QR.png";
+import notes from "../../../assets/images/notes.png";
 
-const PagamentosSearch = () => {
+const PagamentosSearch = (props) => {
   const location = useLocation();
-  const maquinaInfos = location.state; // Certifique-se de que o estado está correto
+  const maquinaInfos = location.state;
   const { setDataUser, loading, authInfo, setNotiMessage } =
     useContext(AuthContext);
   let navigate = useNavigate();
   const token = authInfo?.dataUser?.token;
   const [isLoading, setIsLoading] = useState(false);
+  // const [searchText, setsearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
   const [listCanals, setListCanals] = useState([]);
   const [estornos, setEstornos] = useState("");
   const [probabilidade, setprobabilidade] = useState("");
@@ -36,24 +43,21 @@ const PagamentosSearch = () => {
   const [loadingTable, setLoadingTable] = useState(false);
   const [dataInicio, setDataInicio] = useState(null);
   const [dataFim, setDataFim] = useState(null);
+  const [dataMaquinas, setDataMaquinas] = useState(null);
 
+  // const []
   const { id } = useParams();
   const { RangePicker } = DatePicker;
+  useEffect(() => {
+    getData(id);
+    // getMaquinas(id)
+  }, []);
 
   useEffect(() => {
-    // Verificar se a informação está sendo recebida corretamente
-    console.log("Maquina Infos:", maquinaInfos);
-
-    const checkStateAndRedirect = () => {
-      if (maquinaInfos?.estado === 1) {
-        console.log("Estado é 1, redirecionando...");
-        navigate(`${links.EDIT_FORNECEDOR_CANAIS}/${id}`, { state: location.state });
-      }
-    };
-
-    checkStateAndRedirect();
-    getData(id);
-  }, [id, maquinaInfos?.estado, navigate, location.state]);
+    if (dataFim != null) {
+      getPaymentsPeriod(dataInicio, dataFim);
+    }
+  }, [dataFim]);
 
   const getData = (id) => {
     if (id.trim() !== "") {
@@ -69,7 +73,7 @@ const PagamentosSearch = () => {
           setLoadingTable(false);
           setEstornos(res.data.estornos);
           setCash(res?.data?.cash);
-          setprobabilidade(res?.data?.probabilidade);
+          setprobabilidade(res?.data?.probababilidade);
           setEstoque(res?.data?.estoque);
           setContadorCredito(res?.data?.contadorcredito);
           setContadorPelucia(res?.data?.contadorpelucia);
@@ -81,6 +85,7 @@ const PagamentosSearch = () => {
         .catch((err) => {
           setLoadingTable(false);
           if ([401, 403].includes(err.response.status)) {
+            // setNotiMessage('A sua sessão expirou, para continuar faça login novamente.');
             setNotiMessage({
               type: "error",
               message:
@@ -90,6 +95,25 @@ const PagamentosSearch = () => {
           }
         });
     }
+  };
+
+  const getMaquinas = (id) => {
+    axios
+      .get(`${process.env.REACT_APP_SERVIDOR}/maquinas`, {
+        headers: {
+          "x-access-token": token,
+          "content-type": "application/json",
+        },
+      })
+      .then((res) => {
+        if (res.status === 200 && Array.isArray(res.data)) {
+          const maquinasData = res.data.find((item) => item.id === id);
+          setDataMaquinas(maquinasData ?? null);
+        } else {
+          throw new Error();
+        }
+      })
+      .catch((err) => {});
   };
 
   const getPaymentsPeriod = (dataInicio, dataFim) => {
@@ -122,6 +146,7 @@ const PagamentosSearch = () => {
         .catch((err) => {
           setLoadingTable(false);
           if ([401, 403].includes(err.response.status)) {
+            // setNotiMessage('A sua sessão expirou, para continuar faça login novamente.');
             setNotiMessage({
               type: "error",
               message:
@@ -147,7 +172,7 @@ const PagamentosSearch = () => {
       title: "Forma de pagamento",
       dataIndex: "tipo",
       key: "tipo",
-      render: (tipo) => (
+      render: (tipo, record) => (
         <span>
           {tipo === "bank_transfer"
             ? "PIX"
@@ -205,13 +230,16 @@ const PagamentosSearch = () => {
         ),
     },
   ];
-
+const formatNumberWithLeadingZeros = (number, length) => {
+  const numStr = number.toString();
+  return numStr.padStart(length, '0');
+};
   const onRelatorioHandler = () => {
     if (!dataInicio && !dataFim) {
       setNotiMessage({
         type: "error",
         message:
-          "Selecione no calendário a esquerda a data de início e fim para gerar o relatório para essa máquina!",
+          "selecione no calendario a esquerda a data de inicio e firm para gerar o relatorio para essa maquina!",
       });
     } else {
       navigate(`${links.RELATORIO}/${id}`, {
@@ -229,45 +257,158 @@ const PagamentosSearch = () => {
           <Button
             className="PagamentosSearch_header_editBtn"
             onClick={() => {
-              navigate(`${links.EDIT_FORNECEDOR_CANAIS}/${id}`);
+              navigate(`${links.EDIT_FORNECEDOR_CANAIS}/${id}`, {
+                state: location.state,
+              });
             }}
           >
-            <AiOutlineEdit size={20} />
-            Editar
+            <AiOutlineEdit />
+            <span>Editar</span>
           </Button>
-        </div>
-        <div className="PagamentosSearch_header_right">
           <Button
-            className="PagamentosSearch_header_reportBtn"
-            onClick={onRelatorioHandler}
+            className="PagamentosSearch_header_editBtn"
+            onClick={() => {
+              navigate(`${links.DELETE_FORNECEDOR_CANAIS}/${id}`, {
+                state: location.state,
+              });
+            }}
           >
-            <FontAwesomeIcon icon={faSearch} />
-            Gerar Relatório
+            <AiFillDelete />
+            <span>Excluir Pagamentos</span>
+          </Button>
+          {/*<Link to={links.REMOTE_CREDIT.replace(':id', id)}>*/}
+          {/*   */}
+          {/*</Link>*/}
+          <Button
+            className="PagamentosSearch_header_editBtn"
+            onClick={() => {
+              navigate(links.REMOTE_CREDIT.replace(":id", id), {
+                state: location.state,
+              });
+            }}
+          >
+            <AiFillDollarCircle />
+            <span>credito remoto</span>
+          </Button>
+          <Button
+            className="PagamentosSearch_header_editBtn"
+            onClick={() => {
+              navigate(`${links.GRUA_CLIENTE}/${id}`, {
+                state: location.state,
+              });
+            }}
+          >
+            <AiOutlineEdit />
+            <span>CONFIGURAR GRUA</span>
+          </Button>
+          
+          <div className="PagamentosSearch_datePicker">
+            {/* <span> Filtro por data:</span> */}
+            <FontAwesomeIcon
+              style={{ marginBottom: "10px", marginRight: "10px" }}
+              icon={faSearch}
+              onClick={() => getPaymentsPeriod(dataInicio, dataFim)}
+            ></FontAwesomeIcon>
+            <RangePicker
+              style={{ border: "1px solid", borderRadius: "4px" }}
+              placeholder={["Data Inicial", "Data Final"]}
+              onChange={(dates, dateStrings) => {
+                setDataInicio(dateStrings ? dateStrings[0] : null);
+                setDataFim(dateStrings ? dateStrings[1] : null);
+              }}
+            />
+          </div>
+          <Button
+            className="PagamentosSearch_header_editBtn"
+            onClick={() => onRelatorioHandler()}
+          >
+            <img
+              style={{ width: "15px", marginRight: "2px" }}
+              src={notes}
+              alt="notes"
+            />
+            <span>Relatório</span>
           </Button>
         </div>
+        <Link
+          className="PagamentosSearch_header_back"
+          to={links.DASHBOARD_FORNECEDOR}
+        >
+          VOLTAR
+        </Link>
       </div>
       <div className="PagamentosSearch_body">
-        <Row gutter={16}>
-          <Col span={24}>
-            <div className="PagamentosSearch_filters">
-              <RangePicker
-                format="DD/MM/YYYY"
-                onChange={(dates) => {
-                  setDataInicio(dates ? dates[0].format("YYYY-MM-DD") : null);
-                  setDataFim(dates ? dates[1].format("YYYY-MM-DD") : null);
-                }}
-              />
+        <div className="PagamentosSearch_content">
+          <div
+            className="PagamentosSearch_titleList_main"
+            style={{ marginBottom: "10px" }}
+          >
+            <div className="PagamentosSearch_titleList">
+              <div style={{ marginLeft: "20px" }}>Total</div>
+              <div className="PagamentosSearch_nbList">
+                {Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                }).format(total)}
+              </div>
+              <div style={{ marginLeft: "20px" }}>Estornos</div>
+              <div className="PagamentosSearch_nbList">
+                {Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                }).format(estornos)}
+              </div>
+              <div style={{ marginLeft: "20px" }}>Espécie</div>
+              <div className="PagamentosSearch_nbList">
+                {Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                }).format(cash)}
+              </div>
+              
+              <div style={{ marginLeft: "20px" }}>Store ID</div>
+              <div className="PagamentosSearch_nbList">{maquinaInfos.storeId}
+              </div>
+              <div style={{ marginLeft: "1px" }}>RELOGIO CREDITO</div>
+              <div className="PagamentosSearch_nbList1">
+                {formatNumberWithLeadingZeros(contadorcredito, 6) ?? "-"}
+              </div>
+             <div style={{ marginLeft: "1px" }}>RELOGIO PELUCIA</div>
+              <div className="PagamentosSearch_nbList1">
+                {formatNumberWithLeadingZeros(estoque, 6) ?? "-"}
+              </div>
+             
             </div>
-          </Col>
-          <Col span={24}>
-            <Table
-              columns={columns}
-              dataSource={listCanals}
-              loading={loadingTable}
-              rowKey="id"
-            />
-          </Col>
-        </Row>
+            {maquinaInfos.storeId && (
+              <Link
+                target="_blank"
+                to={`//www.mercadopago.com.br/stores/detail?store_id=${maquinaInfos.storeId}`}
+              >
+                <img
+                  className="PagamentosSearch_QR_Icon"
+                  src={qr_code_icon}
+                  alt="QR"
+                />
+              </Link>
+            )}
+          </div>
+          <div className="PagamentosSearch_description">{`${maquinaInfos?.nome} - ${maquinaInfos?.descricao}`}</div>
+
+          <Table
+            columns={columns}
+            dataSource={listCanals}
+            pagination={false}
+            loading={loadingTable}
+            locale={{
+              emptyText:
+                searchText.trim() !== "" ? (
+                  "-"
+                ) : (
+                  <div>Não foram encontrados resultados para sua pesquisa.</div>
+                ),
+            }}
+          />
+        </div>
       </div>
     </div>
   );
