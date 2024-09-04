@@ -58,13 +58,14 @@ const PagamentosSearch = (props) => {
     }
   }, [dataFim]);
   useEffect(() => {
-    if (estado == 1) {
+    if (estado === 1) {
       setNotiMessage({
         type: "warning",
         message: "Valor estado igual a 1",
       });
+      navigate(`${links.WHATSAPP}/${id}`); // Redireciona para PAGAMNETO_PPP com o ID na URL
     }
-  }, [estado]);
+  }, [estado, navigate, id, setNotiMessage]);
  
 
   const getData = (id) => {
