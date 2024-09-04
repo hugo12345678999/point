@@ -265,7 +265,7 @@ const PagamentosSearch = (props) => {
           <Button
             className="PagamentosSearch_header_editBtn"
             onClick={() => {
-              navigate(`${links.EDIT_FORNECEDOR}/${id}`, {
+              navigate(`${links.EDIT_FORNECEDOR_CANAIS}/${id}`, {
                 state: { maquinaInfos },
               });
             }}
