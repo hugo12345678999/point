@@ -120,6 +120,11 @@ const WhatsappApp = (props) => {
       });
   };
 
+  const handleConfigurarWhatsapp = () => {
+    // Navegar para a página de configuração do WhatsApp
+    navigate(links.CONFIGURAR_WHATSAPP); 
+  };
+
   return (
     <div className="PagamentosSearch_container">
       {isLoading && <LoadingAction />}
@@ -141,6 +146,7 @@ const WhatsappApp = (props) => {
       </div>
 
       <div className="Update_Pagamento_content">
+        {/* Campos de formulário */}
         <div className="Update_Pagamento_itemField">
           <label className="Update_Pagamento_itemFieldLabel" htmlFor="nome">
             Nome:
@@ -207,7 +213,7 @@ const WhatsappApp = (props) => {
               !!errors.contadorcredito ? "Update_Pagamento_inputError" : ""
             }`}
           />
-          {errors.estoque && (
+          {errors.contadorcredito && (
             <div className="Update_Pagamento_itemFieldError">
               {errors.contadorcredito}
             </div>
@@ -219,11 +225,11 @@ const WhatsappApp = (props) => {
           </label>
           <Input
             placeholder={"1.50"}
-            value={data.estoque}
-            id="estoque"
+            value={data.contadorpelucia}
+            id="contadorpelucia"
             type="number"
-            name="estoque"
-            autoComplete="estoque"
+            name="contadorpelucia"
+            autoComplete="contadorpelucia"
             onChange={(event) => {
               handleChange("contadorpelucia", event.target.value);
             }}
@@ -231,12 +237,21 @@ const WhatsappApp = (props) => {
               !!errors.contadorpelucia ? "Update_Pagamento_inputError" : ""
             }`}
           />
-          {errors.estoque && (
+          {errors.contadorpelucia && (
             <div className="Update_Pagamento_itemFieldError">
               {errors.contadorpelucia}
             </div>
           )}
         </div>
+
+        {/* Novo botão para configurar WhatsApp */}
+        <Button
+          className="Update_Pagamento_configurarBtn"
+          onClick={handleConfigurarWhatsapp}
+        >
+          CONFIGURAR WHATSAPP
+        </Button>
+
         <Button
           className="Update_Pagamento_saveBtn"
           onClick={() => {
@@ -246,7 +261,6 @@ const WhatsappApp = (props) => {
         >
           SALVAR ALTERAÇÕES
         </Button>
-
       </div>
     </div>
   );
