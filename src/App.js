@@ -10,7 +10,7 @@ import * as links from "./utils/links";
 import DashboardMaquinas from "./components/Main/Dashboard/DashboardMáquinas";
 import ClientesDashboard from "./components/Main/Cliente/ClientesDashboard/ClientesDashboard";
 import PagamentosSearch from "./components/Main/SearchPagamentos/PagamentosSearch";
-import Whatsapp from "./components/Main/SearchPagamentos/whatsapp";
+import WhatsappApp from "./components/Main/SearchPagamentos/WhatsappApp";
 import DeletePagamento from "./components/Main/SearchPagamentos/DeletePagamento";
 import EditPagamento from "./components/Main/SearchPagamentos/EditPagamento";
 import EditCliente from "./components/Main/Cliente/EditCliente/EditCliente";
@@ -141,7 +141,7 @@ function App() {
               element={
                 <PrivateRoute>
                   <Main>
-                    <Whatsapp />
+                    <WhatsappApp />
                   </Main>
                 </PrivateRoute>
               }
