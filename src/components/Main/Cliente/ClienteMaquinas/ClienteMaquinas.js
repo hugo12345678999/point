@@ -77,7 +77,7 @@ const ClienteMaquinas = (props) => {
         state: { clienteInfo, maquinaInfos: post },
       });
     } else if (post.estado === 2) {
-      navigate(`${links.CLIENTES_MAQUINAS_FORNECEDOR_WHATSAPP}/${post.id}`, {
+      navigate(`${links.CLIENTES_MAQUINAS_FORNECEDOR_SEARCH}/${post.id}`, {
         state: { clienteInfo, maquinaInfos: post },
       });
     } else {
