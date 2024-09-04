@@ -1,17 +1,20 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import LoadingAction from "../../../../themes/LoadingAction/LoadingAction";
 import "./AdminEditPagamento.css";
 import { Button, Input } from "antd";
 import { AuthContext } from "../../../../contexts/AuthContext";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import * as links from "../../../../utils/links";
 import axios from "axios";
+import question_icon from "../../../../assets/images/question.png";
 
 const AdminEditPagamento = (props) => {
   const location = useLocation();
   let navigate = useNavigate();
 
   const { maquinaInfos, clienteInfo } = location.state;
+
   const { authInfo, setNotiMessage } = useContext(AuthContext);
 
   const [data, setData] = useState({
@@ -24,10 +27,11 @@ const AdminEditPagamento = (props) => {
     valorDoPulso: maquinaInfos?.pulso ?? 0,
   });
   const [errors, setErrors] = useState({});
+
   const [isLoading, setIsLoading] = useState(false);
-  const [isTelemetriaOn, setIsTelemetriaOn] = useState(false); // Novo estado para controlar a telemetria
 
   const token = authInfo?.dataUser?.token;
+
   const { id } = useParams();
 
   const handleChange = (name, value) => {
@@ -42,12 +46,8 @@ const AdminEditPagamento = (props) => {
     });
   };
 
-  const handleTelemetriaToggle = () => {
-    setIsTelemetriaOn((prev) => !prev); // Alterna o estado da telemetria
-  };
-
   const onSave = () => {
-    // Check required fields
+    // check require
     let errorsTemp = {};
     if (data.nome.trim() === "") {
       errorsTemp.nome = "Este campo é obrigatório";
@@ -55,6 +55,7 @@ const AdminEditPagamento = (props) => {
     if (data.descricao.trim() === "") {
       errorsTemp.descricao = "Este campo é obrigatório";
     }
+
     if (data.valorDoPulso < 0) {
       errorsTemp.valorDoPulso = "Este campo é obrigatório";
     }
@@ -65,9 +66,9 @@ const AdminEditPagamento = (props) => {
       setErrors(errorsTemp);
       return;
     }
-
-    setIsLoading(true);
-
+   
+      
+ 
     axios
       .put(
         `${process.env.REACT_APP_SERVIDOR}/maquina`,
@@ -88,31 +89,6 @@ const AdminEditPagamento = (props) => {
           },
         }
       )
-      .then((res) => {
-        if (isTelemetriaOn) {
-          return axios.post(
-            `${process.env.REACT_APP_SERVIDOR}/estadowhatsapp/${clienteInfo.id}`,
-            {},
-            {
-              headers: {
-                "x-access-token": token,
-                "content-type": "application/json",
-              },
-            }
-          );
-        } else {
-          return axios.post(
-            `${process.env.REACT_APP_SERVIDOR}/estadotelemetria/${clienteInfo.id}`,
-            {},
-            {
-              headers: {
-                "x-access-token": token,
-                "content-type": "application/json",
-              },
-            }
-          );
-        }
-      })
       .then((res) => {
         setIsLoading(false);
         navigate(`${links.CLIENTES_MAQUINAS}/${clienteInfo.id}`, {
@@ -198,7 +174,7 @@ const AdminEditPagamento = (props) => {
             className="Admin_Update_Pagamento_itemFieldLabel"
             htmlFor="descricao"
           >
-            Descrição:
+            Descricão:
           </label>
           <Input
             placeholder={"Máquina da padaria de juquinha"}
@@ -240,7 +216,7 @@ const AdminEditPagamento = (props) => {
               }}
               disabled={isLoading}
             >
-              <img src={question_icon} alt="Ajuda" />
+            
             </Button>
           </label>
           <Input
@@ -291,16 +267,15 @@ const AdminEditPagamento = (props) => {
             </div>
           )}
         </div>
-
         <div className="Admin_Update_Pagamento_itemField">
           <label
             className="Admin_Update_Pagamento_itemFieldLabel"
             htmlFor="estoque"
           >
-            Estoque:
+            RELOGIO PELUCIA:
           </label>
           <Input
-            placeholder={"0"}
+            placeholder={"1.50"}
             value={data.estoque}
             id="estoque"
             type="number"
@@ -319,16 +294,15 @@ const AdminEditPagamento = (props) => {
             </div>
           )}
         </div>
-
         <div className="Admin_Update_Pagamento_itemField">
           <label
             className="Admin_Update_Pagamento_itemFieldLabel"
             htmlFor="contadorcredito"
           >
-            Contador Crédito:
+            CONTADOR CREDITO:
           </label>
           <Input
-            placeholder={"0"}
+            placeholder={"1.50"}
             value={data.contadorcredito}
             id="contadorcredito"
             type="number"
@@ -347,62 +321,27 @@ const AdminEditPagamento = (props) => {
             </div>
           )}
         </div>
-
-        <div className="Admin_Update_Pagamento_itemField">
-          <label
-            className="Admin_Update_Pagamento_itemFieldLabel"
-            htmlFor="contadorpelucia"
-          >
-            Contador Pelúcia:
-          </label>
-          <Input
-            placeholder={"0"}
-            value={data.contadorpelucia}
-            id="contadorpelucia"
-            type="number"
-            name="contadorpelucia"
-            autoComplete="contadorpelucia"
-            onChange={(event) => {
-              handleChange("contadorpelucia", event.target.value);
-            }}
-            className={`${
-              !!errors.contadorpelucia ? "Admin_Update_Pagamento_inputError" : ""
-            }`}
-          />
-          {errors.contadorpelucia && (
-            <div className="Admin_Update_Pagamento_itemFieldError">
-              {errors.contadorpelucia}
-            </div>
-          )}
-        </div>
-
-        <div className="Admin_Update_Pagamento_itemField">
-          <label
-            className="Admin_Update_Pagamento_itemFieldLabel"
-            htmlFor="telemetria"
-            style={{ display: "flex", alignItems: "center" }}
-          >
-            Telemetria:
-            <Button
-              className={`Admin_EditPagamentos_header_HelpPage ${isTelemetriaOn ? "on" : "off"}`}
-              onClick={handleTelemetriaToggle}
-              disabled={isLoading}
-            >
-              {isTelemetriaOn ? "ON" : "OFF"}
-            </Button>
-          </label>
-        </div>
-
-        <div className="Admin_Edit_Pagamentos_footer">
-          <Button
-            type="primary"
-            className="Admin_Edit_Pagamentos_footer_button"
-            onClick={onSave}
-            disabled={isLoading}
-          >
-            SALVAR ALTERAÇÕES
-          </Button>
-        </div>
+        
+        <Button
+          className="Admin_Update_Pagamento_saveBtn"
+          onClick={() => {
+            if (!isLoading) onSave();
+          }}
+          disabled={isLoading}
+        >
+          SALVAR ALTERAÇÕES
+        </Button>
+        <Button
+          className="Admin_Update_Pagamento_deleteBtn"
+          onClick={() => {
+            navigate(`${links.CLIENTES_MAQUINAS_DELETE_FORNECEDOR}/${id}`, {
+              state: location.state,
+            });
+          }}
+          disabled={isLoading}
+        >
+          EXCLUIR MÁQUINA
+        </Button>
       </div>
     </div>
   );
