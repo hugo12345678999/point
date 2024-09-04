@@ -123,7 +123,7 @@ const WhatsappApp = (props) => {
   const getPaymentsPeriod = (dataInicio, dataFim) => {
     if (id.trim() !== "") {
       setLoadingTable(true);
-      const url = `${process.env.REACT_APP_SERVIDOR}/pagamentos-periodo-api/${id}`;
+      const url = `${process.env.REACT_APP_SERVIDOR}/pagamentos-periodo/${id}`;
       axios
         .post(
           url,
