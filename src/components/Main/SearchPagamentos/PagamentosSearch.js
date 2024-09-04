@@ -1,11 +1,8 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
-import LoadingAction from "../../../themes/LoadingAction/LoadingAction";
-import "./PagamentosSearch.css";
+import React, { useEffect, useState, useContext } from "react";
 import { Button, Col, Input, Row, Table } from "antd";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import moment from "moment";
-import _, { debounce } from "lodash";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
@@ -19,18 +16,15 @@ import {
   AiFillDelete,
   AiFillDollarCircle,
 } from "react-icons/ai";
-import qr_code_icon from "../../../assets/images/QR.png";
-import notes from "../../../assets/images/notes.png";
 
-const PagamentosSearch = (props) => {
+const PagamentosSearch = () => {
   const location = useLocation();
-  const maquinaInfos = location.state;
+  const maquinaInfos = location.state; // Certifique-se de que o estado está correto
   const { setDataUser, loading, authInfo, setNotiMessage } =
     useContext(AuthContext);
   let navigate = useNavigate();
   const token = authInfo?.dataUser?.token;
   const [isLoading, setIsLoading] = useState(false);
-  const [searchText, setSearchText] = useState("");
   const [listCanals, setListCanals] = useState([]);
   const [estornos, setEstornos] = useState("");
   const [probabilidade, setprobabilidade] = useState("");
@@ -42,28 +36,24 @@ const PagamentosSearch = (props) => {
   const [loadingTable, setLoadingTable] = useState(false);
   const [dataInicio, setDataInicio] = useState(null);
   const [dataFim, setDataFim] = useState(null);
-  const [dataMaquinas, setDataMaquinas] = useState(null);
 
   const { id } = useParams();
   const { RangePicker } = DatePicker;
 
   useEffect(() => {
+    // Verificar se a informação está sendo recebida corretamente
+    console.log("Maquina Infos:", maquinaInfos);
+
     const checkStateAndRedirect = () => {
       if (maquinaInfos?.estado === 1) {
+        console.log("Estado é 1, redirecionando...");
         navigate(`${links.EDIT_FORNECEDOR_CANAIS}/${id}`, { state: location.state });
       }
     };
 
     checkStateAndRedirect();
     getData(id);
-    // getMaquinas(id)
   }, [id, maquinaInfos?.estado, navigate, location.state]);
-
-  useEffect(() => {
-    if (dataFim != null) {
-      getPaymentsPeriod(dataInicio, dataFim);
-    }
-  }, [dataFim]);
 
   const getData = (id) => {
     if (id.trim() !== "") {
@@ -79,7 +69,7 @@ const PagamentosSearch = (props) => {
           setLoadingTable(false);
           setEstornos(res.data.estornos);
           setCash(res?.data?.cash);
-          setprobabilidade(res?.data?.probababilidade);
+          setprobabilidade(res?.data?.probabilidade);
           setEstoque(res?.data?.estoque);
           setContadorCredito(res?.data?.contadorcredito);
           setContadorPelucia(res?.data?.contadorpelucia);
@@ -100,25 +90,6 @@ const PagamentosSearch = (props) => {
           }
         });
     }
-  };
-
-  const getMaquinas = (id) => {
-    axios
-      .get(`${process.env.REACT_APP_SERVIDOR}/maquinas`, {
-        headers: {
-          "x-access-token": token,
-          "content-type": "application/json",
-        },
-      })
-      .then((res) => {
-        if (res.status === 200 && Array.isArray(res.data)) {
-          const maquinasData = res.data.find((item) => item.id === id);
-          setDataMaquinas(maquinasData ?? null);
-        } else {
-          throw new Error();
-        }
-      })
-      .catch((err) => {});
   };
 
   const getPaymentsPeriod = (dataInicio, dataFim) => {
@@ -176,7 +147,7 @@ const PagamentosSearch = (props) => {
       title: "Forma de pagamento",
       dataIndex: "tipo",
       key: "tipo",
-      render: (tipo, record) => (
+      render: (tipo) => (
         <span>
           {tipo === "bank_transfer"
             ? "PIX"
@@ -234,11 +205,6 @@ const PagamentosSearch = (props) => {
         ),
     },
   ];
-
-  const formatNumberWithLeadingZeros = (number, length) => {
-    const numStr = number.toString();
-    return numStr.padStart(length, '0');
-  };
 
   const onRelatorioHandler = () => {
     if (!dataInicio && !dataFim) {
