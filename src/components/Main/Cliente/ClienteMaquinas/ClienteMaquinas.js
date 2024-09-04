@@ -71,6 +71,21 @@ const ClienteMaquinas = (props) => {
       });
   };
 
+  const handleMachineClick = (post) => {
+    if (post.estado === 1) {
+      navigate(`${links.CLIENTES_MAQUINAS_FORNECEDOR_SEARCH}/${post.id}`, {
+        state: { clienteInfo, maquinaInfos: post },
+      });
+    } else if (post.estado === 2) {
+      navigate(`${links.CLIENTES_MAQUINAS_FORNECEDOR_WHATSAPP}/${post.id}`, {
+        state: { clienteInfo, maquinaInfos: post },
+      });
+    } else {
+      // Trate casos em que o estado da máquina não é 1 ou 2, se necessário
+      console.error("Estado da máquina não reconhecido:", post.estado);
+    }
+  };
+
   return (
     <div className="Cliente_Maquinas_container">
       {isLoading && <LoadingAction />}
@@ -104,7 +119,7 @@ const ClienteMaquinas = (props) => {
           }
         >
           <AiOutlinePlusCircle />
-          <span>Addcionar Máquina</span>
+          <span>Adicionar Máquina</span>
         </Button>
 
         <div style={{ margin: "0 15px" }}>
@@ -123,18 +138,9 @@ const ClienteMaquinas = (props) => {
       </div>
       <Row>
         {totalClienteMaquinas.map((post) => (
-          <Col xs={24} md={24} lg={8} xl={8} className="Cliente_Maquinas_col">
-            <div
-              onClick={() =>
-                navigate(
-                  `${links.CLIENTES_MAQUINAS_FORNECEDOR_SEARCH}/${post.id}`,
-                  {
-                    state: { clienteInfo, maquinaInfos: post },
-                  }
-                )
-              }
-            >
-              <div className="maquina" key={post.id} onClick={() => null}>
+          <Col xs={24} md={24} lg={8} xl={8} className="Cliente_Maquinas_col" key={post.id}>
+            <div onClick={() => handleMachineClick(post)}>
+              <div className="maquina">
                 <div className="maquina-info">
                   {(() => {
                     switch (post.status) {
