@@ -64,7 +64,7 @@ export const ADD_CLIENTES = "/novo-cliente";
 export const CLIENTES_MAQUINAS_FORNECEDOR_SEARCH =
   "/cliente-maquinas/pagamentos";
   export const WHATSAPP =
-  "/cliente-maquinas/whatsapp";
+  "/whatsapp";
   export const CLIENTES_MAQUINAS_FORNECEDOR_WHATSAPP =
   "/cliente-maquinas/whatsapp";
 export const CLIENTES_MAQUINAS_EDIT_FORNECEDOR =
