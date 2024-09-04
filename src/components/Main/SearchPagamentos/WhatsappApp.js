@@ -2,14 +2,12 @@ import React, { useContext } from "react";
 import "./EditPagamento.css";
 import { Button } from "antd";
 import { AuthContext } from "../../../contexts/AuthContext";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import * as links from "../../../utils/links";
 
 const WhatsappApp = () => {
-  const location = useLocation();
-  let navigate = useNavigate();
-  const { authInfo, setNotiMessage } = useContext(AuthContext);
-  const token = authInfo?.dataUser?.token;
+  const navigate = useNavigate();
+  const { authInfo } = useContext(AuthContext);
   const { id } = useParams();
 
   const handleConfigurarWhatsapp = () => {
