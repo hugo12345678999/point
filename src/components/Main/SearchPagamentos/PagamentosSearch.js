@@ -238,12 +238,12 @@ const PagamentosSearch = (props) => {
   };
 
   return (
-    <div className="Admin_PagamentosSearch_container">
+    <div className="PagamentosSearch_container">
       {isLoading && <LoadingAction />}
-      <div className="Admin_PagamentosSearch_header">
-        <div className="Admin_PagamentosSearch_header_left">
+      <div className="PagamentosSearch_header">
+        <div className="PagamentosSearch_header_left">
           <Button
-            className="Admin_PagamentosSearch_header_editBtn"
+            className="PagamentosSearch_header_editBtn"
             onClick={() => {
               navigate(`${links.CLIENTES_MAQUINAS_EDIT_FORNECEDOR}/${id}`, {
                 state: location.state,
@@ -254,7 +254,7 @@ const PagamentosSearch = (props) => {
             <span>Editar</span>
           </Button>
           <Button
-            className="Admin_PagamentosSearch_header_editBtn"
+            className="PagamentosSearch_header_editBtn"
             onClick={() => {
               navigate(`${links.CLIENTES_MAQUINA_DELETE_PAGAMENTOS}/${id}`, {
                 state: location.state,
@@ -266,7 +266,7 @@ const PagamentosSearch = (props) => {
           </Button>
 
           <Button
-            className="Admin_PagamentosSearch_header_editBtn"
+            className="PagamentosSearch_header_editBtn"
             onClick={() => {
               navigate(`${links.CREDITO_REMOTO_ADM}/${maquinaInfos.id}`, {
                 state: location.state,
@@ -277,7 +277,7 @@ const PagamentosSearch = (props) => {
             <span>Credito Remoto</span>
           </Button>
           <Button
-            className="Admin_PagamentosSearch_header_editBtn"
+            className="PagamentosSearch_header_editBtn"
             onClick={() => {
               navigate(`${links.GRUA_ADM}/${maquinaInfos.id}`, {
                 state: location.state,
@@ -288,7 +288,7 @@ const PagamentosSearch = (props) => {
             <span>CONFIGURAR GRUA</span>
           </Button>
           <Button
-            className="Admin_PagamentosSearch_header_editBtn"
+            className="PagamentosSearch_header_editBtn"
             onClick={() => {
               navigate(`${links.POINT_ADM}/${maquinaInfos.id}`, {
                 state: location.state,
@@ -298,7 +298,7 @@ const PagamentosSearch = (props) => {
             <AiOutlineEdit />
             <span>POINT</span>
           </Button>
-          <div className="Admin_PagamentosSearch_datePicker">
+          <div className="PagamentosSearch_datePicker">
             <FontAwesomeIcon
               style={{ marginBottom: "2px", marginRight: "2px" }}
               icon={faSearch}
@@ -314,7 +314,7 @@ const PagamentosSearch = (props) => {
             />
           </div>
           <Button
-            className="Admin_PagamentosSearch_header_editBtn"
+            className="PagamentosSearch_header_editBtn"
             onClick={() => onRelatorioHandler()}
           >
             <img
@@ -325,7 +325,7 @@ const PagamentosSearch = (props) => {
             <span>Relatório</span>
           </Button>
           <Button
-            className="Admin_PagamentosSearch_header_editBtn"
+            className="PagamentosSearch_header_editBtn"
             onClick={() => {
               navigate(`${links.CLIENTES_MAQUINAS_TROCAR}/${id}`, {
                 state: location.state,
@@ -340,7 +340,7 @@ const PagamentosSearch = (props) => {
           </Button>
         </div>
         <Button
-          className="Admin_PagamentosSearch_header_back"
+          className="PagamentosSearch_header_back"
           onClick={() =>
             navigate(`${links.CLIENTES_MAQUINAS}/${clienteInfo.id}`, {
               state: location.state.clienteInfo,
@@ -350,29 +350,29 @@ const PagamentosSearch = (props) => {
           VOLTAR
         </Button>
       </div>
-      <div className="Admin_PagamentosSearch_body">
-        <div className="Admin_PagamentosSearch_content">
+      <div className="PagamentosSearch_body">
+        <div className="PagamentosSearch_content">
           <div
-            className="Admin_PagamentosSearch_titleList_main"
+            className="PagamentosSearch_titleList_main"
             style={{ marginBottom: "2px" }}
           >
-            <div className="Admin_PagamentosSearch_titleList">
+            <div className="PagamentosSearch_titleList">
               <div style={{ marginLeft: "2px" }}>Total</div>
-              <div className="Admin_PagamentosSearch_nbList">
+              <div className="PagamentosSearch_nbList">
                 {Intl.NumberFormat("pt-BR", {
                   style: "currency",
                   currency: "BRL",
                 }).format(total)}
               </div>
               <div style={{ marginLeft: "1px" }}>Estornos</div>
-              <div className="Admin_PagamentosSearch_nbList">
+              <div className="PagamentosSearch_nbList">
                 {Intl.NumberFormat("pt-BR", {
                   style: "currency",
                   currency: "BRL",
                 }).format(estornos)}
               </div>
               <div style={{ marginLeft: "1px" }}>Espécie</div>
-              <div className="Admin_PagamentosSearch_nbList">
+              <div className="PagamentosSearch_nbList">
                 {Intl.NumberFormat("pt-BR", {
                   style: "currency",
                   currency: "BRL",
@@ -380,15 +380,15 @@ const PagamentosSearch = (props) => {
               </div>
 
               <div style={{ marginLeft: "1px" }}>ID</div>
-              <div className="Admin_PagamentosSearch_nbList">
+              <div className="PagamentosSearch_nbList">
                 {maquinaInfos.store_id}
               </div>
               <div style={{ marginLeft: "1px" }}>RELOGIO CREDITO</div>
-              <div className="Admin_PagamentosSearch_nbList1">
+              <div className="PagamentosSearch_nbList1">
                 {formatNumberWithLeadingZeros(contadorcredito, 6) ?? "-"}
               </div>
               <div style={{ marginLeft: "1px" }}>RELOGIO PELUCIA</div>
-              <div className="Admin_PagamentosSearch_nbList1">
+              <div className="PagamentosSearch_nbList1">
                 {formatNumberWithLeadingZeros(estoque, 6) ?? "-"}
               </div>
             </div>
@@ -399,14 +399,14 @@ const PagamentosSearch = (props) => {
                 to={`https://www.mercadopago.com.br/stores/detail?store_id=${maquinaInfos.store_id}`}
               >
                 <img
-                  className="Admin_PagamentosSearch_QR_Icon"
+                  className="PagamentosSearch_QR_Icon"
                   src={qr_code_icon}
                   alt="QR"
                 />
               </Link>
             )}
           </div>
-          <div className="Admin_PagamentosSearch_description">
+          <div className="PagamentosSearch_description">
             {`${maquinaInfos?.nome} - ${maquinaInfos?.descricao}`}
           </div>
 

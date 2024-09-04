@@ -1,52 +1,94 @@
-.Admin_PagamentosSearch_container {
+.PagamentosSearch_container {
   padding: 20px;
   display: flex;
   width: 100%;
   flex-direction: column;
   height: 100%;
 }
-.Admin_PagamentosSearch_header {
+.PagamentosSearch_header {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
-.Admin_PagamentosSearch_header_left {
+.PagamentosSearch_nbList1 {
+  margin-left: 5px;
+  background: #000000;
+  color: #FFFFFF;
+  border-radius: 4px;
+  padding: 2px 5px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.PagamentosSearch_header_left {
   display: flex;
   align-items: center;
 }
 
-.Admin_PagamentosSearch_header_left > * {
+.PagamentosSearch_header_left > * {
   margin-right: 10px;
 }
 
-.Admin_PagamentosSearch_header_editBtn {
+.PagamentosSearch_header_editBtn {
   display: flex !important;
   align-items: center;
 }
 
-.Admin_PagamentosSearch_header_editBtn span {
+.PagamentosSearch_header_editBtn span {
   margin-left: 5px;
 }
 
-.Admin_PagamentosSearch_header_back {
+.PagamentosSearch_header_back {
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
   text-decoration: underline;
   color: #1f384c;
-  border: none;
 }
 
-.Admin_PagamentosSearch_description {
+.PagamentosSearch_description {
   margin-left: 25px;
 }
 
-.Admin_PagamentosSearch_QR_Icon {
+.PagamentosSearch_QR_Icon {
   width: 82px;
   height: 72px;
   float: right;
 }
+
+/* .FornecedorSearchCanais_title {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 35px;
+} */
+
+/* .FornecedorSearchCanais_header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+} */
+
+/* .FornecedorSearchCanais_search {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    max-width: 100%;
+} */
+
+/* .FornecedorSearchCanais_inputSearch {
+    background: #F5F5F5!important;
+    border-radius: 15px!important;
+    height: unset!important;
+    padding: 12px 10px!important;
+    border: none!important;
+    width: 400px!important;
+} */
+
+/* .FornecedorSearchCanais_search img {
+    height: 36px;
+    width: 36px;
+    margin-left: 5px;
+    cursor: pointer;
+} */
 
 .FornecedorSearchCanais_btnSubmit {
   display: flex !important;
@@ -61,11 +103,11 @@
   font-size: 18px;
 }
 
-.Admin_PagamentosSearch_content {
+.PagamentosSearch_content {
   padding: 20px;
 }
 
-.Admin_PagamentosSearch_titleList {
+.PagamentosSearch_titleList {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -75,18 +117,18 @@
   margin-right: 100px;
 }
 
-.Admin_PagamentosSearch_titleList_main {
+.PagamentosSearch_titleList_main {
   display: flex;
 }
 
-.Admin_PagamentosSearch_datePicker {
+.PagamentosSearch_datePicker {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
   border-radius: 10px;
 }
 
-.Admin_PagamentosSearch_nbList {
+.PagamentosSearch_nbList {
   margin-left: 5px;
   background: #e5e7eb;
   color: #3182ce;
@@ -95,17 +137,8 @@
   font-size: 16px;
   font-weight: 600;
 }
-.Admin_PagamentosSearch_nbList1 {
-  margin-left: 5px;
-  background: #000000;
-  color: #FFFFFF;
-  border-radius: 4px;
-  padding: 2px 5px;
-  font-size: 16px;
-  font-weight: 600;
-}
 
-.Admin_PagamentosSearch_body {
+.PagamentosSearch_body {
   position: relative;
 }
 
@@ -113,7 +146,11 @@
   text-decoration: none;
 }
 
-.Admin_Dashboard_staBlockTitle {
+/* .FornecedorSearchCanais_content table th.ant-table-cell:last-child {
+    text-align: right;
+} */
+
+.Dashboard_staBlockTitle {
   font-weight: 400;
   font-size: 24px;
   line-height: 27px;
@@ -121,17 +158,17 @@
 }
 
 @media only screen and (max-width: 800px) {
-  .Admin_PagamentosSearch_datePicker {
+  .PagamentosSearch_datePicker {
     margin-bottom: 10px;
   }
 
-  .Admin_PagamentosSearch_body {
+  .PagamentosSearch_body {
     position: relative;
     margin-left: -30px;
     width: 100%;
   }
 
-  .Admin_PagamentosSearch_titleList {
+  .PagamentosSearch_titleList {
     flex-wrap: wrap;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
