@@ -63,7 +63,7 @@ const PagamentosSearch = (props) => {
         type: "warning",
         message: "Valor estado igual a 1",
       });
-      navigate(`${links.PAGAMNETO_PPP}/${id}`); // Redireciona para PAGAMNETO_PPP com o ID na URL
+      navigate(`${links.WHATSAPP}/${id}`); // Redireciona para PAGAMNETO_PPP com o ID na URL
     }
   }, [estado, navigate, id, setNotiMessage]);
 
