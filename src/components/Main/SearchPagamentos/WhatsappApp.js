@@ -41,6 +41,7 @@ const WhatsappApp = (props) => {
   const [contadorcredito, setContadorCredito] = useState("");
   const [contadorpelucia, setContadorPelucia] = useState("");
   const [cash, setCash] = useState("");
+  const [estado, setEstado] = useState("");
   const [total, setTotal] = useState("");
   const [loadingTable, setLoadingTable] = useState(false);
   const [dataInicio, setDataInicio] = useState(null);
@@ -61,6 +62,13 @@ const WhatsappApp = (props) => {
     }
   }, [dataFim]);
 
+  useEffect(() => {
+    if (estado == 2) {
+      navigate(`${links.WHATSAPP_MAQUINA}/${id}`); // Redireciona para PAGAMNETO_PPP com o ID na URL
+    }
+  }, [estado, navigate, id, setNotiMessage]);
+
+
   const getData = (id) => {
     if (id.trim() !== "") {
       setLoadingTable(true);
@@ -75,6 +83,7 @@ const WhatsappApp = (props) => {
           setLoadingTable(false);
           setEstornos(res.data.estornos);
           setCash(res?.data?.cash);
+          setEstado(res?.data?.estado);
           setprobabilidade(res?.data?.probababilidade);
           setEstoque(res?.data?.estoque);
           setContadorCredito(res?.data?.contadorcredito);
