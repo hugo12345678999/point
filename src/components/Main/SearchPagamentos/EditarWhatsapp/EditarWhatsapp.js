@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import LoadingAction from "../../../themes/LoadingAction/LoadingAction";
-import "./EditPagamento.css";
+import "./EditarWhatsapp.css";
 import { Button, Input } from "antd";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { Link, useLocation, useNavigate } from "react-router-dom";
