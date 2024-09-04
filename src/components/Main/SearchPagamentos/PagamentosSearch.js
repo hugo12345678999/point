@@ -58,7 +58,7 @@ const PagamentosSearch = (props) => {
   }, [dataFim]);
 
   useEffect(() => {
-    if (estado === 1) {
+    if (estado == 1) {
       setNotiMessage({
         type: "warning",
         message: "Valor estado igual a 1",
