@@ -263,7 +263,7 @@ const PagamentosSearch = (props) => {
           <Button
             className="PagamentosSearch_header_editBtn"
             onClick={() => {
-              navigate(`${links.EDITAR}/${id}`);
+              navigate(`${links.EDIT_FORNECEDOR_CANAIS}/${id}`);
             }}
           >
             <AiOutlineEdit size={20} />
