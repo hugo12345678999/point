@@ -1,5 +1,3 @@
-
-
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import LoadingAction from "../../../themes/LoadingAction/LoadingAction";
 import "./PagamentosSearch.css";
@@ -32,11 +30,10 @@ const WhatsappApp = (props) => {
   let navigate = useNavigate();
   const token = authInfo?.dataUser?.token;
   const [isLoading, setIsLoading] = useState(false);
-  // const [searchText, setsearchText] = useState('');
   const [searchText, setSearchText] = useState("");
   const [listCanals, setListCanals] = useState([]);
   const [estornos, setEstornos] = useState("");
-  const [probabilidade, setprobabilidade] = useState("");
+  const [probabilidade, setProbabilidade] = useState("");
   const [estoque, setEstoque] = useState("");
   const [contadorcredito, setContadorCredito] = useState("");
   const [contadorpelucia, setContadorPelucia] = useState("");
@@ -47,13 +44,11 @@ const WhatsappApp = (props) => {
   const [dataInicio, setDataInicio] = useState(null);
   const [dataFim, setDataFim] = useState(null);
   const [dataMaquinas, setDataMaquinas] = useState(null);
-
-  // const []
   const { id } = useParams();
   const { RangePicker } = DatePicker;
+
   useEffect(() => {
     getData(id);
-    // getMaquinas(id)
   }, []);
 
   useEffect(() => {
@@ -67,7 +62,6 @@ const WhatsappApp = (props) => {
       navigate(`${links.WHATSAPP_MAQUINA}/${id}`); // Redireciona para PAGAMNETO_PPP com o ID na URL
     }
   }, [estado, navigate, id, setNotiMessage]);
-
 
   const getData = (id) => {
     if (id.trim() !== "") {
@@ -83,10 +77,10 @@ const WhatsappApp = (props) => {
           setLoadingTable(false);
           setEstornos(res.data.estornos);
           setCash(res?.data?.cash);
-          setEstado(res?.data?.estado);
-          setprobabilidade(res?.data?.probababilidade);
+          setProbabilidade(res?.data?.probabilidade);
           setEstoque(res?.data?.estoque);
           setContadorCredito(res?.data?.contadorcredito);
+          setEstado(res?.data?.estado);
           setContadorPelucia(res?.data?.contadorpelucia);
           setTotal(res.data.total);
           if (res.status === 200 && Array.isArray(res.data.pagamentos)) {
@@ -96,7 +90,6 @@ const WhatsappApp = (props) => {
         .catch((err) => {
           setLoadingTable(false);
           if ([401, 403].includes(err.response.status)) {
-            // setNotiMessage('A sua sessão expirou, para continuar faça login novamente.');
             setNotiMessage({
               type: "error",
               message:
@@ -157,7 +150,6 @@ const WhatsappApp = (props) => {
         .catch((err) => {
           setLoadingTable(false);
           if ([401, 403].includes(err.response.status)) {
-            // setNotiMessage('A sua sessão expirou, para continuar faça login novamente.');
             setNotiMessage({
               type: "error",
               message:
@@ -241,10 +233,12 @@ const WhatsappApp = (props) => {
         ),
     },
   ];
-const formatNumberWithLeadingZeros = (number, length) => {
-  const numStr = number.toString();
-  return numStr.padStart(length, '0');
-};
+
+  const formatNumberWithLeadingZeros = (number, length) => {
+    const numStr = number.toString();
+    return numStr.padStart(length, '0');
+  };
+
   const onRelatorioHandler = () => {
     if (!dataInicio && !dataFim) {
       setNotiMessage({
@@ -269,39 +263,16 @@ const formatNumberWithLeadingZeros = (number, length) => {
             className="PagamentosSearch_header_editBtn"
             onClick={() => {
               navigate(`${links.EDIT_FORNECEDOR_CANAIS}/${id}`, {
-                state: location.state,
+                state: { maquinaInfos },
               });
             }}
           >
-            <AiOutlineEdit />
-            <span>Editar</span>
+            <AiOutlineEdit className="Dashboard_staBlockTitleIcon" />
+            Editar
           </Button>
-          <Button
-            className="PagamentosSearch_header_editBtn"
-            onClick={() => {
-              navigate(`${links.DELETE_FORNECEDOR_CANAIS}/${id}`, {
-                state: location.state,
-              });
-            }}
-          >
-            <AiFillDelete />
-            <span>Excluir Pagamentos</span>
-          </Button>
-          {/*<Link to={links.REMOTE_CREDIT.replace(':id', id)}>*/}
-          {/*   */}
-          {/*</Link>*/}
-          <Button
-            className="PagamentosSearch_header_editBtn"
-            onClick={() => {
-              navigate(links.REMOTE_CREDIT.replace(":id", id), {
-                state: location.state,
-              });
-            }}
-          >
-            <AiFillDollarCircle />
-            <span>credito remoto</span>
-          </Button>
-          <Button
+        </div>
+        <div className="ConfigurarWhatsapp_container">
+      <Button
         onClick={() => {
           navigate(`${links.EDIT_WHATSAPP_MAQUINA}/${id}`, {
             state: location.state,
@@ -310,125 +281,52 @@ const formatNumberWithLeadingZeros = (number, length) => {
       >
         CONFIGURAR WHATSAPP
       </Button>
+    </div>
+        <div className="PagamentosSearch_header_right">
+          <Input
+            className="PagamentosSearch_search"
+            placeholder="Buscar"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
           <Button
-            className="PagamentosSearch_header_editBtn"
-            onClick={() => {
-              navigate(`${links.GRUA_CLIENTE}/${id}`, {
-                state: location.state,
-              });
-            }}
-          >
-            <AiOutlineEdit />
-            <span>CONFIGURAR GRUAaaa</span>
-          </Button>
-       
-          
-          <div className="PagamentosSearch_datePicker">
-            {/* <span> Filtro por data:</span> */}
-            <FontAwesomeIcon
-              style={{ marginBottom: "10px", marginRight: "10px" }}
-              icon={faSearch}
-              onClick={() => getPaymentsPeriod(dataInicio, dataFim)}
-            ></FontAwesomeIcon>
+            className="PagamentosSearch_searchBtn"
+            icon={<FontAwesomeIcon icon={faSearch} />}
+            onClick={_.debounce(() => getData(id), 300)}
+          />
+        </div>
+      </div>
+      <div className="PagamentosSearch_content">
+        <Row>
+          <Col>
+            <span>Data de Início:</span>
             <RangePicker
-              style={{ border: "1px solid", borderRadius: "4px" }}
-              placeholder={["Data Inicial", "Data Final"]}
+              className="PagamentosSearch_picker"
+              placeholder={["Início", "Fim"]}
+              format="DD/MM/YYYY"
               onChange={(dates, dateStrings) => {
-                setDataInicio(dateStrings ? dateStrings[0] : null);
-                setDataFim(dateStrings ? dateStrings[1] : null);
+                setDataInicio(dateStrings[0]);
+                setDataFim(dateStrings[1]);
               }}
             />
-          </div>
-          <Button
-            className="PagamentosSearch_header_editBtn"
-            onClick={() => onRelatorioHandler()}
-          >
-            <img
-              style={{ width: "15px", marginRight: "2px" }}
-              src={notes}
-              alt="notes"
-            />
-            <span>Relatório</span>
-          </Button>
-        </div>
-        <Link
-          className="PagamentosSearch_header_back"
-          to={links.DASHBOARD_FORNECEDOR}
-        >
-          VOLTAR
-        </Link>
-      </div>
-      <div className="PagamentosSearch_body">
-        <div className="PagamentosSearch_content">
-          <div
-            className="PagamentosSearch_titleList_main"
-            style={{ marginBottom: "10px" }}
-          >
-            <div className="PagamentosSearch_titleList">
-              <div style={{ marginLeft: "20px" }}>Total</div>
-              <div className="PagamentosSearch_nbList">
-                {Intl.NumberFormat("pt-BR", {
-                  style: "currency",
-                  currency: "BRL",
-                }).format(total)}
-              </div>
-              <div style={{ marginLeft: "20px" }}>Estornos</div>
-              <div className="PagamentosSearch_nbList">
-                {Intl.NumberFormat("pt-BR", {
-                  style: "currency",
-                  currency: "BRL",
-                }).format(estornos)}
-              </div>
-              <div style={{ marginLeft: "20px" }}>Espécie</div>
-              <div className="PagamentosSearch_nbList">
-                {Intl.NumberFormat("pt-BR", {
-                  style: "currency",
-                  currency: "BRL",
-                }).format(cash)}
-              </div>
-              
-              <div style={{ marginLeft: "20px" }}>Store ID</div>
-              <div className="PagamentosSearch_nbList">{maquinaInfos.storeId}
-              </div>
-              <div style={{ marginLeft: "1px" }}>RELOGIO CREDITO</div>
-              <div className="PagamentosSearch_nbList1">
-                {formatNumberWithLeadingZeros(contadorcredito, 6) ?? "-"}
-              </div>
-             <div style={{ marginLeft: "1px" }}>RELOGIO PELUCIA</div>
-              <div className="PagamentosSearch_nbList1">
-                {formatNumberWithLeadingZeros(estoque, 6) ?? "-"}
-              </div>
-             
-            </div>
-            {maquinaInfos.storeId && (
-              <Link
-                target="_blank"
-                to={`//www.mercadopago.com.br/stores/detail?store_id=${maquinaInfos.storeId}`}
-              >
-                <img
-                  className="PagamentosSearch_QR_Icon"
-                  src={qr_code_icon}
-                  alt="QR"
-                />
-              </Link>
-            )}
-          </div>
-          <div className="PagamentosSearch_description">{`${maquinaInfos?.nome} - ${maquinaInfos?.descricao}`}</div>
-
+          </Col>
+        </Row>
+        <div className="PagamentosSearch_table">
           <Table
-            columns={columns}
             dataSource={listCanals}
+            columns={columns}
             pagination={false}
             loading={loadingTable}
-            locale={{
-              emptyText:
-                searchText.trim() !== "" ? (
-                  "-"
-                ) : (
-                  <div>Não foram encontrados resultados para sua pesquisa.</div>
-                ),
-            }}
+            rowKey={(record) => record?.mercadoPagoId}
           />
+        </div>
+        <div className="PagamentosSearch_footer">
+          <Button
+            className="PagamentosSearch_relatorioBtn"
+            onClick={onRelatorioHandler}
+          >
+            Gerar Relatório
+          </Button>
         </div>
       </div>
     </div>
@@ -436,3 +334,41 @@ const formatNumberWithLeadingZeros = (number, length) => {
 };
 
 export default WhatsappApp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
