@@ -239,7 +239,20 @@ const WhatsappApp = (props) => {
     return numStr.padStart(length, '0');
   };
 
- 
+  const onRelatorioHandler = () => {
+    if (!dataInicio && !dataFim) {
+      setNotiMessage({
+        type: "error",
+        message:
+          "selecione no calendario a esquerda a data de inicio e firm para gerar o relatorio para essa maquina!",
+      });
+    } else {
+      navigate(`${links.RELATORIO}/${id}`, {
+        state: { maquinaInfos, dataInicio, dataFim },
+      });
+    }
+  };
+
   return (
     <div className="PagamentosSearch_container">
       {isLoading && <LoadingAction />}
@@ -273,7 +286,39 @@ const WhatsappApp = (props) => {
           />
         </div>
       </div>
-      
+      <div className="PagamentosSearch_content">
+        <Row>
+          <Col>
+            <span>Data de Início:</span>
+            <RangePicker
+              className="PagamentosSearch_picker"
+              placeholder={["Início", "Fim"]}
+              format="DD/MM/YYYY"
+              onChange={(dates, dateStrings) => {
+                setDataInicio(dateStrings[0]);
+                setDataFim(dateStrings[1]);
+              }}
+            />
+          </Col>
+        </Row>
+        <div className="PagamentosSearch_table">
+          <Table
+            dataSource={listCanals}
+            columns={columns}
+            pagination={false}
+            loading={loadingTable}
+            rowKey={(record) => record?.mercadoPagoId}
+          />
+        </div>
+        <div className="PagamentosSearch_footer">
+          <Button
+            className="PagamentosSearch_relatorioBtn"
+            onClick={onRelatorioHandler}
+          >
+            Gerar Relatório
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };
