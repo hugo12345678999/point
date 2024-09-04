@@ -134,16 +134,7 @@ function App() {
                 </PrivateRoute>
               }
             />
-             <Route
-              path={`${links.CLIENTES_MAQUINAS_FORNECEDOR_WHATSAPP}/:id`}
-              element={
-                <PrivateRoute>
-                  <Main>
-                    <AdminPagamentosWhatsapp />
-                  </Main>
-                </PrivateRoute>
-              }
-            />
+             
             <Route
               path={`${links.GRUA_ADM}/:id`}
               element={
