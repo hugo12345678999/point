@@ -50,13 +50,21 @@ const PagamentosSearch = (props) => {
   useEffect(() => {
     getData(id);
   }, []);
+  
 
   useEffect(() => {
     if (dataFim != null) {
       getPaymentsPeriod(dataInicio, dataFim);
     }
   }, [dataFim]);
-
+  useEffect(() => {
+    if (estado === 1) {
+      setNotiMessage({
+        type: "warning",
+        message: "Valor estado igual a 1",
+      });
+    }
+  }, [estado]);
  
 
   const getData = (id) => {
@@ -98,14 +106,7 @@ const PagamentosSearch = (props) => {
         });
     }
   };
-  useEffect(() => {
-    if (estado === 1) {
-      setNotiMessage({
-        type: "warning",
-        message: "Valor estado igual a 1",
-      });
-    }
-  }, [estado]);
+
   const getMaquinas = (id) => {
     axios
       .get(`${process.env.REACT_APP_SERVIDOR}/maquinas`, {
