@@ -259,17 +259,6 @@ const WhatsappApp = (props) => {
       <div className="PagamentosSearch_header">
         <div className="PagamentosSearch_header_left">
           <div className="Dashboard_staBlockTitle">{maquinaInfos?.nome}</div>
-          <Button
-            className="PagamentosSearch_header_editBtn"
-            onClick={() => {
-              navigate(`${links.EDIT_FORNECEDOR_CANAIS}/${id}`, {
-                state: { maquinaInfos },
-              });
-            }}
-          >
-            <AiOutlineEdit className="Dashboard_staBlockTitleIcon" />
-            Editar
-          </Button>
         </div>
         <div className="ConfigurarWhatsapp_container">
       <Button
