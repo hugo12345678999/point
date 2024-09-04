@@ -181,6 +181,8 @@ const WhatsappApp = (props) => {
             ? "PIX"
             : tipo === "CASH"
             ? "SAIU PELUCIA"
+             : tipo === "PELUCIA"
+            ? "ENTRADA_PELUCIA"
             : tipo === "debit_card"
             ? "COLOCOU A PELUCIA "
             : tipo === "credit_card"
