@@ -30,6 +30,7 @@ import Relatorio from "./components/Main/Relatorio/Relatorio/Relatorio";
 import TokenHelpPage from "./components/Main/TokenHelpPage/TokenHelpPage";
 import AdminPagamentosSearch from "./components/Main/Cliente/AdminSearchPagamentos/AdminPagamentosSearch";
 
+import AdminPagamentosWhatsapp from "./components/Main/Cliente/AdminSearchPagamentos/AdminPagamentosWhatsapp";
 import AdminEditPagamento from "./components/Main/Cliente/AdminSearchPagamentos/AdminEditPagamento";
 import AdminDeletePagamento from "./components/Main/Cliente/AdminSearchPagamentos/AdminDeletePagamento";
 import ConfigSignIn from "./components/Auth/Config/ConfigSignIn/ConfigSignIn";
@@ -134,7 +135,16 @@ function App() {
                 </PrivateRoute>
               }
             />
-             
+             <Route
+              path={`${links.CLIENTES_MAQUINAS_FORNECEDOR_WHATSAPP}/:id`}
+              element={
+                <PrivateRoute>
+                  <Main>
+                    <AdminPagamentosWhatsapp />
+                  </Main>
+                </PrivateRoute>
+              }
+            />
             <Route
               path={`${links.GRUA_ADM}/:id`}
               element={

@@ -91,7 +91,7 @@ const AdminEditPagamento = (props) => {
       .then((res) => {
         if (isTelemetriaOn) {
           return axios.post(
-            `${process.env.REACT_APP_SERVIDOR}/estadowhatsapp`,
+            `${process.env.REACT_APP_SERVIDOR}/estadowhatsapp/${clienteInfo.id}`,
             {},
             {
               headers: {
@@ -102,7 +102,7 @@ const AdminEditPagamento = (props) => {
           );
         } else {
           return axios.post(
-            `${process.env.REACT_APP_SERVIDOR}/estadotelemetria/`,
+            `${process.env.REACT_APP_SERVIDOR}/estadotelemetria/${clienteInfo.id}`,
             {},
             {
               headers: {
