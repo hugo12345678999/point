@@ -11,6 +11,7 @@ import DashboardMaquinas from "./components/Main/Dashboard/DashboardMáquinas";
 import ClientesDashboard from "./components/Main/Cliente/ClientesDashboard/ClientesDashboard";
 import PagamentosSearch from "./components/Main/SearchPagamentos/PagamentosSearch";
 import WhatsappApp from "./components/Main/SearchPagamentos/WhatsappApp";
+import EditarWhatsapp from "./components/Main/SearchPagamentos/EditarWhatsapp";
 import DeletePagamento from "./components/Main/SearchPagamentos/DeletePagamento";
 import EditPagamento from "./components/Main/SearchPagamentos/EditPagamento";
 import EditCliente from "./components/Main/Cliente/EditCliente/EditCliente";
@@ -142,6 +143,16 @@ function App() {
                 <PrivateRoute>
                   <Main>
                     <WhatsappApp />
+                  </Main>
+                </PrivateRoute>
+              }
+            />
+             <Route
+              path={`${links.EDIT_WHATSAPP_MAQUINA}/:id`}
+              element={
+                <PrivateRoute>
+                  <Main>
+                    <EditarWhatsapp />
                   </Main>
                 </PrivateRoute>
               }
