@@ -179,7 +179,7 @@ const WhatsappApp = (props) => {
         <span>
           {tipo === "bank_transfer"
             ? "PIX"
-            : tipo === "CASH"
+            : tipo === "PELUCIA"
             ? "Especie"
             : tipo === "debit_card"
             ? "Débito"
@@ -189,49 +189,8 @@ const WhatsappApp = (props) => {
         </span>
       ),
     },
-    {
-      title: "Valor",
-      dataIndex: "valor",
-      key: "valor",
-      render: (valor) =>
-        new Intl.NumberFormat("pt-BR", {
-          style: "currency",
-          currency: "BRL",
-        }).format(valor),
-    },
-    {
-      title: "Identificador MP",
-      dataIndex: "mercadoPagoId",
-      key: "mercadoPagoId",
-    },
-    {
-      title: "Estornado",
-      dataIndex: "estornado",
-      key: "estornado",
-      width: 100,
-      render: (estornado, record) =>
-        estornado ? (
-          <OverlayTrigger
-            key={record.key}
-            placement="top"
-            overlay={
-              <Tooltip id={`tooltip-top-${record.key}`}>
-                {record.motivoEstorno
-                  ? record.motivoEstorno
-                  : "Sem motivo registrado"}
-              </Tooltip>
-            }
-          >
-            <span style={{ color: "gray", cursor: "pointer" }}>
-              {estornado ? "Estornado" : "Recebido"}
-            </span>
-          </OverlayTrigger>
-        ) : (
-          <span style={{ color: estornado ? "gray" : "green" }}>
-            {estornado ? "Estornado" : "Recebido"}
-          </span>
-        ),
-    },
+
+
   ];
 
   const formatNumberWithLeadingZeros = (number, length) => {
