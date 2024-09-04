@@ -58,7 +58,7 @@ const PagamentosSearch = (props) => {
   }, [dataFim]);
 
   useEffect(() => {
-    if (estado == 1) {
+    if (estado === 1) {
       setNotiMessage({
         type: "warning",
         message: "Valor estado igual a 1",
@@ -79,12 +79,14 @@ const PagamentosSearch = (props) => {
         .then((res) => {
           setLoadingTable(false);
           setEstornos(res.data.estornos);
+
           setCash(res?.data?.cash);
           setProbabilidade(res?.data?.probabilidade);
           setEstoque(res?.data?.estoque);
           setContadorCredito(res?.data?.contadorcredito);
           setEstado(res?.data?.estado);
           setContadorPelucia(res?.data?.contadorpelucia);
+          
           setTotal(res.data.total);
           if (res.status === 200 && Array.isArray(res.data.pagamentos)) {
             setListCanals(res.data.pagamentos);
@@ -149,6 +151,7 @@ const PagamentosSearch = (props) => {
           if (res.status === 200 && Array.isArray(res.data.pagamentos)) {
             setListCanals(res.data.pagamentos);
           }
+
         })
         .catch((err) => {
           setLoadingTable(false);
