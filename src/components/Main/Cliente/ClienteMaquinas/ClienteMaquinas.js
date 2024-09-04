@@ -4,7 +4,7 @@ import { Button, Col, Row } from "antd";
 import axios from "axios";
 import * as links from "../../../../utils/links";
 import { AuthContext } from "../../../../contexts/AuthContext";
-import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import LoadingAction from "../../../../themes/LoadingAction/LoadingAction";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,60 +13,38 @@ import {
   faXmarkCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { AiOutlineEdit, AiOutlinePlusCircle } from "react-icons/ai";
+import { useParams } from "react-router-dom";
 
-const ClienteMaquinas = () => {
+const ClienteMaquinas = (props) => {
   const { setDataUser, authInfo, setNotiMessage } = useContext(AuthContext);
   const { dataUser } = authInfo;
-  const navigate = useNavigate();
+
+  let navigate = useNavigate();
   const location = useLocation();
-  const { id } = useParams();
 
   const clienteInfo = location.state;
+
   const token = authInfo?.dataUser?.token;
+
+  const { id } = useParams();
 
   const [totalClienteMaquinas, setTotalClienteMaquinas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = () => {
-      setIsLoading(true);
-      axios
-        .get(`${process.env.REACT_APP_SERVIDOR}/maquinas-adm?id=${id}`, {
-          headers: {
-            "x-access-token": token,
-            "content-type": "application/json",
-          },
-        })
-        .then((res) => {
-          if (res.status === 200) {
-            setTotalClienteMaquinas(res.data);
-          } else {
-            throw new Error();
-          }
-        })
-        .catch((err) => {
-          if ([401, 403].includes(err.response.status)) {
-            setNotiMessage({
-              type: "error",
-              message:
-                "A sua sessão expirou, para continuar faça login novamente.",
-            });
-            setDataUser(null);
-          }
-        })
-        .finally(() => setIsLoading(false));
-    };
+    dataData();
 
-    fetchData();
-    const intervalId = setInterval(fetchData, 60000);
+    const intervalId = setInterval(() => {
+      dataData();
+    }, 60000);
 
     return () => clearInterval(intervalId);
-  }, [id, token, setDataUser, setNotiMessage]);
+  }, []);
 
-  const handleMachineClick = (post) => {
-    // Fazer a requisição GET para verificar o estado da máquina
+  const dataData = () => {
+    setIsLoading(true);
     axios
-      .get(`${process.env.REACT_APP_SERVIDOR}/maquina/${post.id}`, {
+      .get(`${process.env.REACT_APP_SERVIDOR}/maquinas-adm?id=${id}`, {
         headers: {
           "x-access-token": token,
           "content-type": "application/json",
@@ -74,24 +52,22 @@ const ClienteMaquinas = () => {
       })
       .then((res) => {
         if (res.status === 200) {
-          const machineStatus = res.data.estado; // Assumindo que o estado está na propriedade `estado`
-
-          if (machineStatus === 1) {
-            navigate(`${links.CLIENTES_MAQUINAS_FORNECEDOR_WHATSAPP}/${post.id}`, {
-              state: { clienteInfo, maquinaInfos: post },
-            });
-          } else if (machineStatus === 2) {
-            navigate(`${links.CLIENTES_MAQUINAS_FORNECEDOR_SEARCH}/${post.id}`, {
-              state: { clienteInfo, maquinaInfos: post },
-            });
-          } else {
-            console.error("Estado da máquina não reconhecido:", machineStatus);
-          }
+          setIsLoading(false);
+          setTotalClienteMaquinas(res.data);
+        } else {
+          throw new Error();
         }
       })
       .catch((err) => {
-        console.error("Erro ao buscar o estado da máquina:", err);
-        // Tratar erros de requisição, se necessário
+        setIsLoading(false);
+        if ([401, 403].includes(err.response.status)) {
+          setNotiMessage({
+            type: "error",
+            message:
+              "A sua sessão expirou, para continuar faça login novamente.",
+          });
+          setDataUser(null);
+        }
       });
   };
 
@@ -99,7 +75,7 @@ const ClienteMaquinas = () => {
     <div className="Cliente_Maquinas_container">
       {isLoading && <LoadingAction />}
       <div className="WarningMsgSpan">
-        <span>{dataUser?.warningMsg}</span>
+        <span>{dataUser.warningMsg}</span>
       </div>
       <div className="AddCliente_header">
         <div className="AddCliente_header_title">Dispositivos do cliente:</div>
@@ -111,13 +87,14 @@ const ClienteMaquinas = () => {
         <div className="Cliente_Maquinas_staBlockTitle">{clienteInfo.nome}</div>
       </div>
       <div className="Cliente_Maquinas_action">
-        <Button style={{ margin: "0 15px" }} onClick={() => fetchData()}>
+        <Button style={{ margin: "0 15px" }}>
           <FontAwesomeIcon
             icon={faArrowsRotate}
             style={{ marginRight: "5px" }}
           />
           Atualizar
         </Button>
+
         <Button
           className="Cliente_Maquinas_addbtn"
           onClick={() =>
@@ -127,25 +104,37 @@ const ClienteMaquinas = () => {
           }
         >
           <AiOutlinePlusCircle />
-          <span>Adicionar Máquina</span>
+          <span>Addcionar Máquina</span>
         </Button>
-        <Button
-          className="Cliente_Maquinas_addbtn"
-          onClick={() =>
-            navigate(`${links.EDITAR_CLIENTES}/${clienteInfo.id}`, {
-              state: clienteInfo,
-            })
-          }
-        >
-          <AiOutlineEdit />
-          <span>Editar Cliente</span>
-        </Button>
+
+        <div style={{ margin: "0 15px" }}>
+          <Button
+            className="Cliente_Maquinas_addbtn"
+            onClick={() =>
+              navigate(`${links.EDITAR_CLIENTES}/${clienteInfo.id}`, {
+                state: clienteInfo,
+              })
+            }
+          >
+            <AiOutlineEdit />
+            <span>Editar Cliente</span>
+          </Button>
+        </div>
       </div>
       <Row>
         {totalClienteMaquinas.map((post) => (
-          <Col xs={24} md={24} lg={8} xl={8} className="Cliente_Maquinas_col" key={post.id}>
-            <div onClick={() => handleMachineClick(post)}>
-              <div className="maquina">
+          <Col xs={24} md={24} lg={8} xl={8} className="Cliente_Maquinas_col">
+            <div
+              onClick={() =>
+                navigate(
+                  `${links.CLIENTES_MAQUINAS_FORNECEDOR_SEARCH}/${post.id}`,
+                  {
+                    state: { clienteInfo, maquinaInfos: post },
+                  }
+                )
+              }
+            >
+              <div className="maquina" key={post.id} onClick={() => null}>
                 <div className="maquina-info">
                   {(() => {
                     switch (post.status) {
