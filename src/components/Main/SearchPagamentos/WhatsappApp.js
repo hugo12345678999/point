@@ -294,17 +294,6 @@ const formatNumberWithLeadingZeros = (number, length) => {
           </Button>
           <Button
             className="PagamentosSearch_header_editBtn"
-            onClick={() => {
-              navigate(`${links.GRUA_CLIENTE}/${id}`, {
-                state: location.state,
-              });
-            }}
-          >
-            <AiOutlineEdit />
-            <span>CONFIGURAR GRUA</span>
-          </Button>
-          <Button
-            className="PagamentosSearch_header_editBtn"
         onClick={() => {
           navigate(`${links.EDIT_WHATSAPP_MAQUINA}/${id}`, {
             state: location.state,
@@ -313,6 +302,18 @@ const formatNumberWithLeadingZeros = (number, length) => {
       >
         CONFIGURAR WHATSAPP
       </Button>
+          <Button
+            className="PagamentosSearch_header_editBtn"
+            onClick={() => {
+              navigate(`${links.GRUA_CLIENTE}/${id}`, {
+                state: location.state,
+              });
+            }}
+          >
+            <AiOutlineEdit />
+            <span>CONFIGURAR GRUAaaa</span>
+          </Button>
+       
           
           <div className="PagamentosSearch_datePicker">
             {/* <span> Filtro por data:</span> */}
