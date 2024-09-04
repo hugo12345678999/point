@@ -58,13 +58,14 @@ const PagamentosSearch = (props) => {
   }, [dataFim]);
 
   useEffect(() => {
-    if (estado == 1) {
+    if (estado === 1) {
       setNotiMessage({
         type: "warning",
         message: "Valor estado igual a 1",
       });
+      navigate(`${links.WHATSAPP_MAQUINA}/${id}`); // Redireciona para PAGAMNETO_PPP com o ID na URL
     }
-  }, [estado]);
+  }, [estado, navigate, id, setNotiMessage]);
 
   const getData = (id) => {
     if (id.trim() !== "") {
@@ -265,7 +266,7 @@ const PagamentosSearch = (props) => {
           <Button
             className="PagamentosSearch_header_editBtn"
             onClick={() => {
-              navigate(`${links.EDIT_FORNECEDOR}/${id}`, {
+              navigate(`${links.EDIT_FORNECEDOR_CANAIS}/${id}`, {
                 state: { maquinaInfos },
               });
             }}
