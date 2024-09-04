@@ -258,19 +258,6 @@ const WhatsappApp = (props) => {
         CONFIGURAR WHATSAPP
       </Button>
     </div>
-        <div className="PagamentosSearch_header_right">
-          <Input
-            className="PagamentosSearch_search"
-            placeholder="Buscar"
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-          />
-          <Button
-            className="PagamentosSearch_searchBtn"
-            icon={<FontAwesomeIcon icon={faSearch} />}
-            onClick={_.debounce(() => getData(id), 300)}
-          />
-        </div>
       </div>
 
     </div>
