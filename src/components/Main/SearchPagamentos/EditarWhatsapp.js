@@ -125,7 +125,7 @@ const EditarWhatsapp = (props) => {
       {isLoading && <LoadingAction />}
       <div className="PagamentosSearch_header">
         <div className="PagamentosSearch_header_left">
-          <div className="Dashboard_staBlockTitle">Editar Máquina</div>
+          <div className="Dashboard_staBlockTitle">Editar45678 Máquina</div>
         </div>
 
         <Button
