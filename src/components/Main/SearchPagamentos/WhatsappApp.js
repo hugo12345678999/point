@@ -15,8 +15,7 @@ import * as links from "../../../utils/links";
 const WhatsappApp = (props) => {
   const location = useLocation();
   const maquinaInfos = location.state;
-  const { setDataUser, authInfo, setNotiMessage } =
-    useContext(AuthContext);
+  const { setDataUser, authInfo, setNotiMessage } = useContext(AuthContext);
   let navigate = useNavigate();
   const token = authInfo?.dataUser?.token;
   const [isLoading, setIsLoading] = useState(false);
@@ -201,7 +200,7 @@ const WhatsappApp = (props) => {
             <span>Excluir Pagamentos</span>
           </Button>
           <Button
-                      className="Update_Pagamento_saveBtn"
+            className="Update_Pagamento_saveBtn"
             onClick={() => {
               navigate(`${links.EDIT_WHATSAPP_MAQUINA}/${id}`, {
                 state: location.state,
@@ -217,7 +216,7 @@ const WhatsappApp = (props) => {
           <Col>
             <span></span>
             <RangePicker
-             style={{ border: "1px solid", borderRadius: "4px" }}
+              style={{ border: "1px solid", borderRadius: "4px" }}
               className="PagamentosSearch_picker"
               placeholder={["Início", "Fim"]}
               format="DD/MM/YYYY"
@@ -243,7 +242,3 @@ const WhatsappApp = (props) => {
 };
 
 export default WhatsappApp;
-
-
-
-
