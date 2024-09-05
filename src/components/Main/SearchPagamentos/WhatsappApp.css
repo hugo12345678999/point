@@ -65,6 +65,15 @@
 .PagamentosSearch_body {
   position: relative;
 }
+.Update_Pagamento_saveBtn {
+  width: 100%;
+  margin-top: 20px;
+  background-color: #0074db;
+  color: #fff;
+  border-radius: 8px;
+  /*padding: 10px;*/
+  height: 40px;
+}
 
 @media only screen and (max-width: 800px) {
   .PagamentosSearch_datePickerContainer {
