@@ -210,7 +210,7 @@ const WhatsappApp = (props) => {
               });
             }}
           >
-            CONFIGURAR WHATSAPP
+            CONFIGURAR FUNCOES
           </Button>
         </div>
       </div>
