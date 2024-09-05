@@ -359,7 +359,7 @@ const EditarWhatsapp = (props) => {
             
             className="Update_Pagamento_testeBtn"
           >
-            testar mensagem whatsapp
+            testar mensagem whatsappp
           </Button>
         </div>
 
