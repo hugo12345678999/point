@@ -215,7 +215,7 @@ const WhatsappApp = (props) => {
       <div className="PagamentosSearch_content">
         <Row>
           <Col>
-            <span>Data de Início:</span>
+            <span></span>
             <RangePicker
               className="PagamentosSearch_picker"
               placeholder={["Início", "Fim"]}
