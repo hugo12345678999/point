@@ -217,6 +217,7 @@ const WhatsappApp = (props) => {
           <Col>
             <span></span>
             <RangePicker
+             style={{ border: "1px solid", borderRadius: "4px" }}
               className="PagamentosSearch_picker"
               placeholder={["Início", "Fim"]}
               format="DD/MM/YYYY"
