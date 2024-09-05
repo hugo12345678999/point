@@ -63,10 +63,10 @@ const EditarWhatsapp = (props) => {
       setErrors(errorsTemp);
       return;
     }
-
+  
     setIsLoading(true);
-
-    // Primeira requisição PUT para /maquina-cliente
+  
+    // Requisição PUT para /maquina-cliente
     axios
       .put(
         `${process.env.REACT_APP_SERVIDOR}/maquina-cliente`,
@@ -84,21 +84,6 @@ const EditarWhatsapp = (props) => {
           },
         }
       )
-      .then((res) => {
-        // Segunda requisição POST para /entrada_pelucia
-        return axios.post(
-          `${process.env.REACT_APP_SERVIDOR}/entrada_pelucia?valor=1`,
-          {
-            mercadoPagoId: data.mercadoPagoId,
-          },
-          {
-            headers: {
-              "x-access-token": token,
-              "content-type": "application/json",
-            },
-          }
-        );
-      })
       .then((res) => {
         setIsLoading(false);
         navigate(links.DASHBOARD_FORNECEDOR);
@@ -128,7 +113,7 @@ const EditarWhatsapp = (props) => {
         }
       });
   };
-
+  
   const onEntradaPelucia = () => {
     setIsLoading(true);
 
