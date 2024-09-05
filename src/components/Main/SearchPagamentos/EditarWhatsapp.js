@@ -119,7 +119,7 @@ const EditarWhatsapp = (props) => {
 
     axios
       .post(
-        `${process.env.REACT_APP_SERVIDOR}/entrada_pelucia?valor=1`,
+        `${process.env.REACT_APP_SERVIDOR}/entrada_pelucia/${id}/?valor=1`,
         {
           mercadoPagoId: data.mercadoPagoId, // Utilizando o valor de mercadoPagoId do state
         },
