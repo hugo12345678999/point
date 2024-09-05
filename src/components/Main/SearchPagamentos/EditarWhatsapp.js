@@ -53,7 +53,7 @@ const EditarWhatsapp = (props) => {
   const onSave = () => {
     // Verificação de campos obrigatórios
     let errorsTemp = {};
-
+  
     if (data.whatsapp.trim() === "") {
       errorsTemp.whatsapp = "Este campo é obrigatório";
     }
@@ -77,7 +77,6 @@ const EditarWhatsapp = (props) => {
           descricao: data.descricao,
           whatsapp: data.whatsapp,
           apikey: data.apikey,
-         
         },
         {
           headers: {
@@ -88,7 +87,13 @@ const EditarWhatsapp = (props) => {
       )
       .then((res) => {
         setIsLoading(false);
-        navigate(links.DASHBOARD_FORNECEDOR);
+        if (res.status === 200) {
+          setNotiMessage({
+            type: "success",
+            message: "Dados salvos com sucesso!",
+          });
+          navigate(links.DASHBOARD_FORNECEDOR);
+        }
       })
       .catch((err) => {
         setIsLoading(false);
@@ -115,6 +120,7 @@ const EditarWhatsapp = (props) => {
         }
       });
   };
+  
   
   const onEntradaPelucia = () => {
     setIsLoading(true);
