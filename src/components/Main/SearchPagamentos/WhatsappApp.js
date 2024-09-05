@@ -188,17 +188,7 @@ const WhatsappApp = (props) => {
       <div className="PagamentosSearch_header">
         <div className="PagamentosSearch_header_left">
           <div className="Dashboard_staBlockTitle">{maquinaInfos?.nome}</div>
-        </div>
-        <div className="Update_Pagamento_saveBtn">
-          <Button
-            onClick={() => {
-              navigate(`${links.EDIT_WHATSAPP_MAQUINA}/${id}`, {
-                state: location.state,
-              });
-            }}
-          >
-            CONFIGURAR WHATSAPP
-          </Button>
+      
           <Button
             className="Update_Pagamento_saveBtn"
             onClick={() => {
@@ -209,6 +199,16 @@ const WhatsappApp = (props) => {
           >
             <AiFillDelete />
             <span>Excluir Pagamentos</span>
+          </Button>
+          <Button
+                      className="Update_Pagamento_saveBtn"
+            onClick={() => {
+              navigate(`${links.EDIT_WHATSAPP_MAQUINA}/${id}`, {
+                state: location.state,
+              });
+            }}
+          >
+            CONFIGURAR WHATSAPP
           </Button>
         </div>
       </div>
