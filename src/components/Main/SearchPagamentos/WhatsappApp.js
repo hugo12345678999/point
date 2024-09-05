@@ -191,6 +191,11 @@ const WhatsappApp = (props) => {
         </span>
       ),
     },
+    {
+      title: "INFORMACAO",
+      dataIndex: "mercadoPagoId",
+      key: "mercadoPagoId",
+    },
 
 
   ];
