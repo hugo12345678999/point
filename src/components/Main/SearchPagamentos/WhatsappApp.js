@@ -211,7 +211,7 @@ const WhatsappApp = (props) => {
           </Button>
         </div>
       </div>
-      
+      <div className="PagamentosSearch_content">
         <Row>
           <Col>
             <span></span>
@@ -237,7 +237,7 @@ const WhatsappApp = (props) => {
           />
         </div>
       </div>
-   
+    </div>
   );
 };
 
