@@ -41,9 +41,18 @@
   margin-top: 20px;
   background-color: #0074db;
   color: #fff;
-  border-radius: 8px;
+  border-radius: 12px;
   /*padding: 10px;*/
-  height: 40px;
+  height: 70px;
+}
+.Update_Pagamento_peluciaBtn {
+  width: 100%;
+  margin-top: 20px;
+  background-color: #3cff00;
+  color: #fff;
+  border-radius: 12px;
+  /*padding: 10px;*/
+  height: 70px;
 }
 
 .Update_Pagamento_saveBtn:hover {

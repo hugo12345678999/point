@@ -277,7 +277,7 @@ const EditarWhatsapp = (props) => {
           <Button
             type="primary"
             onClick={onSave}
-            className="Update_Pagamento_saveButton"
+            className="Update_Pagamento_saveBtn"
           >
             SALVAR ALTERAÇÕES
           </Button>
@@ -287,7 +287,7 @@ const EditarWhatsapp = (props) => {
           <Button
             type="primary"
             onClick={onEntradaPelucia}
-            className="Update_Pagamento_peluciaButton"
+            className="Update_Pagamento_peluciaBtn"
           >
             ENTRADA DE PELÚCIA
           </Button>
