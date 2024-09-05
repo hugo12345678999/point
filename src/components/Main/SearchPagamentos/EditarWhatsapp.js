@@ -356,7 +356,7 @@ const EditarWhatsapp = (props) => {
             
             className="Update_Pagamento_peluciaBtn"
           >
-            registrar entrada do produto 
+            REGISTRAR ENTRADA DO PRODUTO
           </Button>
         </div>
         <div className="Update_Pagamento_itemField">
@@ -364,9 +364,9 @@ const EditarWhatsapp = (props) => {
             type="primary"
             onClick={whatsapp}
             
-            className="Update_Pagamento_peluciaBtn"
+            className="Update_Pagamento_whatsappBtn"
           >
-            testar whatsapp 
+           TESTAR WHATSAPP
           </Button>
         </div>
 
