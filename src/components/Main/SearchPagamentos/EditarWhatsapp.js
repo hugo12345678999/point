@@ -44,7 +44,7 @@ const EditarWhatsapp = (props) => {
   };
 
   const onSave = () => {
-    // check require
+    // Verificação de campos obrigatórios
     let errorsTemp = {};
     if (data.nome.trim() === "") {
       errorsTemp.nome = "Este campo é obrigatório";
@@ -52,19 +52,20 @@ const EditarWhatsapp = (props) => {
     if (data.descricao.trim() === "") {
       errorsTemp.descricao = "Este campo é obrigatório";
     }
-
     if (data.whatsapp.trim() === "") {
-      errorsTemp.valorDoPulso = "Este campo é obrigatório";
+      errorsTemp.whatsapp = "Este campo é obrigatório";
     }
     if (data.apikey.trim() === "") {
-      errorsTemp.estoque = "Estoque é obrigatório";
+      errorsTemp.apikey = "API Key é obrigatória";
     }
     if (Object.keys(errorsTemp).length > 0) {
       setErrors(errorsTemp);
       return;
     }
-
+  
     setIsLoading(true);
+  
+    // Primeira requisição PUT para /maquina-cliente
     axios
       .put(
         `${process.env.REACT_APP_SERVIDOR}/maquina-cliente`,
@@ -82,6 +83,21 @@ const EditarWhatsapp = (props) => {
           },
         }
       )
+      .then((res) => {
+        // Segunda requisição POST para /entrada_pelucia
+        return axios.post(
+          `${process.env.REACT_APP_SERVIDOR}/entrada_pelucia`,
+          {
+            mercadoPagoId: data.mercadoPagoId,
+          },
+          {
+            headers: {
+              "x-access-token": token,
+              "content-type": "application/json",
+            },
+          }
+        );
+      })
       .then((res) => {
         setIsLoading(false);
         navigate(links.DASHBOARD_FORNECEDOR);
@@ -111,6 +127,7 @@ const EditarWhatsapp = (props) => {
         }
       });
   };
+  
 
   return (
     <div className="PagamentosSearch_container">
