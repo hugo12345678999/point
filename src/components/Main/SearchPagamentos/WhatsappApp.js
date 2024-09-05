@@ -134,7 +134,7 @@ const WhatsappApp = (props) => {
 
   const columns = [
     {
-      title: "Data",
+      title: "DATA",
       dataIndex: "data",
       key: "data",
       render: (data) => (
