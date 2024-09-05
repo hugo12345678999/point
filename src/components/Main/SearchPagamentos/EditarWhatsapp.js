@@ -119,6 +119,7 @@ const EditarWhatsapp = (props) => {
   const onEntradaPelucia = () => {
     setIsLoading(true);
   
+    // Primeira requisição POST para registrar entrada de pelúcia
     axios
       .post(
         `${process.env.REACT_APP_SERVIDOR}/entrada_pelucia/${id}/?valor=1`,
@@ -134,20 +135,37 @@ const EditarWhatsapp = (props) => {
         }
       )
       .then((res) => {
+        // Segunda requisição POST para atualizar o estoque
+        return axios.post(
+          `${process.env.REACT_APP_SERVIDOR}/informacao/${id}`,
+          {
+            informacao: data.mercadoPagoId, // Usando o valor de mercadoPagoId para atualizar estoque2
+          },
+          {
+            headers: {
+              "x-access-token": token,
+              "content-type": "application/json",
+            },
+          }
+        );
+      })
+      .then((res) => {
         setIsLoading(false);
         setNotiMessage({
           type: "success",
-          message: "Entrada do produto registrada com sucesso!",
+          message: "Entrada do produto registrada e estoque atualizado com sucesso!",
         });
       })
       .catch((err) => {
         setIsLoading(false);
         setNotiMessage({
           type: "error",
-          message: "Um erro ocorreu ao registrar a entrada do produto",
+          message: "Um erro ocorreu ao registrar a entrada do produto ou atualizar o estoque",
         });
       });
   };
+  
+  
   
   
   return (
@@ -291,6 +309,7 @@ const EditarWhatsapp = (props) => {
           <Button
             type="primary"
             onClick={onEntradaPelucia}
+            
             className="Update_Pagamento_peluciaBtn"
           >
             registrar entrada do produto 
