@@ -192,10 +192,11 @@ const WhatsappApp = (props) => {
       ),
     },
     {
-      title: "INFORMACAO",
+      title: "INFORMACAO DA PELUCIA",
       dataIndex: "mercadoPagoId",
       key: "mercadoPagoId",
     },
+    QUANDO EU CLICAR EM SALVAR ELE FAZ ROTA POST PARA /ENTRADA_PELUCIA E COLOCA O VALOR QUE ESTA NA DESCRICAO NO ID
 
 
   ];

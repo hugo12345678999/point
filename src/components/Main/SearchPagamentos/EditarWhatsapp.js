@@ -227,6 +227,33 @@ const EditarWhatsapp = (props) => {
             </div>
           )}
         </div>
+        <div className="Update_Pagamento_itemField">
+          <label
+            className="Update_Pagamento_itemFieldLabel"
+            htmlFor="mercadoPagoId"
+          >
+            INFORMACAO DA PELUCIA:
+          </label>
+          <Input
+            placeholder={"Máquina"}
+            value={data.mercadoPagoId}
+            id="mercadoPagoId"
+            type="text"
+            name="mercadoPagoId"
+            autoComplete="mercadoPagoId"
+            onChange={(event) => {
+              handleChange("mercadoPagoId", event.target.value);
+            }}
+            className={`${
+              !!errors.mercadoPagoId ? "Update_Pagamento_inputError" : ""
+            }`}
+          />
+          {errors.mercadoPagoId && (
+            <div className="Update_Pagamento_itemFieldError">
+              {errors.mercadoPagoId}
+            </div>
+          )}
+        </div>
         <Button
           className="Update_Pagamento_saveBtn"
           onClick={() => {
