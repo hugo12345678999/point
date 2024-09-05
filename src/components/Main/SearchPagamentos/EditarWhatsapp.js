@@ -151,7 +151,7 @@ const EditarWhatsapp = (props) => {
       {isLoading && <LoadingAction />}
       <div className="PagamentosSearch_header">
         <div className="PagamentosSearch_header_left">
-          <div className="Dashboard_staBlockTitle"></div>
+          <div className="Dashboard_staBlockTitle">EDITAR FUNCOES</div>
         </div>
 
         <Button
