@@ -12,7 +12,7 @@ import question_icon from "../../../assets/images/question.png";
 const EditarWhatsapp = (props) => {
   const location = useLocation();
   let navigate = useNavigate();
-
+ 
   const maquinaInfos = location.state;
 
   const { authInfo, setNotiMessage } = useContext(AuthContext);
@@ -23,6 +23,7 @@ const EditarWhatsapp = (props) => {
     whatsapp: maquinaInfos?.whatsapp?.replace(/^55/, "") ?? "", // Remove '55' se já estiver presente
     apikey: maquinaInfos?.apikey ?? "",
     mercadoPagoId: maquinaInfos?.mercadoPagoId ?? "", // Adicionei essa linha para incluir mercadoPagoId
+    estoque2: maquinaInfos?.estoque2 ?? "", // Adicionei essa linha para incluir mercadoPagoId
   });
   const [errors, setErrors] = useState({});
 
