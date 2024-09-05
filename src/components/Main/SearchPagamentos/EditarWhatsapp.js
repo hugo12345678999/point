@@ -76,6 +76,7 @@ const EditarWhatsapp = (props) => {
           descricao: data.descricao,
           whatsapp: data.whatsapp,
           apikey: data.apikey,
+          estoque2: data.estoque2,
         },
         {
           headers: {
@@ -116,18 +117,19 @@ const EditarWhatsapp = (props) => {
   
   const onEntradaPelucia = () => {
     setIsLoading(true);
-
+  
     axios
       .post(
         `${process.env.REACT_APP_SERVIDOR}/entrada_pelucia/${id}/?valor=1`,
         {
-          mercadoPagoId: data.mercadoPagoId, // Utilizanddo o valor de mercadoPagoId do state
+          mercadoPagoId: data.mercadoPagoId, // Usando o valor de mercadoPagoId
+          estoque2: data.mercadoPagoId, // Armazenando o valor de mercadoPagoId em estoque2
         },
         {
           headers: {
             "x-access-token": token,
             "content-type": "application/json",
-          }
+          },
         }
       )
       .then((res) => {
@@ -145,7 +147,8 @@ const EditarWhatsapp = (props) => {
         });
       });
   };
-
+  
+  
   return (
     <div className="PagamentosSearch_container">
       {isLoading && <LoadingAction />}
