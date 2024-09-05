@@ -28,6 +28,7 @@ const WhatsappApp = (props) => {
   const [contadorpelucia, setContadorPelucia] = useState("");
   const [cash, setCash] = useState("");
   const [estado, setEstado] = useState("");
+  const [informacao, setInformacao] = useState("");
   const [total, setTotal] = useState("");
   const [loadingTable, setLoadingTable] = useState(false);
   const [dataInicio, setDataInicio] = useState(null);
@@ -51,6 +52,11 @@ const WhatsappApp = (props) => {
       navigate(`${links.WHATSAPP_MAQUINA}/${id}`);
     }
   }, [estado, navigate, id, setNotiMessage]);
+  useEffect(() => {
+    if (estado == 2) {
+      navigate(`${links.WHATSAPP_MAQUINA}/${id}`);
+    }
+  }, [estado, navigate, id, setNotiMessage]);
 
   const getData = (id) => {
     if (id.trim() !== "") {
@@ -69,6 +75,7 @@ const WhatsappApp = (props) => {
           setProbabilidade(res?.data?.probabilidade);
           setEstoque(res?.data?.estoque);
           setContadorCredito(res?.data?.contadorcredito);
+          setInformacao(res?.data?.informacao);
           setEstado(res?.data?.estado);
           setContadorPelucia(res?.data?.contadorpelucia);
           setTotal(res.data.total);
@@ -149,11 +156,11 @@ const WhatsappApp = (props) => {
           {tipo === "bank_transfer"
             ? "PIX"
             : tipo === "CASH"
-            ? "SAIU PELUCIA"
+            ? "SAIDA"
             : tipo === "PELUCIA"
-            ? "ENTRADA_PELUCIA"
+            ? "ENTRADA"
             : tipo === "debit_card"
-            ? "COLOCOU A PELUCIA"
+            ? "ENTRADA"
             : tipo === "credit_card"
             ? "Crédito"
             : ""}
@@ -161,7 +168,7 @@ const WhatsappApp = (props) => {
       ),
     },
     {
-      title: "INFORMAÇÃO DA PELUCIA",
+      title: "PRODUTO",
       dataIndex: "mercadoPagoId",
       key: "mercadoPagoId",
     },
