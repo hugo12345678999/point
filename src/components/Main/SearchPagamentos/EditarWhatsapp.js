@@ -265,7 +265,7 @@ const EditarWhatsapp = (props) => {
         </div>
         <div className="Update_Pagamento_itemField">
           <label className="Update_Pagamento_itemFieldLabel" htmlFor="mercadoPagoId">
-          INFORMACAO DA PELUCIA
+          INFORMACAO DO PRODUTO
           </label>
           <Input
             placeholder={"Informação da Pelúcia"}
@@ -289,7 +289,7 @@ const EditarWhatsapp = (props) => {
             onClick={onEntradaPelucia}
             className="Update_Pagamento_peluciaBtn"
           >
-           SALVAR INFORMACAO DA PELUCIA
+           SALVAR INFORMACAO DO PRODUTO
           </Button>
         </div>
 
