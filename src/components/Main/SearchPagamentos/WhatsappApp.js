@@ -52,13 +52,7 @@ const WhatsappApp = (props) => {
       navigate(`${links.WHATSAPP_MAQUINA}/${id}`);
     }
   }, [estado, navigate, id, setNotiMessage]);
-  useEffect(() => {
-    if (informacao == null) {
-      mercadoPagoId = informacao
-    }else{
-      mercadoPagoId = informacao
-    }
-  }, [informacao,]);
+
 
   const getData = (id) => {
     if (id.trim() !== "") {
