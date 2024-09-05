@@ -1,31 +1,21 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import LoadingAction from "../../../themes/LoadingAction/LoadingAction";
 import "./PagamentosSearch.css";
-import { Button, Col, Input, Row, Table } from "antd";
+import { Button, Col, Row, Table } from "antd";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import moment from "moment";
-import _, { debounce } from "lodash";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { DatePicker } from "antd";
 import "antd/dist/antd.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { AiFillDelete } from "react-icons/ai";
 import * as links from "../../../utils/links";
-import {
-  AiOutlineEdit,
-  AiFillDelete,
-  AiFillDollarCircle,
-} from "react-icons/ai";
-import qr_code_icon from "../../../assets/images/QR.png";
-import notes from "../../../assets/images/notes.png";
 
 const WhatsappApp = (props) => {
   const location = useLocation();
   const maquinaInfos = location.state;
-  const { setDataUser, loading, authInfo, setNotiMessage } =
+  const { setDataUser, authInfo, setNotiMessage } =
     useContext(AuthContext);
   let navigate = useNavigate();
   const token = authInfo?.dataUser?.token;
@@ -59,7 +49,7 @@ const WhatsappApp = (props) => {
 
   useEffect(() => {
     if (estado == 2) {
-      navigate(`${links.WHATSAPP_MAQUINA}/${id}`); // Redireciona para PAGAMNETO_PPP com o ID na URL
+      navigate(`${links.WHATSAPP_MAQUINA}/${id}`);
     }
   }, [estado, navigate, id, setNotiMessage]);
 
@@ -99,25 +89,6 @@ const WhatsappApp = (props) => {
           }
         });
     }
-  };
-
-  const getMaquinas = (id) => {
-    axios
-      .get(`${process.env.REACT_APP_SERVIDOR}/maquinas`, {
-        headers: {
-          "x-access-token": token,
-          "content-type": "application/json",
-        },
-      })
-      .then((res) => {
-        if (res.status === 200 && Array.isArray(res.data)) {
-          const maquinasData = res.data.find((item) => item.id === id);
-          setDataMaquinas(maquinasData ?? null);
-        } else {
-          throw new Error();
-        }
-      })
-      .catch((err) => {});
   };
 
   const getPaymentsPeriod = (dataInicio, dataFim) => {
@@ -166,7 +137,6 @@ const WhatsappApp = (props) => {
       title: "Data",
       dataIndex: "data",
       key: "data",
-      width: 500,
       render: (data) => (
         <span>{moment(data).format("DD/MM/YYYY HH:mm:ss")}</span>
       ),
@@ -175,16 +145,16 @@ const WhatsappApp = (props) => {
       title: "TIPO DE PROCESSO",
       dataIndex: "tipo",
       key: "tipo",
-      render: (tipo, record) => (
+      render: (tipo) => (
         <span>
           {tipo === "bank_transfer"
             ? "PIX"
             : tipo === "CASH"
             ? "SAIU PELUCIA"
-             : tipo === "PELUCIA"
+            : tipo === "PELUCIA"
             ? "ENTRADA_PELUCIA"
             : tipo === "debit_card"
-            ? "COLOCOU A PELUCIA "
+            ? "COLOCOU A PELUCIA"
             : tipo === "credit_card"
             ? "Crédito"
             : ""}
@@ -192,25 +162,18 @@ const WhatsappApp = (props) => {
       ),
     },
     {
-      title: "INFORMACAO DA PELUCIA",
+      title: "INFORMAÇÃO DA PELUCIA",
       dataIndex: "mercadoPagoId",
       key: "mercadoPagoId",
     },
-   
-
   ];
-
-  const formatNumberWithLeadingZeros = (number, length) => {
-    const numStr = number.toString();
-    return numStr.padStart(length, '0');
-  };
 
   const onRelatorioHandler = () => {
     if (!dataInicio && !dataFim) {
       setNotiMessage({
         type: "error",
         message:
-          "selecione no calendario a esquerda a data de inicio e firm para gerar o relatorio para essa maquina!",
+          "Selecione no calendário a data de início e fim para gerar o relatório para essa máquina!",
       });
     } else {
       navigate(`${links.RELATORIO}/${id}`, {
@@ -225,19 +188,18 @@ const WhatsappApp = (props) => {
       <div className="PagamentosSearch_header">
         <div className="PagamentosSearch_header_left">
           <div className="Dashboard_staBlockTitle">{maquinaInfos?.nome}</div>
-
         </div>
         <div className="ConfigurarWhatsapp_container">
-      <Button
-        onClick={() => {
-          navigate(`${links.EDIT_WHATSAPP_MAQUINA}/${id}`, {
-            state: location.state,
-          });
-        }}
-      >
-        CONFIGURAR WHATSAPP
-      </Button>
-      <Button
+          <Button
+            onClick={() => {
+              navigate(`${links.EDIT_WHATSAPP_MAQUINA}/${id}`, {
+                state: location.state,
+              });
+            }}
+          >
+            CONFIGURAR WHATSAPP
+          </Button>
+          <Button
             className="PagamentosSearch_header_editBtn"
             onClick={() => {
               navigate(`${links.DELETE_FORNECEDOR_CANAIS}/${id}`, {
@@ -248,7 +210,7 @@ const WhatsappApp = (props) => {
             <AiFillDelete />
             <span>Excluir Pagamentos</span>
           </Button>
-    </div>
+        </div>
       </div>
       <div className="PagamentosSearch_content">
         <Row>
@@ -274,49 +236,9 @@ const WhatsappApp = (props) => {
             rowKey={(record) => record?.mercadoPagoId}
           />
         </div>
-        <div className="PagamentosSearch_footer">
-        </div>
       </div>
     </div>
   );
 };
 
 export default WhatsappApp;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
