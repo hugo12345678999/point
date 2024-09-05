@@ -47,12 +47,7 @@ const EditarWhatsapp = (props) => {
   const onSave = () => {
     // Verificação de campos obrigatórios
     let errorsTemp = {};
-    if (data.nome.trim() === "") {
-      errorsTemp.nome = "Este campo é obrigatório";
-    }
-    if (data.descricao.trim() === "") {
-      errorsTemp.descricao = "Este campo é obrigatório";
-    }
+
     if (data.whatsapp.trim() === "") {
       errorsTemp.whatsapp = "Este campo é obrigatório";
     }
@@ -74,7 +69,7 @@ const EditarWhatsapp = (props) => {
           id,
           nome: data.nome,
           descricao: data.descricao,
-          whatsapp: data.whatsapp,
+          whatsapp: 55+data.whatsapp,
           apikey: data.apikey,
         },
         {
