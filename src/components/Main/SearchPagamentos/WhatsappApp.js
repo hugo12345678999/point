@@ -190,7 +190,7 @@ const WhatsappApp = (props) => {
           <div className="Dashboard_staBlockTitle">{maquinaInfos?.nome}</div>
       
           <Button
-            className="Update_Pagamento_saveBtn"
+            className="Update_Pagamento_deletBtn"
             onClick={() => {
               navigate(`${links.DELETE_FORNECEDOR_CANAIS}/${id}`, {
                 state: location.state,
