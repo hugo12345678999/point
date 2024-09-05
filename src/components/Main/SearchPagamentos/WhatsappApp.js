@@ -173,7 +173,7 @@ const WhatsappApp = (props) => {
       setNotiMessage({
         type: "error",
         message:
-          "Selecione no calendário a data de início e fim para gerar o relatório para essa máquina!",
+          "Selecione no calendário a data de início e fim para gerar o relatório",
       });
     } else {
       navigate(`${links.RELATORIO}/${id}`, {
@@ -212,33 +212,39 @@ const WhatsappApp = (props) => {
           </Button>
         </div>
       </div>
-      <div className="PagamentosSearch_content">
-        <Row>
-          <Col>
-            <span></span>
-            <RangePicker
-              className="PagamentosSearch_picker"
-              placeholder={["Início", "Fim"]}
-              format="DD/MM/YYYY"
-              onChange={(dates, dateStrings) => {
-                setDataInicio(dateStrings[0]);
-                setDataFim(dateStrings[1]);
-              }}
-            />
-          </Col>
-        </Row>
-        <div className="PagamentosSearch_table">
-          <Table
-            dataSource={listCanals}
-            columns={columns}
-            pagination={false}
-            loading={loadingTable}
-            rowKey={(record) => record?.mercadoPagoId}
-          />
-        </div>
-      </div>
+      <div className="PagamentosSearch_datePicker">
+{/* <span> Filtro por data:</span> */}
+<FontAwesomeIcon
+  style={{ marginBottom: "10px", marginRight: "10px" }}
+  icon={faSearch}
+  onClick={() => getPaymentsPeriod(dataInicio, dataFim)}
+></FontAwesomeIcon>
+<RangePicker
+  style={{ border: "1px solid", borderRadius: "4px" }}
+  placeholder={["Data Inicial", "Data Final"]}
+  onChange={(dates, dateStrings) => {
+    setDataInicio(dateStrings ? dateStrings[0] : null);
+    setDataFim(dateStrings ? dateStrings[1] : null);
+  }}
+/>
+</div>
+<Button
+className="PagamentosSearch_header_editBtn"
+onClick={() => onRelatorioHandler()}
+>
+<img
+  style={{ width: "15px", marginRight: "2px" }}
+  src={notes}
+  alt="notes"
+/>
+<span>Relatório</span>
+</Button>
     </div>
   );
 };
 
 export default WhatsappApp;
+
+
+
+

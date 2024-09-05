@@ -50,10 +50,16 @@
   font-size: 18px;
   cursor: pointer;
 }
-
-.PagamentosSearch_content {
-  padding: 50px;
+.PagamentosSearch_datePicker {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  border-radius: 10px;
 }
+.PagamentosSearch_content {
+  padding: 20px;
+}
+
 
 .PagamentosSearch_titleList {
   display: flex;
