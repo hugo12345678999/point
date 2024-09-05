@@ -126,7 +126,7 @@ const EditarWhatsapp = (props) => {
   
     // Primeira requisição POST para registrar entrada de pelúcia
     axios
-      .post(
+      .get(
         `${process.env.REACT_APP_SERVIDOR}/envia/${id}`,
         {
           mercadoPagoId: data.mercadoPagoId, // Usando o valor de mercadoPagoId
