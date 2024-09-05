@@ -116,6 +116,43 @@ const EditarWhatsapp = (props) => {
       });
   };
   
+  const whatsapp = () => {
+    setIsLoading(true);
+  
+    // Primeira requisição POST para registrar entrada de pelúcia
+    axios
+      .get(
+        `${process.env.REACT_APP_SERVIDOR}/envia/${id}`,
+        {
+          mercadoPagoId: data.mercadoPagoId, // Usando o valor de mercadoPagoId
+          estoque2: data.mercadoPagoId, // Armazenando o valor de mercadoPagoId em estoque2
+        },
+        {
+          headers: {
+            "x-access-token": token,
+            "content-type": "application/json",
+          },
+        }
+      )
+
+      .then((res) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "success",
+          message: "Entrada do produto registrada e estoque atualizado com sucesso!",
+        });
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "error",
+          message: "Um erro ocorreu ao registrar a entrada do produto ou atualizar o estoque",
+        });
+      });
+  };
+
+
+
   const onEntradaPelucia = () => {
     setIsLoading(true);
   
