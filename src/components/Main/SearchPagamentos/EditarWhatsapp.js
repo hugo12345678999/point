@@ -287,7 +287,7 @@ const EditarWhatsapp = (props) => {
           <Button
             type="primary"
             onClick={onEntradaPelucia}
-            className="Update_Pagamento_saveBtn"
+            className="Update_Pagamento_peluciaBtn"
           >
             registrar entrada do produto 
           </Button>
