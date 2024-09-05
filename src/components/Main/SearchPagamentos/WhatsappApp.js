@@ -237,6 +237,17 @@ const WhatsappApp = (props) => {
       >
         CONFIGURAR WHATSAPP
       </Button>
+      <Button
+            className="PagamentosSearch_header_editBtn"
+            onClick={() => {
+              navigate(`${links.DELETE_FORNECEDOR_CANAIS}/${id}`, {
+                state: location.state,
+              });
+            }}
+          >
+            <AiFillDelete />
+            <span>Excluir Pagamentos</span>
+          </Button>
     </div>
       </div>
       <div className="PagamentosSearch_content">
