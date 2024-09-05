@@ -92,7 +92,7 @@ const EditarWhatsapp = (props) => {
             type: "success",
             message: "Dados salvos com sucesso!",
           });
-          navigate(links.DASHBOARD_FORNECEDOR);
+        
         }
       })
       .catch((err) => {
