@@ -252,9 +252,20 @@ const EditarWhatsapp = (props) => {
           )}
         </div>
 
+        
+
+        <div className="Update_Pagamento_itemField">
+          <Button
+            type="primary"
+            onClick={onSave}
+            className="Update_Pagamento_saveBtn"
+          >
+            SALVAR ALTERAÇÕES
+          </Button>
+        </div>
         <div className="Update_Pagamento_itemField">
           <label className="Update_Pagamento_itemFieldLabel" htmlFor="mercadoPagoId">
-            Informação da Pelúcia:
+          INFORMACAO DA PELUCIA
           </label>
           <Input
             placeholder={"Informação da Pelúcia"}
@@ -272,17 +283,6 @@ const EditarWhatsapp = (props) => {
             <div className="Update_Pagamento_itemFieldError">{errors.mercadoPagoId}</div>
           )}
         </div>
-
-        <div className="Update_Pagamento_itemField">
-          <Button
-            type="primary"
-            onClick={onSave}
-            className="Update_Pagamento_saveBtn"
-          >
-            SALVAR ALTERAÇÕES
-          </Button>
-        </div>
-
         <div className="Update_Pagamento_itemField">
           <Button
             type="primary"
