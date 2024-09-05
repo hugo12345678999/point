@@ -103,7 +103,7 @@ const EditarWhatsapp = (props) => {
           });
           setErrors((prev) => ({
             ...prev,
-            nome: "Já existe uma máquina com sse nome",
+            nome: "Já existe uma máquina com esse nome",
           }));
         } else {
           setNotiMessage({
@@ -121,7 +121,7 @@ const EditarWhatsapp = (props) => {
       .post(
         `${process.env.REACT_APP_SERVIDOR}/entrada_pelucia/${id}/?valor=1`,
         {
-          mercadoPagoId: data.mercadoPagoId, // Utilizando o valor de mercadoPagoId do state
+          mercadoPagoId: data.mercadoPagoId, // Utilizanggdo o valor de mercadoPagoId do state
         },
         {
           headers: {
