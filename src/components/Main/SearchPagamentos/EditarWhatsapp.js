@@ -86,7 +86,7 @@ const EditarWhatsapp = (props) => {
       .then((res) => {
         // Segunda requisição POST para /entrada_pelucia
         return axios.post(
-          `${process.env.REACT_APP_SERVIDOR}/entrada_pelucia`,
+          `${process.env.REACT_APP_SERVIDOR}/entrada_pelucia?valor=1`,
           {
             mercadoPagoId: data.mercadoPagoId,
           },
