@@ -52,7 +52,7 @@
 }
 .Update_Pagamento_saveBtn {
   width: 100%;
-  margin-top: 50px;
+  margin-top: 20px;
   background-color: #0074db;
   color: #fff;
   border-radius: 8px;
@@ -61,7 +61,7 @@
 }
 .Update_Pagamento_deletBtn {
   width: 100%;
-  margin-top: 50px;
+  margin-top: 20px;
   background-color: #db0000;
   color: #fff;
   border-radius: 8px;
