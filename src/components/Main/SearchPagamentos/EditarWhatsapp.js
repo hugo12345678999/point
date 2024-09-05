@@ -103,7 +103,7 @@ const EditarWhatsapp = (props) => {
           });
           setErrors((prev) => ({
             ...prev,
-            nome: "Já existe uma máquina com esse nome",
+            nome: "Já existe uma máquina com sse nome",
           }));
         } else {
           setNotiMessage({
