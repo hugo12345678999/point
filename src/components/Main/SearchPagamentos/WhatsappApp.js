@@ -184,59 +184,33 @@ const WhatsappApp = (props) => {
   return (
     <div className="PagamentosSearch_container">
       {isLoading && <LoadingAction />}
-      <div className="PagamentosSearch_header">
-        <div className="PagamentosSearch_header_left">
-          <div className="Dashboard_staBlockTitle">{maquinaInfos?.nome}</div>
-      
-          <Button
-            className="Update_Pagamento_deletBtn"
-            onClick={() => {
-              navigate(`${links.DELETE_FORNECEDOR_CANAIS}/${id}`, {
-                state: location.state,
-              });
-            }}
-          >
-            <AiFillDelete />
-            <span>Excluir Pagamentos</span>
-          </Button>
-          <Button
-            className="Update_Pagamento_saveBtn"
-            onClick={() => {
-              navigate(`${links.EDIT_WHATSAPP_MAQUINA}/${id}`, {
-                state: location.state,
-              });
-            }}
-          >
-            CONFIGURAR WHATSAPP
-          </Button>
-        </div>
-      </div>
-      <div className="PagamentosSearch_content">
-        <Row>
-          <Col>
-            <span></span>
+      <div className="PagamentosSearch_datePicker">
+            {/* <span> Filtro por data:</span> */}
+            <FontAwesomeIcon
+              style={{ marginBottom: "10px", marginRight: "10px" }}
+              icon={faSearch}
+              onClick={() => getPaymentsPeriod(dataInicio, dataFim)}
+            ></FontAwesomeIcon>
             <RangePicker
               style={{ border: "1px solid", borderRadius: "4px" }}
-              className="PagamentosSearch_picker"
-              placeholder={["Início", "Fim"]}
-              format="DD/MM/YYYY"
+              placeholder={["Data Inicial", "Data Final"]}
               onChange={(dates, dateStrings) => {
-                setDataInicio(dateStrings[0]);
-                setDataFim(dateStrings[1]);
+                setDataInicio(dateStrings ? dateStrings[0] : null);
+                setDataFim(dateStrings ? dateStrings[1] : null);
               }}
             />
-          </Col>
-        </Row>
-        <div className="PagamentosSearch_table">
-          <Table
-            dataSource={listCanals}
-            columns={columns}
-            pagination={false}
-            loading={loadingTable}
-            rowKey={(record) => record?.mercadoPagoId}
-          />
-        </div>
-      </div>
+          </div>
+          <Button
+            className="PagamentosSearch_header_editBtn"
+            onClick={() => onRelatorioHandler()}
+          >
+            <img
+              style={{ width: "15px", marginRight: "2px" }}
+              src={notes}
+              alt="notes"
+            />
+            <span>Relatório</span>
+          </Button>
     </div>
   );
 };
