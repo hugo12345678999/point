@@ -22,6 +22,7 @@ const EditarWhatsapp = (props) => {
     descricao: maquinaInfos?.descricao ?? "",
     whatsapp: maquinaInfos?.whatsapp ?? "",
     apikey: maquinaInfos?.apikey ?? "",
+    mercadoPagoId: maquinaInfos?.mercadoPagoId ?? "", // Adicionei essa linha para incluir mercadoPagoId
   });
   const [errors, setErrors] = useState({});
 
@@ -62,9 +63,9 @@ const EditarWhatsapp = (props) => {
       setErrors(errorsTemp);
       return;
     }
-  
+
     setIsLoading(true);
-  
+
     // Primeira requisição PUT para /maquina-cliente
     axios
       .put(
@@ -127,14 +128,45 @@ const EditarWhatsapp = (props) => {
         }
       });
   };
-  
+
+  const onEntradaPelucia = () => {
+    setIsLoading(true);
+
+    axios
+      .post(
+        `${process.env.REACT_APP_SERVIDOR}/entrada_pelucia?valor=1`,
+        {
+          mercadoPagoId: data.mercadoPagoId, // Utilizando o valor de mercadoPagoId do state
+        },
+        {
+          headers: {
+            "x-access-token": token,
+            "content-type": "application/json",
+          }
+        }
+      )
+      .then((res) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "success",
+          message: "Entrada de pelúcia registrada com sucesso!",
+        });
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "error",
+          message: "Um erro ocorreu ao registrar a entrada de pelúcia",
+        });
+      });
+  };
 
   return (
     <div className="PagamentosSearch_container">
       {isLoading && <LoadingAction />}
       <div className="PagamentosSearch_header">
         <div className="PagamentosSearch_header_left">
-          <div className="Dashboard_staBlockTitle">Editar45678 Máquina</div>
+          <div className="Dashboard_staBlockTitle">Editar Máquina</div>
         </div>
 
         <Button
@@ -150,6 +182,7 @@ const EditarWhatsapp = (props) => {
       </div>
 
       <div className="Update_Pagamento_content">
+        {/* Campos de entrada e validação */}
         <div className="Update_Pagamento_itemField">
           <label className="Update_Pagamento_itemFieldLabel" htmlFor="nome">
             Nome:
@@ -169,14 +202,14 @@ const EditarWhatsapp = (props) => {
           {errors.nome && (
             <div className="Update_Pagamento_itemFieldError">{errors.nome}</div>
           )}
-          
         </div>
+
         <div className="Update_Pagamento_itemField">
-          <label className="Update_Pagamento_itemFieldLabel" htmlFor="nome">
-            descricao:
+          <label className="Update_Pagamento_itemFieldLabel" htmlFor="descricao">
+            Descrição:
           </label>
           <Input
-            placeholder={"Máquina 1"}
+            placeholder={"Descrição da Máquina"}
             value={data.descricao}
             id="descricao"
             type="text"
@@ -190,17 +223,14 @@ const EditarWhatsapp = (props) => {
           {errors.descricao && (
             <div className="Update_Pagamento_itemFieldError">{errors.descricao}</div>
           )}
-          
         </div>
+
         <div className="Update_Pagamento_itemField">
-          <label
-            className="Update_Pagamento_itemFieldLabel"
-            htmlFor="whatsapp"
-          >
-            NUMERO DO WHATSAPP:
+          <label className="Update_Pagamento_itemFieldLabel" htmlFor="whatsapp">
+            Número do WhatsApp:
           </label>
           <Input
-            placeholder={"Máquina"}
+            placeholder={"Número do WhatsApp"}
             value={data.whatsapp}
             id="whatsapp"
             type="number"
@@ -209,50 +239,40 @@ const EditarWhatsapp = (props) => {
             onChange={(event) => {
               handleChange("whatsapp", event.target.value);
             }}
-            className={`${
-              !!errors.whatsapp ? "Update_Pagamento_inputError" : ""
-            }`}
+            className={`${!!errors.whatsapp ? "Update_Pagamento_inputError" : ""}`}
           />
           {errors.whatsapp && (
-            <div className="Update_Pagamento_itemFieldError">
-              {errors.whatsapp}
-            </div>
+            <div className="Update_Pagamento_itemFieldError">{errors.whatsapp}</div>
           )}
         </div>
-       
+
         <div className="Update_Pagamento_itemField">
-          <label className="Update_Pagamento_itemFieldLabel" htmlFor="contadorcredito">
-            API KEY 
+          <label className="Update_Pagamento_itemFieldLabel" htmlFor="apikey">
+            API Key:
           </label>
           <Input
-            placeholder={"1.50"}
+            placeholder={"API Key"}
             value={data.apikey}
             id="apikey"
-            type="number"
+            type="text"
             name="apikey"
             autoComplete="apikey"
             onChange={(event) => {
               handleChange("apikey", event.target.value);
             }}
-            className={`${
-              !!errors.apikey ? "Update_Pagamento_inputError" : ""
-            }`}
+            className={`${!!errors.apikey ? "Update_Pagamento_inputError" : ""}`}
           />
           {errors.apikey && (
-            <div className="Update_Pagamento_itemFieldError">
-              {errors.apikey}
-            </div>
+            <div className="Update_Pagamento_itemFieldError">{errors.apikey}</div>
           )}
         </div>
+
         <div className="Update_Pagamento_itemField">
-          <label
-            className="Update_Pagamento_itemFieldLabel"
-            htmlFor="mercadoPagoId"
-          >
-            INFORMACAO DA PELUCIA:
+          <label className="Update_Pagamento_itemFieldLabel" htmlFor="mercadoPagoId">
+            Informação da Pelúcia:
           </label>
           <Input
-            placeholder={"Máquina"}
+            placeholder={"Informação da Pelúcia"}
             value={data.mercadoPagoId}
             id="mercadoPagoId"
             type="text"
@@ -261,25 +281,32 @@ const EditarWhatsapp = (props) => {
             onChange={(event) => {
               handleChange("mercadoPagoId", event.target.value);
             }}
-            className={`${
-              !!errors.mercadoPagoId ? "Update_Pagamento_inputError" : ""
-            }`}
+            className={`${!!errors.mercadoPagoId ? "Update_Pagamento_inputError" : ""}`}
           />
           {errors.mercadoPagoId && (
-            <div className="Update_Pagamento_itemFieldError">
-              {errors.mercadoPagoId}
-            </div>
+            <div className="Update_Pagamento_itemFieldError">{errors.mercadoPagoId}</div>
           )}
         </div>
-        <Button
-          className="Update_Pagamento_saveBtn"
-          onClick={() => {
-            if (!isLoading) onSave();
-          }}
-          disabled={isLoading}
-        >
-          SALVAR ALTERAÇÕES
-        </Button>
+
+        <div className="Update_Pagamento_itemField">
+          <Button
+            type="primary"
+            onClick={onSave}
+            className="Update_Pagamento_saveButton"
+          >
+            SALVAR ALTERAÇÕES
+          </Button>
+        </div>
+
+        <div className="Update_Pagamento_itemField">
+          <Button
+            type="primary"
+            onClick={onEntradaPelucia}
+            className="Update_Pagamento_peluciaButton"
+          >
+            ENTRADA DE PELÚCIA
+          </Button>
+        </div>
 
       </div>
     </div>
@@ -287,9 +314,3 @@ const EditarWhatsapp = (props) => {
 };
 
 export default EditarWhatsapp;
-
-
-
-
-
-
