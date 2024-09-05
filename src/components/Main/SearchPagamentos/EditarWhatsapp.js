@@ -20,7 +20,7 @@ const EditarWhatsapp = (props) => {
   const [data, setData] = useState({
     nome: maquinaInfos?.nome ?? "",
     descricao: maquinaInfos?.descricao ?? "",
-    whatsapp: maquinaInfos?.whatsapp ?? "",
+    whatsapp: maquinaInfos?.whatsapp?.replace(/^55/, "") ?? "", // Remove '55' se já estiver presente
     apikey: maquinaInfos?.apikey ?? "",
     mercadoPagoId: maquinaInfos?.mercadoPagoId ?? "", // Adicionei essa linha para incluir mercadoPagoId
   });
@@ -33,6 +33,11 @@ const EditarWhatsapp = (props) => {
   const { id } = useParams();
 
   const handleChange = (name, value) => {
+    // Adiciona o código '55' ao campo de WhatsApp
+    if (name === "whatsapp") {
+      value = `55${value.replace(/^55/, "")}`; // Adiciona '55' se não estiver presente
+    }
+    
     setData((prev) => ({
       ...prev,
       [name]: value,
@@ -47,7 +52,7 @@ const EditarWhatsapp = (props) => {
   const onSave = () => {
     // Verificação de campos obrigatórios
     let errorsTemp = {};
-let valor55 = 55;
+
     if (data.whatsapp.trim() === "") {
       errorsTemp.whatsapp = "Este campo é obrigatório";
     }
@@ -69,7 +74,7 @@ let valor55 = 55;
           id,
           nome: data.nome,
           descricao: data.descricao,
-          whatsapp: valor55+data.whatsapp,
+          whatsapp: data.whatsapp,
           apikey: data.apikey,
         },
         {
@@ -116,7 +121,7 @@ let valor55 = 55;
       .post(
         `${process.env.REACT_APP_SERVIDOR}/entrada_pelucia/${id}/?valor=1`,
         {
-          mercadoPagoId: data.mercadoPagoId, // Utilizanggdo o valor de mercadoPagoId do state
+          mercadoPagoId: data.mercadoPagoId, // Utilizanddo o valor de mercadoPagoId do state
         },
         {
           headers: {
@@ -247,8 +252,6 @@ let valor55 = 55;
           )}
         </div>
 
-        
-
         <div className="Update_Pagamento_itemField">
           <Button
             type="primary"
@@ -258,9 +261,10 @@ let valor55 = 55;
             SALVAR ALTERAÇÕES
           </Button>
         </div>
+
         <div className="Update_Pagamento_itemField">
           <label className="Update_Pagamento_itemFieldLabel" htmlFor="mercadoPagoId">
-          INFORMACAO DO PRODUTO
+            INFORMACAO DO PRODUTO
           </label>
           <Input
             placeholder={"Informação da Pelúcia"}
@@ -278,16 +282,21 @@ let valor55 = 55;
             <div className="Update_Pagamento_itemFieldError">{errors.mercadoPagoId}</div>
           )}
         </div>
+        
         <div className="Update_Pagamento_itemField">
           <Button
             type="primary"
             onClick={onEntradaPelucia}
-            className="Update_Pagamento_peluciaBtn"
+            className="Update_Pagamento_saveBtn"
           >
-           SALVAR INFORMACAO DO PRODUTO
+            Registrar Entrada de Pelúcia
           </Button>
         </div>
 
+        <div className="Update_Pagamento_itemField">
+          <img src={question_icon} alt="Info" />
+          <span>Para adicionar a pelúcia, registre a entrada</span>
+        </div>
       </div>
     </div>
   );
