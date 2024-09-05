@@ -227,7 +227,7 @@ const WhatsappApp = (props) => {
             />
           </Col>
         </Row>
-        <div className="PagamentosSearch_datePicker">
+        <div className="PagamentosSearch_table">
           <Table
             dataSource={listCanals}
             columns={columns}
