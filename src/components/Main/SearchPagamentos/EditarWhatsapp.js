@@ -134,14 +134,14 @@ const EditarWhatsapp = (props) => {
         setIsLoading(false);
         setNotiMessage({
           type: "success",
-          message: "Entrada de pelúcia registrada com sucesso!",
+          message: "Entrada do produto registrada com sucesso!",
         });
       })
       .catch((err) => {
         setIsLoading(false);
         setNotiMessage({
           type: "error",
-          message: "Um erro ocorreu ao registrar a entrada de pelúcia",
+          message: "Um erro ocorreu ao registrar a entrada do produto",
         });
       });
   };
@@ -151,7 +151,7 @@ const EditarWhatsapp = (props) => {
       {isLoading && <LoadingAction />}
       <div className="PagamentosSearch_header">
         <div className="PagamentosSearch_header_left">
-          <div className="Dashboard_staBlockTitle">Editar Máquina</div>
+          <div className="Dashboard_staBlockTitle"></div>
         </div>
 
         <Button
@@ -289,13 +289,13 @@ const EditarWhatsapp = (props) => {
             onClick={onEntradaPelucia}
             className="Update_Pagamento_saveBtn"
           >
-            Registrar Entrada de Pelúcia
+            registrar entrada do produto 
           </Button>
         </div>
 
         <div className="Update_Pagamento_itemField">
           <img src={question_icon} alt="Info" />
-          <span>Para adicionar a pelúcia, registre a entrada</span>
+          <span>Para adicionar o produto , Clique em registrar entrada do produto  </span>
         </div>
       </div>
     </div>
