@@ -54,6 +54,15 @@
   /*padding: 10px;*/
   height: 70px;
 }
+.Update_Pagamento_testeBtn {
+  width: 100%;
+  margin-top: 20px;
+  background-color: #0499ad;
+  color: #fff;
+  border-radius: 8px;
+  /*padding: 10px;*/
+  height: 70px;
+}
 
 .Update_Pagamento_saveBtn:hover {
   background-color: #0074db;

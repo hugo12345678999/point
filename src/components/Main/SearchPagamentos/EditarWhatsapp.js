@@ -357,7 +357,7 @@ const EditarWhatsapp = (props) => {
             type="primary"
             onClick={whatsapp}
             
-            className="Update_Pagamento_peluciaBtn"
+            className="Update_Pagamento_testeBtn"
           >
             testar mensagem whatsapp
           </Button>
