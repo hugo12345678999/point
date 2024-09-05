@@ -200,17 +200,6 @@ const WhatsappApp = (props) => {
               }}
             />
           </div>
-          <Button
-            className="PagamentosSearch_header_editBtn"
-            onClick={() => onRelatorioHandler()}
-          >
-            <img
-              style={{ width: "15px", marginRight: "2px" }}
-              src={notes}
-              alt="notes"
-            />
-            <span>Relatório</span>
-          </Button>
     </div>
   );
 };

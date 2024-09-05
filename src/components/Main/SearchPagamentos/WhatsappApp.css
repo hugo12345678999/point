@@ -1,15 +1,19 @@
 .PagamentosSearch_container {
   padding: 20px;
   display: flex;
-  flex-direction: column;
   width: 100%;
+  flex-direction: column;
   height: 100%;
 }
 
 
 
-
-
+.PagamentosSearch_datePicker {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  border-radius: 10px;
+}
 
 
 .PagamentosSearch_datePicker input {
@@ -30,12 +34,7 @@
   font-size: 18px;
   cursor: pointer;
 }
-.PagamentosSearch_datePicker {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  border-radius: 10px;
-}
+
 .PagamentosSearch_content {
   padding: 20px;
 }
@@ -99,11 +98,6 @@
   margin-bottom: 0; /* Remove margem inferior para ajustar alinhamento */
 }
 
-.PagamentosSearch_datePicker {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
 
 .PagamentosSearch_buttons {
   display: flex;
