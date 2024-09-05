@@ -189,7 +189,7 @@ const WhatsappApp = (props) => {
         <div className="PagamentosSearch_header_left">
           <div className="Dashboard_staBlockTitle">{maquinaInfos?.nome}</div>
         </div>
-        <div className="ConfigurarWhatsapp_container">
+        <div className="Update_Pagamento_saveBtn">
           <Button
             onClick={() => {
               navigate(`${links.EDIT_WHATSAPP_MAQUINA}/${id}`, {
@@ -200,7 +200,7 @@ const WhatsappApp = (props) => {
             CONFIGURAR WHATSAPP
           </Button>
           <Button
-            className="PagamentosSearch_header_editBtn"
+            className="Update_Pagamento_saveBtn"
             onClick={() => {
               navigate(`${links.DELETE_FORNECEDOR_CANAIS}/${id}`, {
                 state: location.state,
