@@ -352,6 +352,16 @@ const EditarWhatsapp = (props) => {
             registrar entrada do produto 
           </Button>
         </div>
+        <div className="Update_Pagamento_itemField">
+          <Button
+            type="primary"
+            onClick={whatsapp}
+            
+            className="Update_Pagamento_peluciaBtn"
+          >
+            testar mensagem whatsapp
+          </Button>
+        </div>
 
         <div className="Update_Pagamento_itemField">
           <img src={question_icon} alt="Info" />
