@@ -212,7 +212,7 @@ const WhatsappApp = (props) => {
           </Button>
         </div>
       </div>
-      <div className="PagamentosSearch_datePicker">
+      <div className="PagamentosSearch_content">
         <Row>
           <Col>
             <span></span>
