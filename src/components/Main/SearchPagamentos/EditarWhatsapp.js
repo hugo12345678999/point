@@ -12,7 +12,7 @@ import question_icon from "../../../assets/images/question.png";
 const EditarWhatsapp = (props) => {
   const location = useLocation();
   let navigate = useNavigate();
-
+ 
   const maquinaInfos = location.state;
 
   const { authInfo, setNotiMessage } = useContext(AuthContext);
@@ -20,21 +20,25 @@ const EditarWhatsapp = (props) => {
   const [data, setData] = useState({
     nome: maquinaInfos?.nome ?? "",
     descricao: maquinaInfos?.descricao ?? "",
-    whatsapp: maquinaInfos?.whatsapp?.replace(/^55/, "") ?? "",
+    whatsapp: maquinaInfos?.whatsapp?.replace(/^55/, "") ?? "", // Remove '55' se já estiver presente
     apikey: maquinaInfos?.apikey ?? "",
-    mercadoPagoId: maquinaInfos?.mercadoPagoId ?? "",
-    estoque2: maquinaInfos?.estoque2 ?? "",
+    mercadoPagoId: maquinaInfos?.mercadoPagoId ?? "", // Adicionei essa linha para incluir mercadoPagoId
+    estoque2: maquinaInfos?.estoque2 ?? "", // Adicionei essa linha para incluir mercadoPagoId
   });
   const [errors, setErrors] = useState({});
+
   const [isLoading, setIsLoading] = useState(false);
 
   const token = authInfo?.dataUser?.token;
+
   const { id } = useParams();
 
   const handleChange = (name, value) => {
+    // Adiciona o código '55' ao campo de WhatsApp
     if (name === "whatsapp") {
-      value = `55${value.replace(/^55/, "")}`;
+      value = `55${value.replace(/^55/, "")}`; // Adiciona '55' se não estiver presente
     }
+    
     setData((prev) => ({
       ...prev,
       [name]: value,
@@ -47,6 +51,7 @@ const EditarWhatsapp = (props) => {
   };
 
   const onSave = () => {
+    // Verificação de campos obrigatórios
     let errorsTemp = {};
 
     if (data.whatsapp.trim() === "") {
@@ -59,9 +64,10 @@ const EditarWhatsapp = (props) => {
       setErrors(errorsTemp);
       return;
     }
-
+  
     setIsLoading(true);
-
+  
+    // Requisição PUT para /maquina-cliente
     axios
       .put(
         `${process.env.REACT_APP_SERVIDOR}/maquina-cliente`,
@@ -109,16 +115,17 @@ const EditarWhatsapp = (props) => {
         }
       });
   };
-
+  
   const onEntradaPelucia = () => {
     setIsLoading(true);
-
+  
+    // Primeira requisição POST para registrar entrada de pelúcia
     axios
       .post(
         `${process.env.REACT_APP_SERVIDOR}/entrada_pelucia/${id}/?valor=1`,
         {
-          mercadoPagoId: data.mercadoPagoId,
-          estoque2: data.mercadoPagoId,
+          mercadoPagoId: data.mercadoPagoId, // Usando o valor de mercadoPagoId
+          estoque2: data.mercadoPagoId, // Armazenando o valor de mercadoPagoId em estoque2
         },
         {
           headers: {
@@ -128,10 +135,11 @@ const EditarWhatsapp = (props) => {
         }
       )
       .then((res) => {
+        // Segunda requisição POST para atualizar o estoque
         return axios.post(
           `${process.env.REACT_APP_SERVIDOR}/informacao/${id}`,
           {
-            informacao: data.mercadoPagoId,
+            informacao: data.mercadoPagoId, // Usando o valor de mercadoPagoId para atualizar estoque2
           },
           {
             headers: {
@@ -156,32 +164,10 @@ const EditarWhatsapp = (props) => {
         });
       });
   };
-
-  const testarWhatsapp = () => {
-    setIsLoading(true);
-
-    axios
-      .get(`${process.env.REACT_APP_SERVIDOR}/envia/${id}`, {
-        headers: {
-          "x-access-token": token,
-        },
-      })
-      .then((res) => {
-        setIsLoading(false);
-        setNotiMessage({
-          type: "success",
-          message: "Mensagem de teste enviada com sucesso!",
-        });
-      })
-      .catch((err) => {
-        setIsLoading(false);
-        setNotiMessage({
-          type: "error",
-          message: "Erro ao enviar mensagem de teste",
-        });
-      });
-  };
-
+  
+  
+  
+  
   return (
     <div className="PagamentosSearch_container">
       {isLoading && <LoadingAction />}
@@ -299,12 +285,40 @@ const EditarWhatsapp = (props) => {
         </div>
 
         <div className="Update_Pagamento_itemField">
-          <label className="Update_Pagamento_itemFieldLabel" htmlFor="testarWhatsapp">
-            Testar WhatsApp:
+          <label className="Update_Pagamento_itemFieldLabel" htmlFor="mercadoPagoId">
+            INFORMACAO DO PRODUTO
           </label>
-          <Button type="default" onClick={testarWhatsapp}>
-            Testar WhatsApp
+          <Input
+            placeholder={"Informação da Pelúcia"}
+            value={data.mercadoPagoId}
+            id="mercadoPagoId"
+            type="text"
+            name="mercadoPagoId"
+            autoComplete="mercadoPagoId"
+            onChange={(event) => {
+              handleChange("mercadoPagoId", event.target.value);
+            }}
+            className={`${!!errors.mercadoPagoId ? "Update_Pagamento_inputError" : ""}`}
+          />
+          {errors.mercadoPagoId && (
+            <div className="Update_Pagamento_itemFieldError">{errors.mercadoPagoId}</div>
+          )}
+        </div>
+        
+        <div className="Update_Pagamento_itemField">
+          <Button
+            type="primary"
+            onClick={onEntradaPelucia}
+            
+            className="Update_Pagamento_peluciaBtn"
+          >
+            registrar entrada do produto 
           </Button>
+        </div>
+
+        <div className="Update_Pagamento_itemField">
+          <img src={question_icon} alt="Info" />
+          <span>Para adicionar o produto , Clique em registrar entrada do produto  </span>
         </div>
       </div>
     </div>
