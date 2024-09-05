@@ -289,7 +289,7 @@ const EditarWhatsapp = (props) => {
             onClick={onEntradaPelucia}
             className="Update_Pagamento_peluciaBtn"
           >
-            ENTRADA DE PELÚCIA
+           SALVAR INFORMACAO DA PELUCIA
           </Button>
         </div>
 
