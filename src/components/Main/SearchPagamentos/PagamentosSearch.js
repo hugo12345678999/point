@@ -1,4 +1,5 @@
 
+
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import LoadingAction from "../../../themes/LoadingAction/LoadingAction";
 import "./PagamentosSearch.css";
@@ -82,6 +83,7 @@ const PagamentosSearch = (props) => {
           setCash(res?.data?.cash);
           setprobabilidade(res?.data?.probababilidade);
           setEstoque(res?.data?.estoque);
+          setEstado(res?.data?.estado);
           setContadorCredito(res?.data?.contadorcredito);
           setContadorPelucia(res?.data?.contadorpelucia);
           setTotal(res.data.total);
