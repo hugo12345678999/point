@@ -30,7 +30,7 @@ const PagamentosSearch = (props) => {
   const { setDataUser, loading, authInfo, setNotiMessage } =
     useContext(AuthContext);
   let navigate = useNavigate();
-  let estadoGrua = true;
+  let estadoGrua = false;
 
   const token = authInfo?.dataUser?.token;
   const [isLoading, setIsLoading] = useState(false);
@@ -73,11 +73,7 @@ const PagamentosSearch = (props) => {
       estadoGrua = false;
     }
   }, [estado, navigate, id, setNotiMessage]);
-  useEffect(() => {
-    if (estado == 3) {
-      estadoGrua = true;
-    }
-  }, [estado, navigate, id, setNotiMessage]);
+
 
   const getData = (id) => {
     if (id.trim() !== "") {
