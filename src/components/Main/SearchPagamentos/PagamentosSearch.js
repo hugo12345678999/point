@@ -30,7 +30,7 @@ const PagamentosSearch = (props) => {
   const { setDataUser, loading, authInfo, setNotiMessage } =
     useContext(AuthContext);
   let navigate = useNavigate();
-  let estadoGrua = false;
+  let estadoGrua;
 
   const token = authInfo?.dataUser?.token;
   const [isLoading, setIsLoading] = useState(false);
