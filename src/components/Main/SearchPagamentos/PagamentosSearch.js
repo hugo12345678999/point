@@ -67,18 +67,17 @@ const PagamentosSearch = (props) => {
   useEffect(() => {
     if (estado == 2) {
       navigate(`${links.WHATSAPP_MAQUINA}/${id}`); // Redireciona para PAGAMNETO_PPP com o ID na URL
-      [estadoGrua, setEstadoGrua] = useState(false); // Use useState para estadoGru
+    
       setEstadoGrua(false);
     }
   }, [estado, navigate, id, setNotiMessage]);
 
   useEffect(() => {
     if (estado === 1) {
-      [estadoGrua, setEstadoGrua] = useState(false); // Use useState para estadoGru
+  
       setEstadoGrua(false);
     } else if (estado === 3) {
-      [estadoGrua, setEstadoGrua] = useState(true); // Use useState para estadoGru
-      
+
       setEstadoGrua(true);
     }
   }, [estado]);
