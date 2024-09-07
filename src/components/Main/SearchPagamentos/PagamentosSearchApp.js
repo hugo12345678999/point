@@ -2,7 +2,7 @@
 
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import LoadingAction from "../../../themes/LoadingAction/LoadingAction";
-import "./PagamentosSearch.css";
+import "./PagamentosSearchApp.css";
 import { Button, Col, Input, Row, Table } from "antd";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { Link, useNavigate, useLocation } from "react-router-dom";
@@ -24,7 +24,7 @@ import {
 import qr_code_icon from "../../../assets/images/QR.png";
 import notes from "../../../assets/images/notes.png";
 
-const NormalApp = (props) => {
+const PagamentosSearchApp = (props) => {
   const location = useLocation();
   const maquinaInfos = location.state;
   const { setDataUser, loading, authInfo, setNotiMessage } =
@@ -61,6 +61,16 @@ const NormalApp = (props) => {
       getPaymentsPeriod(dataInicio, dataFim);
     }
   }, [dataFim]);
+  useEffect(() => {
+    if (estado == 2) {
+      navigate(`${links.WHATSAPP_MAQUINA}/${id}`); // Redireciona para PAGAMNETO_PPP com o ID na URL
+    }
+  }, [estado, navigate, id, setNotiMessage]);
+  useEffect(() => {
+    if (estado == 1) {
+      navigate(`${links.TELEMETRIA}/${id}`); // Redireciona para PAGAMNETO_PPP com o ID na URL
+    }
+  }, [estado, navigate, id, setNotiMessage]);
 
   const getData = (id) => {
     if (id.trim() !== "") {
@@ -418,4 +428,4 @@ const formatNumberWithLeadingZeros = (number, length) => {
   );
 };
 
-export default NormalApp;
+export default PagamentosSearchApp;

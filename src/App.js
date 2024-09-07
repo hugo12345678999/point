@@ -11,9 +11,8 @@ import DashboardMaquinas from "./components/Main/Dashboard/DashboardMáquinas";
 import ClientesDashboard from "./components/Main/Cliente/ClientesDashboard/ClientesDashboard";
 import PagamentosSearch from "./components/Main/SearchPagamentos/PagamentosSearch";
 import WhatsappApp from "./components/Main/SearchPagamentos/WhatsappApp";
+import PagamentosSearchApp from "./components/Main/SearchPagamentos/PagamentosSearchApp";
 
-import NormalApp from "./components/Main/SearchPagamentos/NormalApp";
-import EditPagamentoNormal from "./components/Main/SearchPagamentos/EditPagamentoNormal";
 import EditarWhatsapp from "./components/Main/SearchPagamentos/EditarWhatsapp";
 import DeletePagamento from "./components/Main/SearchPagamentos/DeletePagamento";
 import EditPagamento from "./components/Main/SearchPagamentos/EditPagamento";
@@ -130,16 +129,17 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route
-              path={`${links.TELEMETRIA_MAQUINA}/:id`}
+             <Route
+              path={`${links.TELEMETRIA}/:id`}
               element={
                 <PrivateRoute>
                   <Main>
-                    <NormalApp />
+                    <PagamentosSearchApp />
                   </Main>
                 </PrivateRoute>
               }
             />
+
             <Route
               path={`${links.CLIENTES_MAQUINAS_FORNECEDOR_SEARCH}/:id`}
               element={
@@ -490,16 +490,7 @@ function App() {
                 </PrivateRoute>
               }
             />
-              <Route
-              path={`${links.EDIT_PAGAMENTOS_TELEMETRIA_MAQUINA}/:id`}
-              element={
-                <PrivateRoute>
-                  <Main>
-                    <EditPagamentoNormal />
-                  </Main>
-                </PrivateRoute>
-              }
-            />
+
             <Route
               path={`${links.CLIENTES_MAQUINAS_EDIT_FORNECEDOR}/:id`}
               element={
