@@ -11,7 +11,7 @@ import DashboardMaquinas from "./components/Main/Dashboard/DashboardMáquinas";
 import ClientesDashboard from "./components/Main/Cliente/ClientesDashboard/ClientesDashboard";
 import PagamentosSearch from "./components/Main/SearchPagamentos/PagamentosSearch";
 import WhatsappApp from "./components/Main/SearchPagamentos/WhatsappApp";
-import TelemetriaAppp from "./components/Main/SearchPagamentos/TelemetriaAppp";
+import NormalApp from "./components/Main/SearchPagamentos/NormalApp";
 import EditarWhatsapp from "./components/Main/SearchPagamentos/EditarWhatsapp";
 import DeletePagamento from "./components/Main/SearchPagamentos/DeletePagamento";
 import EditPagamento from "./components/Main/SearchPagamentos/EditPagamento";
@@ -153,7 +153,7 @@ function App() {
               element={
                 <PrivateRoute>
                   <Main>
-                    <TelemetriaAppp />
+                    <NormalApp />
                   </Main>
                 </PrivateRoute>
               }
