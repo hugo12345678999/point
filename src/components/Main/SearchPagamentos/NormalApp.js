@@ -2,7 +2,7 @@
 
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import LoadingAction from "../../../themes/LoadingAction/LoadingAction";
-import "./NormalApp.css";
+import "./PagamentosSearch.css";
 import { Button, Col, Input, Row, Table } from "antd";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { Link, useNavigate, useLocation } from "react-router-dom";
@@ -62,11 +62,15 @@ const NormalApp = (props) => {
     }
   }, [dataFim]);
   useEffect(() => {
-    if (estado == 5) {
+    if (estado == 2) {
+      navigate(`${links.WHATSAPP_MAQUINA}/${id}`); // Redireciona para PAGAMNETO_PPP com o ID na URL
+    }
+  }, [estado, navigate, id, setNotiMessage]);
+  useEffect(() => {
+    if (estado == 1) {
       navigate(`${links.TELEMETRIA_MAQUINA}/${id}`); // Redireciona para PAGAMNETO_PPP com o ID na URL
     }
   }, [estado, navigate, id, setNotiMessage]);
-
 
   const getData = (id) => {
     if (id.trim() !== "") {
@@ -267,7 +271,7 @@ const formatNumberWithLeadingZeros = (number, length) => {
           <Button
             className="PagamentosSearch_header_editBtn"
             onClick={() => {
-              navigate(`${links.EDIT_PAGAMENTOS_TELEMETRIA_MAQUINA}/${id}`, {
+              navigate(`${links.EDIT_FORNECEDOR_CANAIS}/${id}`, {
                 state: location.state,
               });
             }}
@@ -299,6 +303,17 @@ const formatNumberWithLeadingZeros = (number, length) => {
           >
             <AiFillDollarCircle />
             <span>credito remoto</span>
+          </Button>
+          <Button
+            className="PagamentosSearch_header_editBtn"
+            onClick={() => {
+              navigate(`${links.GRUA_CLIENTE}/${id}`, {
+                state: location.state,
+              });
+            }}
+          >
+            <AiOutlineEdit />
+            <span>CONFIGURAR GRUA</span>
           </Button>
           
           <div className="PagamentosSearch_datePicker">
