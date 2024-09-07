@@ -20,7 +20,7 @@ export const CANAL_MY_FITS = "/canal-my-fits";
 export const DASHBOARD_FORNECEDOR = "/dashboard-maquinas";
 export const FORNECEDOR_EDIT_PROFILE = "/fornecedor-edit-profile";
 export const FORNECEDOR_SEARCH_CANAIS = "/pagamentos";
-export const TELEMETRIA_MAQUINA = "/pagamentos-telemetria";
+
 export const EDIT_FORNECEDOR_CANAIS = "/edit-pagamento";
 export const EDIT_PAGAMENTOS_TELEMETRIA_MAQUINA = "/edit-pagamento-telemetria";
 export const DELETE_FORNECEDOR_CANAIS = "/delete-pagamentos";
@@ -69,7 +69,7 @@ export const CLIENTES_MAQUINAS_FORNECEDOR_SEARCH =
   "/cliente-maquinas/edit-whatsapp";
   export const WHATSAPP_MAQUINA =
   "/cliente-maquinas/whatsapp";
-
+  export const TELEMETRIA_MAQUINA = "/cliente-maquinas/pagamentos-telemetria";
   export const CLIENTES_MAQUINAS_FORNECEDOR_WHATSAPP =
   "/cliente-maquinas/whatsapp";
 export const CLIENTES_MAQUINAS_EDIT_FORNECEDOR =
