@@ -73,6 +73,11 @@ const PagamentosSearch = (props) => {
       estadoGrua = false;
     }
   }, [estado, navigate, id, setNotiMessage]);
+  useEffect(() => {
+    if (estado == 3) {
+      estadoGrua = true;
+    }
+  }, [estado, navigate, id, setNotiMessage]);
 
 
   const getData = (id) => {
