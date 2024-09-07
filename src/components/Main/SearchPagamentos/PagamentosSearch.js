@@ -30,9 +30,6 @@ const PagamentosSearch = (props) => {
   const { setDataUser, loading, authInfo, setNotiMessage } =
     useContext(AuthContext);
   let navigate = useNavigate();
-  const [estadoGrua, setEstadoGrua] = useState(false); // Use useState para estadoGrua
-
-
   const token = authInfo?.dataUser?.token;
   const [isLoading, setIsLoading] = useState(false);
   // const [searchText, setsearchText] = useState('');
@@ -67,24 +64,9 @@ const PagamentosSearch = (props) => {
   useEffect(() => {
     if (estado == 2) {
       navigate(`${links.WHATSAPP_MAQUINA}/${id}`); // Redireciona para PAGAMNETO_PPP com o ID na URL
-    
-      setEstadoGrua(false);
     }
   }, [estado, navigate, id, setNotiMessage]);
 
-  useEffect(() => {
-    console.log("Estado atual:", estado);
-    console.log("EstadoGrua antes da atualização:", estadoGrua);
-  
-    if (estado === 1) {
-      setEstadoGrua(false);
-    } else if (estado === 3) {
-      setEstadoGrua(true);
-    }
-  
-    console.log("EstadoGrua após atualização:", estadoGrua);
-  }, [estado]);
-  
   const getData = (id) => {
     if (id.trim() !== "") {
       setLoadingTable(true);
@@ -316,20 +298,18 @@ const formatNumberWithLeadingZeros = (number, length) => {
           >
             <AiFillDollarCircle />
             <span>credito remoto</span>
-            </Button>
-            {estadoGrua && (
-  <Button
-    className="PagamentosSearch_header_editBtn"
-    onClick={() => {
-      navigate(`${links.GRUA_CLIENTE}/${id}`, {
-        state: location.state,
-      });
-    }}
-  >
-    <AiOutlineEdit />
-    <span>CONFIGURAR GRUA</span>
-  </Button>
-)}
+          </Button>
+          <Button
+            className="PagamentosSearch_header_editBtn"
+            onClick={() => {
+              navigate(`${links.GRUA_CLIENTE}/${id}`, {
+                state: location.state,
+              });
+            }}
+          >
+            <AiOutlineEdit />
+            <span>CONFIGURAR GRUA</span>
+          </Button>
           
           <div className="PagamentosSearch_datePicker">
             {/* <span> Filtro por data:</span> */}
