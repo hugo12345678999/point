@@ -2,7 +2,7 @@
 
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import LoadingAction from "../../../themes/LoadingAction/LoadingAction";
-import "./Telemetria.css";
+import "./TelemetriaApp.css";
 import { Button, Col, Input, Row, Table } from "antd";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { Link, useNavigate, useLocation } from "react-router-dom";
@@ -24,7 +24,7 @@ import {
 import qr_code_icon from "../../../assets/images/QR.png";
 import notes from "../../../assets/images/notes.png";
 
-const Telemetria = (props) => {
+const TelemetriaApp = (props) => {
   const location = useLocation();
   const maquinaInfos = location.state;
   const { setDataUser, loading, authInfo, setNotiMessage } =
@@ -417,4 +417,4 @@ const formatNumberWithLeadingZeros = (number, length) => {
   );
 };
 
-export default Telemetria;
+export default TelemetriaApp;
