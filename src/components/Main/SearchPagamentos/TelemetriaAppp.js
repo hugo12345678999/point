@@ -62,7 +62,7 @@ const TelemetriaAppp = (props) => {
     }
   }, [dataFim]);
   useEffect(() => {
-    if (estado == 2) {
+    if (estado == 1) {
       navigate(`${links.TELEMETRIA_MAQUINA}/${id}`); // Redireciona para PAGAMNETO_PPP com o ID na URL
     }
   }, [estado, navigate, id, setNotiMessage]);
