@@ -2,7 +2,7 @@
 
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import LoadingAction from "../../../themes/LoadingAction/LoadingAction";
-import "./PagamentosSearch.css";
+import "./Telemetria.css";
 import { Button, Col, Input, Row, Table } from "antd";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { Link, useNavigate, useLocation } from "react-router-dom";
@@ -24,7 +24,7 @@ import {
 import qr_code_icon from "../../../assets/images/QR.png";
 import notes from "../../../assets/images/notes.png";
 
-const PagamentosSearch = (props) => {
+const Telemetria = (props) => {
   const location = useLocation();
   const maquinaInfos = location.state;
   const { setDataUser, loading, authInfo, setNotiMessage } =
@@ -304,17 +304,6 @@ const formatNumberWithLeadingZeros = (number, length) => {
             <AiFillDollarCircle />
             <span>credito remoto</span>
           </Button>
-          <Button
-            className="PagamentosSearch_header_editBtn"
-            onClick={() => {
-              navigate(`${links.GRUA_CLIENTE}/${id}`, {
-                state: location.state,
-              });
-            }}
-          >
-            <AiOutlineEdit />
-            <span>CONFIGURAR GRUA</span>
-          </Button>
           
           <div className="PagamentosSearch_datePicker">
             {/* <span> Filtro por data:</span> */}
@@ -428,4 +417,4 @@ const formatNumberWithLeadingZeros = (number, length) => {
   );
 };
 
-export default PagamentosSearch;
+export default Telemetria;

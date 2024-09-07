@@ -119,11 +119,11 @@ const AdminEditPagamento = (props) => {
       });
   };
 
-  const handleTelemetria = () => {
+  const handleJoystick = () => {
     setIsLoading(true);
     axios
       .post(
-        `${process.env.REACT_APP_SERVIDOR}/estadotelemetria/${id}`,
+        `${process.env.REACT_APP_SERVIDOR}/estadojoystick/${id}`,
         {},
         {
           headers: {
@@ -136,7 +136,7 @@ const AdminEditPagamento = (props) => {
         setIsLoading(false);
         setNotiMessage({
           type: "success",
-          message: "Telemetria ativada com sucesso.",
+          message: "joystick ativada com sucesso.",
         });
       })
       .catch((err) => {
@@ -176,6 +176,35 @@ const AdminEditPagamento = (props) => {
         });
       });
   };
+  const handleTelemetria= () => {
+    setIsLoading(true);
+    axios
+      .post(
+        `${process.env.REACT_APP_SERVIDOR}/estadowhatsaap/${id}`,
+        {},
+        {
+          headers: {
+            "x-access-token": token,
+            "content-type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "success",
+          message: "telemetria ativado com sucesso.",
+        });
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "error",
+          message: "Erro ao ativar WhatsApp.",
+        });
+      });
+  };
+
 
   return (
     <div className="Admin_PagamentosSearch_container">
@@ -368,10 +397,10 @@ const AdminEditPagamento = (props) => {
         {/* New buttons */}
         <Button
           className="Admin_Update_Pagamento_saveBtn"
-          onClick={handleTelemetria}
+          onClick={handleJoystick}
           disabled={isLoading}
         >
-          ATIVAR TELEMETRIA
+          ATIVAR JOYSTICK
         </Button>
         <Button
           className="Admin_Update_Pagamento_saveBtn"
@@ -379,6 +408,13 @@ const AdminEditPagamento = (props) => {
           disabled={isLoading}
         >
           ATIVAR WHATSAPP
+        </Button>
+        <Button
+          className="Admin_Update_Pagamento_saveBtn"
+          onClick={handleTelemetria}
+          disabled={isLoading}
+        >
+          ATIVAR TELEMETRIA
         </Button>
       </div>
     </div>
