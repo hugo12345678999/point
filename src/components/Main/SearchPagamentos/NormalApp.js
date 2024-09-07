@@ -61,16 +61,6 @@ const NormalApp = (props) => {
       getPaymentsPeriod(dataInicio, dataFim);
     }
   }, [dataFim]);
-  useEffect(() => {
-    if (estado == 2) {
-      navigate(`${links.WHATSAPP_MAQUINA}/${id}`); // Redireciona para PAGAMNETO_PPP com o ID na URL
-    }
-  }, [estado, navigate, id, setNotiMessage]);
-  useEffect(() => {
-    if (estado == 1) {
-      navigate(`${links.TELEMETRIA_MAQUINA}/${id}`); // Redireciona para PAGAMNETO_PPP com o ID na URL
-    }
-  }, [estado, navigate, id, setNotiMessage]);
 
   const getData = (id) => {
     if (id.trim() !== "") {
