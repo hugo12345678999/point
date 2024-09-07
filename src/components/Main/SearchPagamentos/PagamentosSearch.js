@@ -55,7 +55,7 @@ const PagamentosSearch = (props) => {
     getData(id);
     // getMaquinas(id)
   }, []);
-
+let  estadoGrua = true;
   useEffect(() => {
     if (dataFim != null) {
       getPaymentsPeriod(dataInicio, dataFim);
@@ -68,7 +68,12 @@ const PagamentosSearch = (props) => {
   }, [estado, navigate, id, setNotiMessage]);
   useEffect(() => {
     if (estado == 1) {
-      navigate(`${links.TELEMETRIA}/${id}`); // Redireciona para PAGAMNETO_PPP com o ID na URL
+      estadoGrua = false;
+    }
+  }, [estado, navigate, id, setNotiMessage]);
+  useEffect(() => {
+    if (estado == 3) {
+      estadoGrua = true;
     }
   }, [estado, navigate, id, setNotiMessage]);
 
@@ -303,18 +308,20 @@ const formatNumberWithLeadingZeros = (number, length) => {
           >
             <AiFillDollarCircle />
             <span>credito remoto</span>
-          </Button>
-          <Button
-            className="PagamentosSearch_header_editBtn"
-            onClick={() => {
-              navigate(`${links.GRUA_CLIENTE}/${id}`, {
-                state: location.state,
-              });
-            }}
-          >
-            <AiOutlineEdit />
-            <span>CONFIGURAR GRUA</span>
-          </Button>
+            </Button>
+            {estadoGrua && (
+  <Button
+    className="PagamentosSearch_header_editBtn"
+    onClick={() => {
+      navigate(`${links.GRUA_CLIENTE}/${id}`, {
+        state: location.state,
+      });
+    }}
+  >
+    <AiOutlineEdit />
+    <span>CONFIGURAR GRUA</span>
+  </Button>
+)}
           
           <div className="PagamentosSearch_datePicker">
             {/* <span> Filtro por data:</span> */}
