@@ -67,6 +67,8 @@ export const CLIENTES_MAQUINAS_FORNECEDOR_SEARCH =
   "/cliente-maquinas/edit-whatsapp";
   export const WHATSAPP_MAQUINA =
   "/cliente-maquinas/whatsapp";
+  export const TELEMETRIA_MAQUINA =
+  "/cliente-maquinas/telemetria";
   export const CLIENTES_MAQUINAS_FORNECEDOR_WHATSAPP =
   "/cliente-maquinas/whatsapp";
 export const CLIENTES_MAQUINAS_EDIT_FORNECEDOR =
