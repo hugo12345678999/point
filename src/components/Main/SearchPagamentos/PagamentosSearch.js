@@ -30,7 +30,7 @@ const PagamentosSearch = (props) => {
   const { setDataUser, loading, authInfo, setNotiMessage } =
     useContext(AuthContext);
   let navigate = useNavigate();
-  const [estadoGrua, setEstadoGrua] = useState(true); // Use useState para estadoGrua
+  const [estadoGrua, setEstadoGrua] = useState(false); // Use useState para estadoGrua
 
 
   const token = authInfo?.dataUser?.token;
@@ -67,6 +67,7 @@ const PagamentosSearch = (props) => {
   useEffect(() => {
     if (estado == 2) {
       navigate(`${links.WHATSAPP_MAQUINA}/${id}`); // Redireciona para PAGAMNETO_PPP com o ID na URL
+      setEstadoGrua(false);
     }
   }, [estado, navigate, id, setNotiMessage]);
 
