@@ -73,13 +73,16 @@ const PagamentosSearch = (props) => {
   }, [estado, navigate, id, setNotiMessage]);
 
   useEffect(() => {
-    if (estado === 1) {
+    console.log("Estado atual:", estado);
+    console.log("EstadoGrua antes da atualização:", estadoGrua);
   
+    if (estado === 1) {
       setEstadoGrua(false);
     } else if (estado === 3) {
-
       setEstadoGrua(true);
     }
+  
+    console.log("EstadoGrua após atualização:", estadoGrua);
   }, [estado]);
   
   const getData = (id) => {
