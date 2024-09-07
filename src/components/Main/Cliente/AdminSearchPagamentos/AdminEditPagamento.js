@@ -180,7 +180,7 @@ const AdminEditPagamento = (props) => {
     setIsLoading(true);
     axios
       .post(
-        `${process.env.REACT_APP_SERVIDOR}/estadowhatsaap/${id}`,
+        `${process.env.REACT_APP_SERVIDOR}/estadotelemetria/${id}`,
         {},
         {
           headers: {
