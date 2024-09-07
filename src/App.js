@@ -131,6 +131,16 @@ function App() {
               }
             />
             <Route
+              path={`${links.TELEMETRIA_MAQUINA}/:id`}
+              element={
+                <PrivateRoute>
+                  <Main>
+                    <NormalApp />
+                  </Main>
+                </PrivateRoute>
+              }
+            />
+            <Route
               path={`${links.CLIENTES_MAQUINAS_FORNECEDOR_SEARCH}/:id`}
               element={
                 <PrivateRoute>
@@ -150,16 +160,7 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route
-              path={`${links.TELEMETRIA_MAQUINA}/:id`}
-              element={
-                <PrivateRoute>
-                  <Main>
-                    <NormalApp />
-                  </Main>
-                </PrivateRoute>
-              }
-            />
+
              <Route
               path={`${links.EDIT_WHATSAPP_MAQUINA}/:id`}
               element={
