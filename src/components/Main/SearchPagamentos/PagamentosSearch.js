@@ -30,6 +30,8 @@ const PagamentosSearch = (props) => {
   const { setDataUser, loading, authInfo, setNotiMessage } =
     useContext(AuthContext);
   let navigate = useNavigate();
+  let estadoGrua = true;
+
   const token = authInfo?.dataUser?.token;
   const [isLoading, setIsLoading] = useState(false);
   // const [searchText, setsearchText] = useState('');
@@ -55,7 +57,7 @@ const PagamentosSearch = (props) => {
     getData(id);
     // getMaquinas(id)
   }, []);
-let  estadoGrua = true;
+
   useEffect(() => {
     if (dataFim != null) {
       getPaymentsPeriod(dataInicio, dataFim);
