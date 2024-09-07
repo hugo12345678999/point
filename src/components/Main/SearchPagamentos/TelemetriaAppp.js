@@ -24,7 +24,7 @@ import {
 import qr_code_icon from "../../../assets/images/QR.png";
 import notes from "../../../assets/images/notes.png";
 
-const TelemetriaApp = (props) => {
+const TelemetriaAppp = (props) => {
   const location = useLocation();
   const maquinaInfos = location.state;
   const { setDataUser, loading, authInfo, setNotiMessage } =
@@ -408,4 +408,4 @@ const formatNumberWithLeadingZeros = (number, length) => {
   );
 };
 
-export default TelemetriaApp;
+export default TelemetriaAppp;
