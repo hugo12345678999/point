@@ -2,7 +2,7 @@
 
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import LoadingAction from "../../../themes/LoadingAction/LoadingAction";
-import "./TelemetriaAppp.css";
+import "./NormalApp.css";
 import { Button, Col, Input, Row, Table } from "antd";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { Link, useNavigate, useLocation } from "react-router-dom";
