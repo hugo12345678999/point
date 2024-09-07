@@ -30,7 +30,8 @@ const PagamentosSearch = (props) => {
   const { setDataUser, loading, authInfo, setNotiMessage } =
     useContext(AuthContext);
   let navigate = useNavigate();
-  let estadoGrua = true;
+  const [estadoGrua, setEstadoGrua] = useState(true); // Use useState para estadoGrua
+
 
   const token = authInfo?.dataUser?.token;
   const [isLoading, setIsLoading] = useState(false);
@@ -68,18 +69,15 @@ const PagamentosSearch = (props) => {
       navigate(`${links.WHATSAPP_MAQUINA}/${id}`); // Redireciona para PAGAMNETO_PPP com o ID na URL
     }
   }, [estado, navigate, id, setNotiMessage]);
-  useEffect(() => {
-    if (estado == 1) {
-      estadoGrua = false;
-    }
-  }, [estado, navigate, id, setNotiMessage]);
-  useEffect(() => {
-    if (estado == 3) {
-      estadoGrua = true;
-    }
-  }, [estado, navigate, id, setNotiMessage]);
 
-
+  useEffect(() => {
+    if (estado === 1) {
+      setEstadoGrua(false);
+    } else if (estado === 3) {
+      setEstadoGrua(true);
+    }
+  }, [estado]);
+  
   const getData = (id) => {
     if (id.trim() !== "") {
       setLoadingTable(true);
