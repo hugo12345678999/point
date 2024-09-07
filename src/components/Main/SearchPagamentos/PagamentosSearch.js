@@ -63,11 +63,12 @@ const PagamentosSearch = (props) => {
   }, [dataFim]);
   useEffect(() => {
     if (estado == 2) {
-      navigate(`${links.WHATSAPP_MAQUINA}/${id}`); // Redireciona para PAGAMNETO_PPP com o ID na URL
-    }else if(estado == 1){
-      navigate(`${links.TELEMETRIA_MAQUINA}/${id}`);
-    
-
+      navigate(`${links.TELEMETRIA_MAQUINA}/${id}`); // Redireciona para PAGAMNETO_PPP com o ID na URL
+    }
+  }, [estado, navigate, id, setNotiMessage]);
+  useEffect(() => {
+    if (estado == 1) {
+      navigate(`${links.TELEMETRIA_MAQUINA}/${id}`); // Redireciona para PAGAMNETO_PPP com o ID na URL
     }
   }, [estado, navigate, id, setNotiMessage]);
 
