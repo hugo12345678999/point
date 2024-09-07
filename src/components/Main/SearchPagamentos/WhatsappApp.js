@@ -299,17 +299,7 @@ const formatNumberWithLeadingZeros = (number, length) => {
             <AiFillDollarCircle />
             <span>credito remoto</span>
           </Button>
-          <Button
-            className="PagamentosSearch_header_editBtn"
-            onClick={() => {
-              navigate(`${links.GRUA_CLIENTE}/${id}`, {
-                state: location.state,
-              });
-            }}
-          >
-            <AiOutlineEdit />
-            <span>CONFIGURAR GRUA</span>
-          </Button>
+
           
           <div className="PagamentosSearch_datePicker">
             {/* <span> Filtro por data:</span> */}
