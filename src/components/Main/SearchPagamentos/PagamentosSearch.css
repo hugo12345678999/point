@@ -4,11 +4,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 500px; /* Limita a largura para uma boa visualização em telas maiores */
-  margin: 0 auto; /* Centraliza o container */
+  justify-content: center;
+  width: 100vw; /* Ocupa 100% da largura da viewport */
+  height: 100vh; /* Ocupa 100% da altura da viewport */
+  margin: 0; /* Remove margens para ocupar a tela inteira */
   background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Garante que o padding seja considerado no tamanho total */
 }
 
 /* Cabeçalho */
@@ -40,6 +41,7 @@
   font-size: 18px;
   text-align: center;
   flex-grow: 1; /* Faz com que o título cresça e preencha o espaço restante */
+  max-width: 80%; /* Limita o tamanho do texto do título */
 }
 
 /* Botão de Edição */
@@ -64,7 +66,8 @@
   color: #666;
   margin-bottom: 20px;
   width: 100%;
-  text-align: left;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 /* Estilo para os botões */
@@ -72,11 +75,13 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  height: 100%; /* Distribui os botões verticalmente */
 }
 
 .PagamentosSearch_buttons button {
-  padding: 12px;
-  font-size: 16px;
+  padding: 15px;
+  font-size: 18px;
   width: 100%;
   color: white;
   background-color: #28a745;
@@ -97,10 +102,10 @@
   transform: scale(0.98);
 }
 
-/* Responsividade */
+/* Ajuste para telas menores */
 @media only screen and (max-width: 600px) {
   .PagamentosSearch_container {
-    padding: 15px;
+    padding: 10px;
   }
 
   .PagamentosSearch_nbList1 {
@@ -118,7 +123,7 @@
   }
 
   .PagamentosSearch_buttons button {
-    font-size: 14px;
-    padding: 10px;
+    font-size: 16px;
+    padding: 12px;
   }
 }
