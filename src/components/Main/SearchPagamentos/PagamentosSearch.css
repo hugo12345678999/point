@@ -27,6 +27,7 @@
   align-items: center;
   margin-left: 10px;
   font-size: 14px;
+  width: 100%; /* Faz o botão ocupar 100% da largura */
 }
 
 .PagamentosSearch_header_back {
@@ -38,6 +39,20 @@
 .PagamentosSearch_description {
   margin-left: 20px;
   font-size: 16px;
+}
+
+/* Estilo para empilhar os botões */
+.PagamentosSearch_buttons {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Garantir que os botões ocupem a largura total */
+}
+
+.PagamentosSearch_buttons button {
+  margin-bottom: 10px; /* Espaço entre os botões */
+  padding: 10px;
+  font-size: 16px;
+  width: 100%; /* Ocupa toda a largura do container */
 }
 
 /* Ajustes para dispositivos móveis */
