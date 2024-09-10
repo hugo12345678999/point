@@ -1,176 +1,124 @@
+/* Container Principal */
 .PagamentosSearch_container {
   padding: 20px;
   display: flex;
-  width: 100%;
   flex-direction: column;
-  height: 100%;
+  align-items: center;
+  max-width: 500px; /* Limita a largura para uma boa visualização em telas maiores */
+  margin: 0 auto; /* Centraliza o container */
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+/* Cabeçalho */
 .PagamentosSearch_header {
+  width: 100%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-}
-.PagamentosSearch_nbList1 {
-  margin-left: 5px;
-  background: #000000;
-  color: #FFFFFF;
-  border-radius: 4px;
-  padding: 2px 5px;
-  font-size: 16px;
-  font-weight: 600;
-}
-.PagamentosSearch_header_left {
-  display: flex;
   align-items: center;
-}
-
-.PagamentosSearch_header_left > * {
-  margin-right: 10px;
-}
-
-.PagamentosSearch_header_editBtn {
-  display: flex !important;
-  align-items: center;
-}
-
-.PagamentosSearch_header_editBtn span {
-  margin-left: 5px;
+  margin-bottom: 20px;
 }
 
 .PagamentosSearch_header_back {
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 27px;
-  text-decoration: underline;
-  color: #1f384c;
-}
-
-.PagamentosSearch_description {
-  margin-left: 25px;
-}
-
-.PagamentosSearch_QR_Icon {
-  width: 82px;
-  height: 72px;
-  float: right;
-}
-
-/* .FornecedorSearchCanais_title {
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 35px;
-} */
-
-/* .FornecedorSearchCanais_header {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-} */
-
-/* .FornecedorSearchCanais_search {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-    max-width: 100%;
-} */
-
-/* .FornecedorSearchCanais_inputSearch {
-    background: #F5F5F5!important;
-    border-radius: 15px!important;
-    height: unset!important;
-    padding: 12px 10px!important;
-    border: none!important;
-    width: 400px!important;
-} */
-
-/* .FornecedorSearchCanais_search img {
-    height: 36px;
-    width: 36px;
-    margin-left: 5px;
-    cursor: pointer;
-} */
-
-.FornecedorSearchCanais_btnSubmit {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  background: #4169e1 !important;
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15) !important;
-  color: #ffffff !important;
-  margin-right: 10px;
-  padding: 7px 40px !important;
-  height: unset !important;
-  font-size: 18px;
-}
-
-.PagamentosSearch_content {
-  padding: 20px;
-}
-
-.PagamentosSearch_titleList {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  font-size: 18px;
-  line-height: 28px;
-  color: #52525b;
-  margin-right: 100px;
-}
-
-.PagamentosSearch_titleList_main {
-  display: flex;
-}
-
-.PagamentosSearch_datePicker {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  border-radius: 10px;
-}
-
-.PagamentosSearch_nbList {
-  margin-left: 5px;
-  background: #e5e7eb;
-  color: #3182ce;
-  border-radius: 4px;
-  padding: 2px 5px;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.PagamentosSearch_body {
-  position: relative;
-}
-
-.PagamentosSearch_QR_Btn {
+  color: #007BFF;
   text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
 }
 
-/* .FornecedorSearchCanais_content table th.ant-table-cell:last-child {
-    text-align: right;
-} */
-
-.Dashboard_staBlockTitle {
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 27px;
-  padding: 10px 15px;
+.PagamentosSearch_header_back:hover {
+  color: #0056b3;
 }
 
-@media only screen and (max-width: 800px) {
-  .PagamentosSearch_datePicker {
-    margin-bottom: 10px;
+/* Texto Centralizado no Cabeçalho */
+.PagamentosSearch_nbList1 {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 18px;
+  text-align: center;
+  flex-grow: 1; /* Faz com que o título cresça e preencha o espaço restante */
+}
+
+/* Botão de Edição */
+.PagamentosSearch_header_editBtn {
+  font-size: 14px;
+  padding: 8px 12px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.PagamentosSearch_header_editBtn:hover {
+  background-color: #0056b3;
+}
+
+/* Descrição */
+.PagamentosSearch_description {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: left;
+}
+
+/* Estilo para os botões */
+.PagamentosSearch_buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.PagamentosSearch_buttons button {
+  padding: 12px;
+  font-size: 16px;
+  width: 100%;
+  color: white;
+  background-color: #28a745;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.PagamentosSearch_buttons button:hover {
+  background-color: #218838;
+  transform: scale(1.02);
+}
+
+.PagamentosSearch_buttons button:active {
+  background-color: #1e7e34;
+  transform: scale(0.98);
+}
+
+/* Responsividade */
+@media only screen and (max-width: 600px) {
+  .PagamentosSearch_container {
+    padding: 15px;
   }
 
-  .PagamentosSearch_body {
-    position: relative;
-    margin-left: -30px;
-    width: 100%;
+  .PagamentosSearch_nbList1 {
+    font-size: 16px;
+    padding: 8px;
   }
 
-  .PagamentosSearch_titleList {
-    flex-wrap: wrap;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  .PagamentosSearch_header_editBtn {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .PagamentosSearch_description {
+    font-size: 14px;
+  }
+
+  .PagamentosSearch_buttons button {
+    font-size: 14px;
+    padding: 10px;
   }
 }
