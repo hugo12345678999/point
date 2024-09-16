@@ -20,7 +20,7 @@ const GruaCliente = (props) => {
       <div className="PagamentosSearch_header">
         <div className="PagamentosSearch_header_left">
           <Button
-            className="PagamentosSearch_header_editBtn"
+            className="Update_Pagamento_saveBtn"
             onClick={() => {
               navigate(`${links.EDIT_PROBABILIDADE_CLIENTE}/${id}`, {
                 state: location.state,
@@ -31,7 +31,7 @@ const GruaCliente = (props) => {
             <span>PROBABIBILIDADE</span>
           </Button>
           <Button
-            className="PagamentosSearch_header_editBtn"
+            className="Update_Pagamento_saveBtn"
             onClick={() => {
               navigate(`${links.EDIT_GARRA_FORTE_CLIENTE}/${id}`, {
                 state: location.state,
@@ -42,7 +42,7 @@ const GruaCliente = (props) => {
             <span>GARRA FORTE</span>
           </Button>
           <Button
-            className="PagamentosSearch_header_editBtn"
+            className="Update_Pagamento_saveBtn"
             onClick={() => {
               navigate(`${links.EDIT_GARRA_MEDIA_CLIENTE}/${id}`, {
                 state: location.state,
@@ -53,7 +53,7 @@ const GruaCliente = (props) => {
             <span>GARRA MEDIA</span>
           </Button>
           <Button
-            className="PagamentosSearch_header_editBtn"
+            className="Update_Pagamento_saveBtn"
             onClick={() => {
               navigate(`${links.EDIT_GARRA_FRACA_CLIENTE}/${id}`, {
                 state: location.state,
@@ -64,7 +64,7 @@ const GruaCliente = (props) => {
             <span>GARRA FRACA</span>
           </Button>
           <Button
-            className="PagamentosSearch_header_editBtn"
+            className="Update_Pagamento_saveBtn"
             onClick={() => {
               navigate(`${links.EDIT_GARRA_PREMIO_CLIENTE}/${id}`, {
                 state: location.state,
@@ -75,7 +75,7 @@ const GruaCliente = (props) => {
             <span>GARRA PREMIO</span>
           </Button>
           <Button
-            className="PagamentosSearch_header_editBtn"
+            className="Update_Pagamento_saveBtn"
             onClick={() => {
               navigate(`${links.ALTERAR_GRUA_CLIENTE}/${id}`, {
                 state: location.state,
