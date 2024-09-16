@@ -63,12 +63,6 @@ const GruaCliente = (props) => {
             <span>Alterar Grua</span>
           </div>
         </div>
-        <div className="GruaCliente_buttons">
-          <Button className="GruaCliente_button_edit" onClick={() => navigate(`${links.ALTERAR_GRUA_CLIENTE}/${id}`, { state: location.state })}>
-            <AiOutlineEdit />
-            Alterar Configuração
-          </Button>
-        </div>
       </div>
     </div>
   );
