@@ -1,10 +1,16 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 .PagamentosSearch_container {
   padding: 20px;
-  display: flex;
   width: 100%;
   flex-direction: column;
   height: 100%;
 }
+
 .PagamentosSearch_header {
   display: flex;
   align-items: center;
@@ -41,46 +47,25 @@
   margin-left: 25px;
 }
 
+.Update_Pagamento_saveBtn {
+  width: 100%;
+  margin-top: 20px;
+  background-color: #0074db;
+  color: #fff;
+  border-radius: 8px;
+  height: 40px;
+}
+
+.Update_Pagamento_saveBtn:hover {
+  background-color: #0056a0;
+  color: #fff;
+}
+
 .PagamentosSearch_QR_Icon {
   width: 82px;
   height: 72px;
   float: right;
 }
-
-/* .FornecedorSearchCanais_title {
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 35px;
-} */
-
-/* .FornecedorSearchCanais_header {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-} */
-
-/* .FornecedorSearchCanais_search {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-    max-width: 100%;
-} */
-
-/* .FornecedorSearchCanais_inputSearch {
-    background: #F5F5F5!important;
-    border-radius: 15px!important;
-    height: unset!important;
-    padding: 12px 10px!important;
-    border: none!important;
-    width: 400px!important;
-} */
-
-/* .FornecedorSearchCanais_search img {
-    height: 36px;
-    width: 36px;
-    margin-left: 5px;
-    cursor: pointer;
-} */
 
 .FornecedorSearchCanais_btnSubmit {
   display: flex !important;
@@ -138,9 +123,12 @@
   text-decoration: none;
 }
 
-/* .FornecedorSearchCanais_content table th.ant-table-cell:last-child {
-    text-align: right;
-} */
+.PagamentosSearch_buttonsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* Espaço entre os botões */
+}
 
 .Dashboard_staBlockTitle {
   font-weight: 400;
