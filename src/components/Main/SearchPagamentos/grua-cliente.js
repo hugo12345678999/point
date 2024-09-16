@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Button } from "antd";
-import { AiOutlineEdit, AiFillDelete, AiFillDollarCircle } from "react-icons/ai";
+import { AiOutlineEdit } from "react-icons/ai";
 import { useParams, useLocation, useNavigate, Link } from "react-router-dom";
 import * as links from "../../../utils/links";
 import { AuthContext } from "../../../contexts/AuthContext";
@@ -13,25 +13,60 @@ const GruaCliente = (props) => {
   let navigate = useNavigate();
   const token = authInfo?.dataUser?.token;
 
-
+  // Example data for demonstration, replace with actual data
+  const exampleData = {
+    probabilidade: "Alta",
+    garraForte: "10%",
+    garraMedia: "20%",
+    garraFraca: "30%",
+    garraPremio: "40%",
+  };
 
   return (
-    <div className="PagamentosSearch_container">
-      <div className="PagamentosSearch_header">
-        <div className="PagamentosSearch_header_left">
+    <div className="GruaCliente_container">
+      <div className="GruaCliente_header">
+        <Link className="GruaCliente_header_back" to={links.DASHBOARD_FORNECEDOR}>
+          VOLTAR
+        </Link>
+      </div>
+      <div className="GruaCliente_content">
+        <div className="GruaCliente_info">
+          <h2>Informações da Máquina</h2>
+          <div className="GruaCliente_info_item">
+            <span>Probabilidade:</span>
+            <span>{exampleData.probabilidade}</span>
+          </div>
+          <div className="GruaCliente_info_item">
+            <span>Garra Forte:</span>
+            <span>{exampleData.garraForte}</span>
+          </div>
+          <div className="GruaCliente_info_item">
+            <span>Garra Média:</span>
+            <span>{exampleData.garraMedia}</span>
+          </div>
+          <div className="GruaCliente_info_item">
+            <span>Garra Fraca:</span>
+            <span>{exampleData.garraFraca}</span>
+          </div>
+          <div className="GruaCliente_info_item">
+            <span>Garra Prêmio:</span>
+            <span>{exampleData.garraPremio}</span>
+          </div>
+        </div>
+        <div className="GruaCliente_buttons">
           <Button
-            className="PagamentosSearch_header_editBtn"
+            className="GruaCliente_button_edit"
             onClick={() => {
               navigate(`${links.EDIT_PROBABILIDADE_CLIENTE}/${id}`, {
                 state: location.state,
               });
             }}
           >
-          <AiOutlineEdit />
-            <span>PROBABIBILIDADE</span>
+            <AiOutlineEdit />
+            <span>Editar Probabilidade</span>
           </Button>
           <Button
-            className="PagamentosSearch_header_editBtn"
+            className="GruaCliente_button_edit"
             onClick={() => {
               navigate(`${links.EDIT_GARRA_FORTE_CLIENTE}/${id}`, {
                 state: location.state,
@@ -39,59 +74,53 @@ const GruaCliente = (props) => {
             }}
           >
             <AiOutlineEdit />
-            <span>GARRA FORTE</span>
+            <span>Editar Garra Forte</span>
           </Button>
           <Button
-            className="PagamentosSearch_header_editBtn"
+            className="GruaCliente_button_edit"
             onClick={() => {
               navigate(`${links.EDIT_GARRA_MEDIA_CLIENTE}/${id}`, {
                 state: location.state,
               });
             }}
           >
-           <AiOutlineEdit />
-            <span>GARRA MEDIA</span>
+            <AiOutlineEdit />
+            <span>Editar Garra Média</span>
           </Button>
           <Button
-            className="PagamentosSearch_header_editBtn"
+            className="GruaCliente_button_edit"
             onClick={() => {
               navigate(`${links.EDIT_GARRA_FRACA_CLIENTE}/${id}`, {
                 state: location.state,
               });
             }}
           >
-             <AiOutlineEdit />
-            <span>GARRA FRACA</span>
+            <AiOutlineEdit />
+            <span>Editar Garra Fraca</span>
           </Button>
           <Button
-            className="PagamentosSearch_header_editBtn"
+            className="GruaCliente_button_edit"
             onClick={() => {
               navigate(`${links.EDIT_GARRA_PREMIO_CLIENTE}/${id}`, {
                 state: location.state,
               });
             }}
           >
-             <AiOutlineEdit />
-            <span>GARRA PREMIO</span>
+            <AiOutlineEdit />
+            <span>Editar Garra Prêmio</span>
           </Button>
           <Button
-            className="PagamentosSearch_header_editBtn"
+            className="GruaCliente_button_edit"
             onClick={() => {
               navigate(`${links.ALTERAR_GRUA_CLIENTE}/${id}`, {
                 state: location.state,
               });
             }}
           >
-             <AiOutlineEdit />
-            <span>ALTERAR CONFIGURACAO</span>
+            <AiOutlineEdit />
+            <span>Alterar Configuração</span>
           </Button>
         </div>
-        <Link
-          className="PagamentosSearch_header_back"
-          to={links.DASHBOARD_FORNECEDOR}
-        >
-          VOLTAR
-        </Link>
       </div>
     </div>
   );
