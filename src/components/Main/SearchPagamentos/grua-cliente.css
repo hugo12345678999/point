@@ -26,6 +26,17 @@
   display: flex !important;
   align-items: center;
   padding: 10px; /* Adiciona padding aos botões */
+  background-color: #007bff; /* Cor de fundo azul */
+  color: #ffffff; /* Cor do texto branca */
+  border: none; /* Remove a borda padrão */
+  border-radius: 4px; /* Arredonda os cantos do botão */
+  font-size: 16px; /* Define o tamanho da fonte */
+  cursor: pointer; /* Altera o cursor para pointer */
+  transition: background-color 0.3s ease; /* Adiciona uma transição suave na cor de fundo */
+}
+
+.PagamentosSearch_header_editBtn:hover {
+  background-color: #0056b3; /* Cor de fundo azul mais escuro ao passar o mouse */
 }
 
 .PagamentosSearch_header_editBtn span {
