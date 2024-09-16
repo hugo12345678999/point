@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
-import { Button } from "antd";
-import { AiOutlineEdit } from "react-icons/ai";
 import { useParams, useLocation, useNavigate, Link } from "react-router-dom";
 import * as links from "../../../utils/links";
 import { AuthContext } from "../../../contexts/AuthContext";
+import { AiOutlineEdit } from "react-icons/ai";
 
 const GruaCliente = (props) => {
   const location = useLocation();
