@@ -5,6 +5,7 @@
   flex-direction: column;
   height: 100%;
 }
+
 .PagamentosSearch_header {
   display: flex;
   align-items: center;
@@ -13,16 +14,18 @@
 
 .PagamentosSearch_header_left {
   display: flex;
-  align-items: center;
+  flex-direction: column; /* Alinha os botões em coluna */
+  gap: 10px; /* Adiciona um espaçamento entre os botões */
 }
 
 .PagamentosSearch_header_left > * {
-  margin-right: 10px;
+  margin-right: 0; /* Remove o espaçamento à direita dos botões */
 }
 
 .PagamentosSearch_header_editBtn {
   display: flex !important;
   align-items: center;
+  padding: 10px; /* Adiciona padding aos botões */
 }
 
 .PagamentosSearch_header_editBtn span {
@@ -46,41 +49,6 @@
   height: 72px;
   float: right;
 }
-
-/* .FornecedorSearchCanais_title {
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 35px;
-} */
-
-/* .FornecedorSearchCanais_header {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-} */
-
-/* .FornecedorSearchCanais_search {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-    max-width: 100%;
-} */
-
-/* .FornecedorSearchCanais_inputSearch {
-    background: #F5F5F5!important;
-    border-radius: 15px!important;
-    height: unset!important;
-    padding: 12px 10px!important;
-    border: none!important;
-    width: 400px!important;
-} */
-
-/* .FornecedorSearchCanais_search img {
-    height: 36px;
-    width: 36px;
-    margin-left: 5px;
-    cursor: pointer;
-} */
 
 .FornecedorSearchCanais_btnSubmit {
   display: flex !important;
@@ -137,10 +105,6 @@
 .PagamentosSearch_QR_Btn {
   text-decoration: none;
 }
-
-/* .FornecedorSearchCanais_content table th.ant-table-cell:last-child {
-    text-align: right;
-} */
 
 .Dashboard_staBlockTitle {
   font-weight: 400;
