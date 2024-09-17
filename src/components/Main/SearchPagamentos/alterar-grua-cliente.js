@@ -20,7 +20,7 @@ const AlterarGruaCliente = (props) => {
       <div className="PagamentosSearch_header">
         <div className="PagamentosSearch_header_left">
           <Button
-            className="PagamentosSearch_header_editBtn"
+            className="Update_Pagamento_saveBtn"
             onClick={() => {
               navigate(`${links.EDIT_GARRA_MANUAL_PROBABILIDADE_CLIENTE}/${id}`, {
                 state: location.state,
@@ -31,7 +31,7 @@ const AlterarGruaCliente = (props) => {
             <span>ALTERAR PROBABIBILIDADE</span>
           </Button>
           <Button
-            className="PagamentosSearch_header_editBtn"
+            className="Update_Pagamento_saveBtn"
             onClick={() => {
               navigate(`${links.EDIT_GARRA_MANUAL_GARRA_FORTE_CLIENTE}/${id}`, {
                 state: location.state,
@@ -42,7 +42,7 @@ const AlterarGruaCliente = (props) => {
             <span>ALTERAR GARRA FORTE</span>
           </Button>
           <Button
-            className="PagamentosSearch_header_editBtn"
+            className="Update_Pagamento_saveBtn"
             onClick={() => {
               navigate(`${links.EDIT_GARRA_MANUAL_GARRA_MEDIA_CLIENTE}/${id}`, {
                 state: location.state,
@@ -53,7 +53,7 @@ const AlterarGruaCliente = (props) => {
             <span>ALTERAR GARRA MEDIA</span>
           </Button>
           <Button
-            className="PagamentosSearch_header_editBtn"
+            className="Update_Pagamento_saveBtn"
             onClick={() => {
               navigate(`${links.EDIT_GARRA_MANUAL_GARRA_FRACA_CLIENTE}/${id}`, {
                 state: location.state,
@@ -64,7 +64,7 @@ const AlterarGruaCliente = (props) => {
             <span>ALTERAR GARRA FRACA</span>
           </Button>
           <Button
-            className="PagamentosSearch_header_editBtn"
+            className="Update_Pagamento_saveBtn"
             onClick={() => {
               navigate(`${links.EDIT_GARRA_MANUAL_GARRA_PREMIO_CLIENTE}/${id}`, {
                 state: location.state,
