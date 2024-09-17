@@ -83,7 +83,7 @@ const GruaCliente = (props) => {
             }}
           >
              <AiOutlineEdit />
-            <span>ALTERAR CONFIGURACAO</span>
+            <span>CONFIGURACAO MANUAL</span>
           </Button>
         </div>
         <Link
