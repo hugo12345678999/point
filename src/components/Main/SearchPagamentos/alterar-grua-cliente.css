@@ -10,7 +10,20 @@
   align-items: center;
   justify-content: space-between;
 }
+.Update_Pagamento_saveBtn {
+  width: 100%;
+  margin-top: 20px;
+  background-color: #0074db;
+  color: #fff;
+  border-radius: 8px;
+  /*padding: 10px;*/
+  height: 40px;
+}
 
+.Update_Pagamento_saveBtn:hover {
+  background-color: #0074db;
+  color: #fff;
+}
 .PagamentosSearch_header_left {
   display: flex;
   align-items: center;
