@@ -77,7 +77,7 @@ const AlterarGruaCliente = (props) => {
         </div>
         <Link
           className="PagamentosSearch_header_back"
-          to={links.DASHBOARD_FORNECEDOR/{id}}
+          to={links.DASHBOARD_FORNECEDOR}
         >
           VOLTAR
         </Link>
