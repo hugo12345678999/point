@@ -75,7 +75,7 @@ const GruaCliente = (props) => {
             <span>GARRA PREMIO</span>
           </Button>
           <Button
-            className="Update_Pagamento_saveBtn"
+            className="Update_Pagamento_saveBtnv"
             onClick={() => {
               navigate(`${links.ALTERAR_GRUA_CLIENTE}/${id}`, {
                 state: location.state,
