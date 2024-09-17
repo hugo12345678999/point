@@ -75,7 +75,7 @@ const GruaCliente = (props) => {
             <span>GARRA PREMIO</span>
           </Button>
           <Button
-            className="Update_Pagamento_saveBtnv"
+            className="Update_Pagamento_saveBtn"
             onClick={() => {
               navigate(`${links.ALTERAR_GRUA_CLIENTE}/${id}`, {
                 state: location.state,
@@ -88,7 +88,7 @@ const GruaCliente = (props) => {
         </div>
         <Link
           className="PagamentosSearch_header_back"
-          to={links.FORNECEDOR_SEARCH_CANAIS}
+          to={links.DASHBOARD_FORNECEDOR}
         >
           VOLTAR
         </Link>
