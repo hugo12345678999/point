@@ -30,8 +30,6 @@
 
 .PagamentosSearch_header_editBtn {
   display: flex !important;
-  background-color: #ff0909;
-  color: #fff;
   align-items: center;
 }
 
@@ -128,15 +126,6 @@
   align-items: flex-end;
   justify-content: flex-end;
   border-radius: 10px;
-}
-.Update_Pagamento_deleteBtn {
-  width: 100%;
-  margin-top: 20px;
-  background-color: #ff0909;
-  color: #fff;
-  border-radius: 8px;
-  /*padding: 10px;*/
-  height: 5px;
 }
 
 .PagamentosSearch_nbList {
