@@ -88,7 +88,7 @@ const GruaCliente = (props) => {
         </div>
         <Link
           className="PagamentosSearch_header_back"
-          to={links.DASHBOARD_FORNECEDOR}
+          to={links.FORNECEDOR_SEARCH_CANAIS}
         >
           VOLTAR
         </Link>
