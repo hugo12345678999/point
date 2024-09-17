@@ -127,6 +127,15 @@
   justify-content: flex-end;
   border-radius: 10px;
 }
+.Update_Pagamento_deleteBtn {
+  width: 100%;
+  margin-top: 20px;
+  background-color: #ff0909;
+  color: #fff;
+  border-radius: 8px;
+  /*padding: 10px;*/
+  height: 5px;
+}
 
 .PagamentosSearch_nbList {
   margin-left: 5px;
