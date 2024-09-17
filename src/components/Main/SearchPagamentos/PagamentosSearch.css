@@ -30,6 +30,8 @@
 
 .PagamentosSearch_header_editBtn {
   display: flex !important;
+  background-color: #ff0909;
+  color: #fff;
   align-items: center;
 }
 
