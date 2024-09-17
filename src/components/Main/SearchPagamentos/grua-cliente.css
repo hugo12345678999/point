@@ -55,6 +55,20 @@
   background-color: #0074db;
   color: #fff;
 }
+.Update_Pagamento_saveBtnv {
+  width: 100%;
+  margin-top: 20px;
+  background-color: #04c7a3;
+  color: #fff;
+  border-radius: 8px;
+  /*padding: 10px;*/
+  height: 40px;
+}
+
+.Update_Pagamento_saveBtnv:hover {
+  background-color: #0074db;
+  color: #fff;
+}
 
 .PagamentosSearch_QR_Icon {
   width: 82px;

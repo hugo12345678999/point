@@ -275,7 +275,7 @@ const formatNumberWithLeadingZeros = (number, length) => {
             <span>Editar</span>
           </Button>
           <Button
-            className="PagamentosSearch_header_editBtn"
+            className="Update_Pagamento_deleteBtn"
             onClick={() => {
               navigate(`${links.DELETE_FORNECEDOR_CANAIS}/${id}`, {
                 state: location.state,
