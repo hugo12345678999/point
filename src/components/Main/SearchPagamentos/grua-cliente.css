@@ -47,16 +47,22 @@
   background-color: #0074db;
   color: #fff;
   border-radius: 8px;
-  flex-direction: column;
-  /*padding: 10px;*/
   height: 40px;
+  display: flex; /* Adiciona display flex */
+  flex-direction: column; /* Empilha itens verticalmente */
+  align-items: center; /* Centraliza itens horizontalmente */
+  justify-content: center; /* Centraliza itens verticalmente */
+  border: none; /* Remove a borda padrão */
+  font-size: 16px; /* Ajusta o tamanho da fonte */
+  cursor: pointer; /* Muda o cursor para indicar que é clicável */
+  padding: 0; /* Remove o padding padrão */
 }
 
 .Update_Pagamento_saveBtn:hover {
-  flex-direction: column;
-  background-color: #0074db;
+  background-color: #0056a0; /* Ajusta a cor do fundo ao passar o mouse */
   color: #fff;
 }
+
 
 .PagamentosSearch_QR_Icon {
   width: 82px;
