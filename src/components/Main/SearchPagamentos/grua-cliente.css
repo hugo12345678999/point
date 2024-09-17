@@ -55,7 +55,7 @@
   background-color: #0074db;
   color: #fff;
 }
-.Update_Pagamento_saveBtnv {
+.Update_Pagamento_saveBtnn {
   width: 100%;
   margin-top: 20px;
   background-color: #04c7a3;
@@ -65,7 +65,7 @@
   height: 40px;
 }
 
-.Update_Pagamento_saveBtnv:hover {
+.Update_Pagamento_saveBtnn:hover {
   background-color: #0074db;
   color: #fff;
 }
