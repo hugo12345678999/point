@@ -212,7 +212,12 @@ const WhatsappApp = (props) => {
           >
             CONFIGURAR FUNCOES
           </Button>
+
         </div>
+        <div style={{ marginLeft: "1px" }}>RELOGIO</div>
+              <div className="PagamentosSearch_nbList1">
+                {estoque ?? "-"}
+              </div>
       </div>
       <div className="PagamentosSearch_content">
         <Row>

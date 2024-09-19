@@ -22,6 +22,7 @@ const EditarWhatsapp = (props) => {
     descricao: maquinaInfos?.descricao ?? "",
     whatsapp: maquinaInfos?.whatsapp?.replace(/^55/, "") ?? "", // Remove '55' se já estiver presente
     apikey: maquinaInfos?.apikey ?? "",
+    estoque: maquinaInfos?.estoque ?? "",
     mercadoPagoId: maquinaInfos?.mercadoPagoId ?? "", // Adicionei essa linha para incluir mercadoPagoId
     estoque2: maquinaInfos?.estoque2 ?? "", // Adicionei essa linha para incluir mercadoPagoId
   });
@@ -60,6 +61,9 @@ const EditarWhatsapp = (props) => {
     if (data.apikey.trim() === "") {
       errorsTemp.apikey = "API Key é obrigatória";
     }
+    if (data.estoque.trim() === "") {
+      errorsTemp.estoque = "estoque é obrigatória";
+    }
     if (Object.keys(errorsTemp).length > 0) {
       setErrors(errorsTemp);
       return;
@@ -77,6 +81,7 @@ const EditarWhatsapp = (props) => {
           descricao: data.descricao,
           whatsapp: data.whatsapp,
           apikey: data.apikey,
+          estoque: data.estoque,
         },
         {
           headers: {
@@ -315,6 +320,30 @@ const EditarWhatsapp = (props) => {
           />
           {errors.apikey && (
             <div className="Update_Pagamento_itemFieldError">{errors.apikey}</div>
+          )}
+        </div>
+        <div className="Update_Pagamento_itemField">
+          <label className="Update_Pagamento_itemFieldLabel" htmlFor="contadorcredito">
+            ESTOQUE:
+          </label>
+          <Input
+            placeholder={"1"}
+            value={data.estoque}
+            id="estoque"
+            type="number"
+            name="estoque"
+            autoComplete="estoque"
+            onChange={(event) => {
+              handleChange("estoque", event.target.value);
+            }}
+            className={`${
+              !!errors.estoque ? "Update_Pagamento_inputError" : ""
+            }`}
+          />
+          {errors.estoque && (
+            <div className="Update_Pagamento_itemFieldError">
+              {errors.estoque}
+            </div>
           )}
         </div>
 
