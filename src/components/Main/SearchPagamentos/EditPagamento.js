@@ -225,7 +225,7 @@ const EditPagamento = (props) => {
             name="estoque"
             autoComplete="estoque"
             onChange={(event) => {
-              handleChange("contadorpelucia", event.target.value);
+              handleChange("estoque", event.target.value);
             }}
             className={`${
               !!errors.estoque ? "Update_Pagamento_inputError" : ""
