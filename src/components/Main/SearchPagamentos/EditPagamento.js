@@ -207,7 +207,7 @@ const EditPagamento = (props) => {
               !!errors.contadorcredito ? "Update_Pagamento_inputError" : ""
             }`}
           />
-          {errors.estoque && (
+          {errors.contadorcredito && (
             <div className="Update_Pagamento_itemFieldError">
               {errors.contadorcredito}
             </div>
