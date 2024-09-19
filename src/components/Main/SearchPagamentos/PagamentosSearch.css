@@ -1,13 +1,15 @@
 .PagamentosSearch_container {
   padding: 20px;
   display: flex;
+ 
   width: 100%;
   flex-direction: column;
   height: 100%;
 }
-.PagamentosSearch_header {
+.PagamentosSearch_header {/* .onde esta os botoes} */
   display: flex;
   align-items: center;
+  
   justify-content: space-between;
 }
 .PagamentosSearch_nbList1 {
@@ -21,11 +23,13 @@
 }
 .PagamentosSearch_header_left {
   display: flex;
+
   align-items: center;
 }
 
 .PagamentosSearch_header_left > * {
   margin-right: 10px;
+
 }
 
 .PagamentosSearch_header_editBtn {
@@ -42,12 +46,14 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
+ 
   text-decoration: underline;
   color: #1f384c;
 }
 
 .PagamentosSearch_description {
   margin-left: 25px;
+  background: #7cff01;
 }
 
 .PagamentosSearch_QR_Icon {
@@ -106,12 +112,14 @@
 
 .PagamentosSearch_content {
   padding: 20px;
+  
 }
 
-.PagamentosSearch_titleList {
+.PagamentosSearch_titleList {/* . texto onde esta o relogio credito } */
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  
   font-size: 18px;
   line-height: 28px;
   color: #52525b;
@@ -122,7 +130,7 @@
   display: flex;
 }
 
-.PagamentosSearch_datePicker {
+.PagamentosSearch_datePicker {/* . texto onde esta a data } */
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
@@ -132,7 +140,7 @@
 .PagamentosSearch_nbList {
   margin-left: 5px;
   background: #e5e7eb;
-  color: #3182ce;
+  color: #000000;
   border-radius: 4px;
   padding: 2px 5px;
   font-size: 16px;
@@ -141,6 +149,7 @@
 
 .PagamentosSearch_body {
   position: relative;
+ 
 }
 
 .PagamentosSearch_QR_Btn {
@@ -155,22 +164,26 @@
   font-weight: 400;
   font-size: 24px;
   line-height: 27px;
+
   padding: 10px 15px;
 }
 
 @media only screen and (max-width: 800px) {
   .PagamentosSearch_datePicker {
     margin-bottom: 10px;
+    
   }
 
   .PagamentosSearch_body {
     position: relative;
     margin-left: -30px;
     width: 100%;
+ 
   }
 
   .PagamentosSearch_titleList {
     flex-wrap: wrap;
+ 
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   }
