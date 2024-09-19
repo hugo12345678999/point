@@ -149,7 +149,7 @@
 
 .PagamentosSearch_body {
   position: relative;
-  background: #02266e;
+ 
 }
 
 .PagamentosSearch_QR_Btn {
@@ -164,24 +164,26 @@
   font-weight: 400;
   font-size: 24px;
   line-height: 27px;
-  background: #dbbc07;
+
   padding: 10px 15px;
 }
 
 @media only screen and (max-width: 800px) {
   .PagamentosSearch_datePicker {
     margin-bottom: 10px;
-    background: #125f07;
+    
   }
 
   .PagamentosSearch_body {
     position: relative;
     margin-left: -30px;
     width: 100%;
+    background: #00091b;
   }
 
   .PagamentosSearch_titleList {
     flex-wrap: wrap;
+    background: #a74d04;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   }
