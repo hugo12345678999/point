@@ -390,7 +390,6 @@ const formatNumberWithLeadingZeros = (number, length) => {
             </div>
         
           </div>
-          <div className="PagamentosSearch_description">{`${maquinaInfos?.nome} - ${maquinaInfos?.descricao}`}</div>
 
           <Table
             columns={columns}
