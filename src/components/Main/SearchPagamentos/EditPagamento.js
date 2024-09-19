@@ -228,12 +228,12 @@ const EditPagamento = (props) => {
               handleChange("contadorpelucia", event.target.value);
             }}
             className={`${
-              !!errors.contadorpelucia ? "Update_Pagamento_inputError" : ""
+              !!errors.estoque ? "Update_Pagamento_inputError" : ""
             }`}
           />
           {errors.estoque && (
             <div className="Update_Pagamento_itemFieldError">
-              {errors.contadorpelucia}
+              {errors.estoque}
             </div>
           )}
         </div>

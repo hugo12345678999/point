@@ -328,7 +328,7 @@ const EditarWhatsapp = (props) => {
             ESTOQUE:
           </label>
           <Input
-            placeholder={"1"}
+            placeholder={"1,50"}
             value={data.contadorpelucia}
             id="contadorpelucia"
             type="number"
