@@ -23,13 +23,13 @@
 }
 .PagamentosSearch_header_left {
   display: flex;
-  background: #7cff01;
+
   align-items: center;
 }
 
 .PagamentosSearch_header_left > * {
   margin-right: 10px;
-  background: #f8890b;
+
 }
 
 .PagamentosSearch_header_editBtn {
@@ -46,13 +46,14 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
-  background: #940202;
+ 
   text-decoration: underline;
   color: #1f384c;
 }
 
 .PagamentosSearch_description {
   margin-left: 25px;
+  background: #7cff01;
 }
 
 .PagamentosSearch_QR_Icon {
@@ -111,12 +112,14 @@
 
 .PagamentosSearch_content {
   padding: 20px;
+  background: #ff2a00;
 }
 
 .PagamentosSearch_titleList {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  background: #3e014e;
   font-size: 18px;
   line-height: 28px;
   color: #52525b;
