@@ -217,7 +217,7 @@ const WhatsappApp = (props) => {
         <div style={{ marginLeft: "1px" }}>RELOGIO</div>
               <div className="PagamentosSearch_nbList1">
                 {estoque ?? "-"}
-              </div>
+                </div>
       </div>
       <div className="PagamentosSearch_content">
         <Row>
