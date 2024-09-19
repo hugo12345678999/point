@@ -1,7 +1,7 @@
 .PagamentosSearch_container {
   padding: 20px;
   display: flex;
-  background: #0055fe;
+ 
   width: 100%;
   flex-direction: column;
   height: 100%;
@@ -9,6 +9,7 @@
 .PagamentosSearch_header {/* .onde esta os botoes} */
   display: flex;
   align-items: center;
+  
   justify-content: space-between;
 }
 .PagamentosSearch_nbList1 {
@@ -22,11 +23,13 @@
 }
 .PagamentosSearch_header_left {
   display: flex;
+  background: #7cff01;
   align-items: center;
 }
 
 .PagamentosSearch_header_left > * {
   margin-right: 10px;
+  background: #f8890b;
 }
 
 .PagamentosSearch_header_editBtn {
@@ -43,6 +46,7 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
+  background: #940202;
   text-decoration: underline;
   color: #1f384c;
 }
@@ -132,7 +136,7 @@
 
 .PagamentosSearch_nbList {
   margin-left: 5px;
-  background: #00ff1a;
+  background: #e5e7eb;
   color: #000000;
   border-radius: 4px;
   padding: 2px 5px;
