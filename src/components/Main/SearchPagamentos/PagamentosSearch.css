@@ -112,14 +112,14 @@
 
 .PagamentosSearch_content {
   padding: 20px;
-  background: #ff2a00;
+  
 }
 
-.PagamentosSearch_titleList {
+.PagamentosSearch_titleList {/* . texto onde esta o relogio credito } */
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  background: #3e014e;
+  
   font-size: 18px;
   line-height: 28px;
   color: #52525b;
@@ -149,6 +149,7 @@
 
 .PagamentosSearch_body {
   position: relative;
+  background: #02266e;
 }
 
 .PagamentosSearch_QR_Btn {
@@ -163,12 +164,14 @@
   font-weight: 400;
   font-size: 24px;
   line-height: 27px;
+  background: #dbbc07;
   padding: 10px 15px;
 }
 
 @media only screen and (max-width: 800px) {
   .PagamentosSearch_datePicker {
     margin-bottom: 10px;
+    background: #125f07;
   }
 
   .PagamentosSearch_body {
