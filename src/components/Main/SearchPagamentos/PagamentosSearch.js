@@ -211,7 +211,7 @@ const PagamentosSearch = (props) => {
       key: "mercadoPagoId",
     },
     {
-      title: "estado",
+      title: "Estado",
       dataIndex: "estornado",
       key: "estornado",
       width: 100,
