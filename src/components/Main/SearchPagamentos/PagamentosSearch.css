@@ -178,12 +178,12 @@
     position: relative;
     margin-left: -30px;
     width: 100%;
-    background: #00091b;
+ 
   }
 
   .PagamentosSearch_titleList {
     flex-wrap: wrap;
-    background: #a74d04;
+ 
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   }
