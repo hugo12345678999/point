@@ -22,6 +22,7 @@ const EditarWhatsapp = (props) => {
     descricao: maquinaInfos?.descricao ?? "",
     whatsapp: maquinaInfos?.whatsapp?.replace(/^55/, "") ?? "", // Remove '55' se já estiver presente
     apikey: maquinaInfos?.apikey ?? "",
+    contadorpelucia: maquinaInfos?.contadorpelucia ?? "",
     estoque: maquinaInfos?.estoque ?? "",
     mercadoPagoId: maquinaInfos?.mercadoPagoId ?? "", // Adicionei essa linha para incluir mercadoPagoId
     estoque2: maquinaInfos?.estoque2 ?? "", // Adicionei essa linha para incluir mercadoPagoId
@@ -61,8 +62,8 @@ const EditarWhatsapp = (props) => {
     if (data.apikey.trim() === "") {
       errorsTemp.apikey = "API Key é obrigatória";
     }
-    if (data.estoque.trim() === "") {
-      errorsTemp.estoque = "estoque é obrigatória";
+    if (data.contadorpelucia.trim() === "") {
+      errorsTemp.contadorpelucia = "contadorpelucia é obrigatória";
     }
     if (Object.keys(errorsTemp).length > 0) {
       setErrors(errorsTemp);
@@ -81,7 +82,7 @@ const EditarWhatsapp = (props) => {
           descricao: data.descricao,
           whatsapp: data.whatsapp,
           apikey: data.apikey,
-          estoque: data.estoque,
+          contadorpelucia: data.contadorpelucia,
         },
         {
           headers: {
@@ -328,21 +329,21 @@ const EditarWhatsapp = (props) => {
           </label>
           <Input
             placeholder={"1"}
-            value={data.estoque}
-            id="estoque"
+            value={data.contadorpelucia}
+            id="contadorpelucia"
             type="number"
-            name="estoque"
-            autoComplete="estoque"
+            name="contadorpelucia"
+            autoComplete="contadorpelucia"
             onChange={(event) => {
-              handleChange("estoque", event.target.value);
+              handleChange("contadorpelucia", event.target.value);
             }}
             className={`${
-              !!errors.estoque ? "Update_Pagamento_inputError" : ""
+              !!errors.contadorpelucia ? "Update_Pagamento_inputError" : ""
             }`}
           />
-          {errors.estoque && (
+          {errors.contadorpelucia && (
             <div className="Update_Pagamento_itemFieldError">
-              {errors.estoque}
+              {errors.contadorpelucia}
             </div>
           )}
         </div>
