@@ -97,7 +97,7 @@
   justify-content: center !important;
   background: #4169e1 !important;
   box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15) !important;
-  color: #ffffff !important;
+  color: #980404 !important;
   margin-right: 10px;
   padding: 7px 40px !important;
   height: unset !important;
@@ -131,7 +131,7 @@
 
 .PagamentosSearch_nbList {
   margin-left: 5px;
-  background: #e5e7eb;
+  background: #021947;
   color: #3182ce;
   border-radius: 4px;
   padding: 2px 5px;
