@@ -16,7 +16,7 @@
   color: #FFFFFF;
   border-radius: 4px;
   padding: 2px 5px;
-  font-size: 9000px;
+  font-size: 16px;
   font-weight: 600;
 }
 .PagamentosSearch_header_left {
@@ -112,8 +112,8 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  font-size: 18px;
-  line-height: 28px;
+  font-size: 80px;
+  line-height: 80px;
   color: #52525b;
   margin-right: 100px;
 }
