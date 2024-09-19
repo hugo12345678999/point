@@ -206,7 +206,7 @@ const PagamentosSearch = (props) => {
         }).format(valor),
     },
     {
-      title: "Identificador MP",
+      title: "Identificador",
       dataIndex: "mercadoPagoId",
       key: "mercadoPagoId",
     },
