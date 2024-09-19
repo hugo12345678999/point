@@ -7,6 +7,7 @@
 }
 .PagamentosSearch_header {
   display: flex;
+  background: #7cff01;
   align-items: center;
   justify-content: space-between;
 }
@@ -34,7 +35,7 @@
 }
 
 .PagamentosSearch_header_editBtn span {
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 
@@ -112,8 +113,8 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  font-size: 80px;
-  line-height: 80px;
+  font-size: 18px;
+  line-height: 28px;
   color: #52525b;
   margin-right: 100px;
 }
@@ -132,7 +133,7 @@
 .PagamentosSearch_nbList {
   margin-left: 5px;
   background: #e5e7eb;
-  color: #3182ce;
+  color: #000000;
   border-radius: 4px;
   padding: 2px 5px;
   font-size: 16px;
@@ -154,7 +155,7 @@
 .Dashboard_staBlockTitle {
   font-weight: 400;
   font-size: 24px;
-  line-height: 30px;
+  line-height: 27px;
   padding: 10px 15px;
 }
 
