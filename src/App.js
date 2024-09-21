@@ -49,7 +49,7 @@ import EditGarraManualGarraForteCliente from "./components/Main/RemoteCredit/Edi
 import EditGarraManualGarraMediaCliente from "./components/Main/RemoteCredit/Edit-garra-manual-garra-media-cliente";
 import EditGarraManualGarraFracaCliente from "./components/Main/RemoteCredit/Edit-garra-manual-garra-fraca-cliente";
 import EditGarraManualGarraPremioCliente from "./components/Main/RemoteCredit/Edit-garra-manual-garra-premio-cliente";
-import Reinicar from "./components/Main/RemoteCredit/Reiniciar";
+import Reiniciar from "./components/Main/RemoteCredit/Reiniciar";
 import EditProbabilidadeCliente from "./components/Main/RemoteCredit/Edit-probabilidade-cliente";
 import EditprobabilidadeAdm from "./components/Main/Cliente/CreditoRemoto/Edit-probabilidade-adm";
 import EditGarraForteCliente from "./components/Main/RemoteCredit/Edit-garra-forte-cliente";
@@ -419,7 +419,7 @@ function App() {
               element={
                 <PrivateRoute>
                   <Main>
-                    <Reinicar />
+                    <Reiniciar />
                   </Main>
                 </PrivateRoute>
               }
