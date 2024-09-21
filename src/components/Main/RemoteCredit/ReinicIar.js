@@ -17,7 +17,7 @@ const Reiniciar = (props) => {
     const [isLoading, setIsLoading] = useState(false);
     const [data, setData] = useState({ valor: '' });
     const [errors, setErrors] = useState({});
-    const [garrafraca, setGarrafraca] = useState(null); // Estado para armazenar o valor da garra forte
+    const [garrafraca, setGarrafraca] = useState(null); // Estado para armahzenar o valor da garra forte
     const [matchMessage, setMatchMessage] = useState(""); // Mensagem de correspondência
 
     const handleChange = (name, value) => {
