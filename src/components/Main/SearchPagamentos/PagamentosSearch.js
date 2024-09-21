@@ -350,6 +350,7 @@ const formatNumberWithLeadingZeros = (number, length) => {
           onClick={() => {
                         if (!isLoading) reiniciarmaquina()
                     }} disabled={isLoading}>
+                        style={{ backgroundColor: "yellow", color: "black" }} // Botão amarelo com texto preto
                         REINICAR MAQUINA
                     </Button>
         
