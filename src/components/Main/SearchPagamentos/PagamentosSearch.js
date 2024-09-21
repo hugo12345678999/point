@@ -358,7 +358,7 @@ const formatNumberWithLeadingZeros = (number, length) => {
           padding: '10px 10px', // Ajuste do padding
           cursor: isLoading ? 'not-allowed' : 'pointer' // Altera o cursor
         }}>
-        REINICIAR MÁQUINA
+        REINICIAR
 </Button>
 
         
