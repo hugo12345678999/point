@@ -432,21 +432,21 @@ const formatNumberWithLeadingZeros = (number, length) => {
           >
             <div className="PagamentosSearch_titleList">
               <div style={{ marginLeft: "20px" }}>Total</div>
-              <div className="PagamentosSearch_nbList1">
+              <div className="PagamentosSearch_nbList">
                 {Intl.NumberFormat("pt-BR", {
                   style: "currency",
                   currency: "BRL",
                 }).format(total)}
               </div>
               <div style={{ marginLeft: "20px" }}>Estornos</div>
-              <div className="PagamentosSearch_nbList1">
+              <div className="PagamentosSearch_nbList">
                 {Intl.NumberFormat("pt-BR", {
                   style: "currency",
                   currency: "BRL",
                 }).format(estornos)}
               </div>
               <div style={{ marginLeft: "20px" }}>Espécie</div>
-              <div className="PagamentosSearch_nbList1">
+              <div className="PagamentosSearch_nbList">
                 {Intl.NumberFormat("pt-BR", {
                   style: "currency",
                   currency: "BRL",
@@ -454,7 +454,7 @@ const formatNumberWithLeadingZeros = (number, length) => {
               </div>
               
               <div style={{ marginLeft: "20px" }}>Store ID</div>
-              <div className="PagamentosSearch_nbList1">{maquinaInfos.storeId}
+              <div className="PagamentosSearch_nbList">{maquinaInfos.storeId}
               </div>
               <div style={{ marginLeft: "1px" }}>RELOGIO CREDITO</div>
               <div className="PagamentosSearch_nbList1">
