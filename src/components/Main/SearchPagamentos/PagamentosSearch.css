@@ -21,6 +21,15 @@
   font-size: 16px;
   font-weight: 600;
 }
+.PagamentosSearch_nbList2 {
+  margin-left: 5px;
+  background: #595959;
+  color: #000000;
+  border-radius: 4px;
+  padding: 2px 5px;
+  font-size: 16px;
+  font-weight: 600;
+}
 .PagamentosSearch_header_left {
   display: flex;
 

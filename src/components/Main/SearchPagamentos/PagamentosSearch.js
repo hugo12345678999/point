@@ -432,21 +432,21 @@ const formatNumberWithLeadingZeros = (number, length) => {
           >
             <div className="PagamentosSearch_titleList">
               <div style={{ marginLeft: "20px" }}>Total</div>
-              <div className="PagamentosSearch_nbList">
+              <div className="PagamentosSearch_nbList2">
                 {Intl.NumberFormat("pt-BR", {
                   style: "currency",
                   currency: "BRL",
                 }).format(total)}
               </div>
               <div style={{ marginLeft: "20px" }}>Estornos</div>
-              <div className="PagamentosSearch_nbList">
+              <div className="PagamentosSearch_nbList2">
                 {Intl.NumberFormat("pt-BR", {
                   style: "currency",
                   currency: "BRL",
                 }).format(estornos)}
               </div>
               <div style={{ marginLeft: "20px" }}>Espécie</div>
-              <div className="PagamentosSearch_nbList">
+              <div className="PagamentosSearch_nbList2">
                 {Intl.NumberFormat("pt-BR", {
                   style: "currency",
                   currency: "BRL",
