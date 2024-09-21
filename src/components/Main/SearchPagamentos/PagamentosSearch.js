@@ -441,7 +441,7 @@ const formatNumberWithLeadingZeros = (number, length) => {
             
             </div>
         
-            <img src={qr_code_icon} alt="QR Code Icon" style={{ width: '200px', height: '80px' }} />
+            <img src={qr_code_icon} alt="QR Code Icon" style={{ width: '200px', height: '50px' }} />
           </div>
 
           <Table
