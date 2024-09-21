@@ -1,15 +1,13 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Button } from "antd";
 import LoadingAction from "../../../themes/LoadingAction/LoadingAction";
-import * as links from "../../../utils/links";
 
 const Reiniciar = () => {
     const { id } = useParams();
     const { setDataUser, authInfo, setNotiMessage } = useContext(AuthContext);
-    const navigate = useNavigate();
     const token = authInfo?.dataUser?.token;
     const [isLoading, setIsLoading] = useState(false);
 
@@ -52,7 +50,11 @@ const Reiniciar = () => {
         <>
             {isLoading && <LoadingAction />}
             <div style={{ textAlign: "center", marginTop: "20px" }}>
-                <Button onClick={onSave} disabled={isLoading}>
+                <Button 
+                    onClick={onSave} 
+                    disabled={isLoading} 
+                    style={{ backgroundColor: "yellow", color: "black" }} // Botão amarelo com texto preto
+                >
                     REINICIAR
                 </Button>
             </div>
