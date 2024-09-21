@@ -343,7 +343,7 @@ const EditarWhatsapp = (props) => {
           />
           {errors.contadorpelucia && (
             <div className="Update_Pagamento_itemFieldError">
-              {errors.contadorpelucia}
+              {errors.contadorspelucia}
             </div>
           )}
         </div>

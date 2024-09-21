@@ -41,6 +41,7 @@ export const EDIT_PROBABILIDADE_CLIENTE = "/edit-probabilidade-cliente";
 export const EDIT_GARRA_FORTE_CLIENTE = "/edit-forca-forte-cliente";
 export const EDIT_GARRA_MEDIA_CLIENTE = "/edit-forca-media-cliente";
 export const EDIT_GARRA_FRACA_CLIENTE = "/edit-forca-fraca-cliente";
+export const REINICIAR = "/reiniciar";
 
 export const EDIT_GARRA_MANUAL_CLIENTE = "/edit-garra-manual-cliente";
 export const EDIT_GARRA_MANUAL_PROBABILIDADE_CLIENTE = "/edit-garra-manual-probabilidade-cliente";
