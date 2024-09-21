@@ -353,8 +353,8 @@ const formatNumberWithLeadingZeros = (number, length) => {
                   }} 
         disabled={isLoading}
         style={{
-          backgroundColor: 'blue',
-          color: 'black', // Para o texto preto
+          backgroundColor: 'black',
+          color: 'white', // Para o texto preto
           border: 'none', // Remove a borda
           padding: '10px 10px', // Ajuste do padding
           cursor: isLoading ? 'not-allowed' : 'pointer' // Altera o cursor
