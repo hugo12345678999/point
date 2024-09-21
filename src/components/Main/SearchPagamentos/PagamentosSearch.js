@@ -439,6 +439,18 @@ const formatNumberWithLeadingZeros = (number, length) => {
              
             </div>
         
+            {maquinaInfos.store_id && (
+              <Link
+                target="_blank"
+                to={`https://www.mercadopago.com.br/stores/detail?store_id=${maquinaInfos.store_id}`}
+              >
+                <img
+                  className="Admin_PagamentosSearch_QR_Icon"
+                  src={qr_code_icon}
+                  alt="QR"
+                />
+              </Link>
+            )}
           </div>
 
           <Table
