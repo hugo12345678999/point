@@ -342,8 +342,14 @@ const formatNumberWithLeadingZeros = (number, length) => {
                 state: location.state,
               });
             }}
-          >
-            <AiOutlineEdit />
+            style={{
+              backgroundColor: 'blue',
+              color: 'black', // Para o texto preto
+              border: 'none', // Remove a borda
+              padding: '10px 20px', // Ajuste do padding
+              cursor: isLoading ? 'not-allowed' : 'pointer' // Altera o cursor
+            }}>
+          
             <span>CONFIGURAR GRUA</span>
           </Button>
           <Button className="PagamentosSearch_header_editBtn" 
