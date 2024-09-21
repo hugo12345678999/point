@@ -405,12 +405,14 @@ const formatNumberWithLeadingZeros = (number, length) => {
           <Button
             className="PagamentosSearch_header_editBtn"
             onClick={() => onRelatorioHandler()}
-          >
-            <img
-              style={{ width: "15px", marginRight: "2px" }}
-              src={notes}
-              alt="notes"
-            />
+          
+          style={{
+          backgroundColor: 'black',
+          color: 'white', // Para o texto preto
+          border: 'none', // Remove a borda
+          padding: '10px 10px', // Ajuste do padding
+          cursor: isLoading ? 'not-allowed' : 'pointer' // Altera o cursor
+        }}>
             
             <span>Relatório</span>
           </Button>
