@@ -17,7 +17,7 @@ const Reiniciar = () => {
         setIsLoading(true);
         axios.post(`${process.env.REACT_APP_SERVIDOR}/credito-remoto-cliente`, {
             id: id,
-            valor: 4002,
+            valor: '4002',
         }, {
             headers: {
                 "x-access-token": token,
