@@ -298,7 +298,7 @@ const formatNumberWithLeadingZeros = (number, length) => {
       {isLoading && <LoadingAction />}
       <div className="PagamentosSearch_header">
         <div className="PagamentosSearch_header_left">
-     <img src={qr_code_icon} alt="QR Code Icon" style={{ width: '100px', height: '50px' }} />
+     <img src={qr_code_icon} alt="QR Code Icon" style={{ width: '120px', height: '40px' }} />
 
           <Button
             className="PagamentosSearch_header_editBtn"
