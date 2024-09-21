@@ -411,13 +411,7 @@ const formatNumberWithLeadingZeros = (number, length) => {
               src={notes}
               alt="notes"
             />
-             style={{
-          backgroundColor: 'black',
-          color: 'white', // Para o texto preto
-          border: 'none', // Remove a borda
-          padding: '10px 10px', // Ajuste do padding
-          cursor: isLoading ? 'not-allowed' : 'pointer' // Altera o cursor
-        }}
+            
             <span>Relatório</span>
           </Button>
         </div>
