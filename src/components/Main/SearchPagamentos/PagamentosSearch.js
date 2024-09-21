@@ -310,7 +310,17 @@ const formatNumberWithLeadingZeros = (number, length) => {
             <AiOutlineEdit />
             <span>CONFIGURAR GRUA</span>
           </Button>
-          
+          <Button
+            className="PagamentosSearch_header_editBtn"
+            onClick={() => {
+              navigate(`${links.REINICIAR}/${id}`, {
+                state: location.state,
+              });
+            }}
+          >
+            <AiOutlineEdit />
+            <span>REINICAR MAQUINA</span>
+          </Button>
           <div className="PagamentosSearch_datePicker">
             {/* <span> Filtro por data:</span> */}
             <FontAwesomeIcon
