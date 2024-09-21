@@ -438,10 +438,10 @@ const formatNumberWithLeadingZeros = (number, length) => {
               <div className="PagamentosSearch_nbList1">
                 {formatNumberWithLeadingZeros(estoque, 6) ?? "-"}
               </div>
-              <img src={qr_code_icon} alt="QR Code Icon" style={{ width: '150px', height: '50px' }} />
+            
             </div>
         
-
+            <img src={qr_code_icon} alt="QR Code Icon" style={{ width: '200px', height: '80px' }} />
           </div>
 
           <Table
