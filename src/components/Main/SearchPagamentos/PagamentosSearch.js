@@ -347,12 +347,20 @@ const formatNumberWithLeadingZeros = (number, length) => {
             <span>CONFIGURAR GRUA</span>
           </Button>
           <Button className="PagamentosSearch_header_editBtn" 
-          onClick={() => {
-                        if (!isLoading) reiniciarmaquina()
-                    }} disabled={isLoading}>
-                        style={{ backgroundColor: "yellow", color: "black" }} // Botão amarelo com texto preto
-                        REINICAR MAQUINA
-                    </Button>
+        onClick={() => {
+                      if (!isLoading) reiniciarmaquina()
+                  }} 
+        disabled={isLoading}
+        style={{
+          backgroundColor: 'yellow',
+          color: 'black', // Para o texto preto
+          border: 'none', // Remove a borda
+          padding: '10px 20px', // Ajuste do padding
+          cursor: isLoading ? 'not-allowed' : 'pointer' // Altera o cursor
+        }}>
+        REINICIAR MÁQUINA
+</Button>
+
         
           <div className="PagamentosSearch_datePicker">
             {/* <span> Filtro por data:</span> */}
