@@ -298,6 +298,8 @@ const formatNumberWithLeadingZeros = (number, length) => {
       {isLoading && <LoadingAction />}
       <div className="PagamentosSearch_header">
         <div className="PagamentosSearch_header_left">
+     <img src={qr_code_icon} alt="QR Code Icon" style={{ width: '50px', height: '50px' }} />
+
           <Button
             className="PagamentosSearch_header_editBtn"
             onClick={() => {
@@ -439,18 +441,7 @@ const formatNumberWithLeadingZeros = (number, length) => {
              
             </div>
         
-            {maquinaInfos.store_id && (
-              <Link
-                target="_blank"
-                to={`https://www.mercadopago.com.br/stores/detail?store_id=${maquinaInfos.store_id}`}
-              >
-                <img
-                  className="Admin_PagamentosSearch_QR_Icon"
-                  src={qr_code_icon}
-                  alt="QR"
-                />
-              </Link>
-            )}
+
           </div>
 
           <Table
