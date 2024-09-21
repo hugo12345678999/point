@@ -298,7 +298,6 @@ const formatNumberWithLeadingZeros = (number, length) => {
       {isLoading && <LoadingAction />}
       <div className="PagamentosSearch_header">
         <div className="PagamentosSearch_header_left">
-          <div className="Dashboard_staBlockTitle">{maquinaInfos?.nome}</div>
           <Button
             className="PagamentosSearch_header_editBtn"
             onClick={() => {
