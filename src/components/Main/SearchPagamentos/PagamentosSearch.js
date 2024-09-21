@@ -67,6 +67,42 @@ const PagamentosSearch = (props) => {
     }
   }, [estado, navigate, id, setNotiMessage]);
 
+
+  const reiniciarmaquina = () => {
+    setIsLoading(true);
+    axios.post(`${process.env.REACT_APP_SERVIDOR}/credito-remoto-cliente`, {
+        id: id,
+        valor: '4002',
+    }, {
+        headers: {
+            "x-access-token": token,
+            "content-type": "application/json",
+        }
+    })
+    .then(() => {
+        setIsLoading(false);
+        setNotiMessage({
+            type: 'success',
+            message: 'REINICIANDO A MAQUINA!'
+        });
+    })
+    .catch(err => {
+        setIsLoading(false);
+        if ([401, 403].includes(err.response?.status)) {
+            setNotiMessage({
+                type: 'error',
+                message: 'A sua sessão expirou, para continuar faça login novamente.'
+            });
+            setDataUser(null);
+        } else {
+            setNotiMessage({
+                type: 'error',
+                message: `Erro, algo deu errado ${err.response?.data?.msg}`
+            });
+        }
+    });
+};
+
   const getData = (id) => {
     if (id.trim() !== "") {
       setLoadingTable(true);
@@ -310,17 +346,13 @@ const formatNumberWithLeadingZeros = (number, length) => {
             <AiOutlineEdit />
             <span>CONFIGURAR GRUA</span>
           </Button>
-          <Button
-            className="PagamentosSearch_header_editBtn"
-            onClick={() => {
-              navigate(`${links.REINICIAR}/${id}`, {
-                state: location.state,
-              });
-            }}
-          >
-            <AiOutlineEdit />
-            <span>REINICAR MAQUINA</span>
-          </Button>
+          <Button className="PagamentosSearch_header_editBtn" 
+          onClick={() => {
+                        if (!isLoading) reiniciarmaquina()
+                    }} disabled={isLoading}>
+                        REINICAR MAQUINA
+                    </Button>
+        
           <div className="PagamentosSearch_datePicker">
             {/* <span> Filtro por data:</span> */}
             <FontAwesomeIcon
