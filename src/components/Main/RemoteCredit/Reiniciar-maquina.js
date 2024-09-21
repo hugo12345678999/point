@@ -26,7 +26,7 @@ const Reiniciar = () => {
             setIsLoading(false);
             setNotiMessage({
                 type: 'success',
-                message: 'CONFIGURANDO GARRA FRACA! AGUARDE O VALOR SER MODIFICADO PARA CONFIGURAR OUTRA FUNÇÃO!'
+                message: 'REINICIANDO A MAQUINA!'
             });
         })
         .catch(err => {
@@ -49,7 +49,7 @@ const Reiniciar = () => {
     return (
         <>
             {isLoading && <LoadingAction />}
-            <div style={{ textAlign: "center", marginTop: "20px" }}>
+            <div style={{ textAlign: "center", marginTop: "40px" }}>
                 <Button 
                     onClick={onSave} 
                     disabled={isLoading} 
