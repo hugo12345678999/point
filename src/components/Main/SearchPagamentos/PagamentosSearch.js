@@ -307,7 +307,13 @@ const formatNumberWithLeadingZeros = (number, length) => {
                 state: location.state,
               });
             }}
-          >
+            style={{
+              backgroundColor: 'black',
+              color: 'white', // Para o texto preto
+              border: 'none', // Remove a borda
+              padding: '10px 10px', // Ajuste do padding
+              cursor: isLoading ? 'not-allowed' : 'pointer' // Altera o cursor
+            }}>
             <AiOutlineEdit />
             <span>Editar</span>
           </Button>
@@ -318,7 +324,13 @@ const formatNumberWithLeadingZeros = (number, length) => {
                 state: location.state,
               });
             }}
-          >
+            style={{
+              backgroundColor: 'black',
+              color: 'white', // Para o texto preto
+              border: 'none', // Remove a borda
+              padding: '10px 10px', // Ajuste do padding
+              cursor: isLoading ? 'not-allowed' : 'pointer' // Altera o cursor
+            }}>
             <AiFillDelete />
             <span>Excluir Pagamentos</span>
           </Button>
@@ -332,7 +344,13 @@ const formatNumberWithLeadingZeros = (number, length) => {
                 state: location.state,
               });
             }}
-          >
+           style={{
+          backgroundColor: 'black',
+          color: 'white', // Para o texto preto
+          border: 'none', // Remove a borda
+          padding: '10px 10px', // Ajuste do padding
+          cursor: isLoading ? 'not-allowed' : 'pointer' // Altera o cursor
+        }}>
             <AiFillDollarCircle />
             <span>credito remoto</span>
           </Button>
@@ -343,8 +361,13 @@ const formatNumberWithLeadingZeros = (number, length) => {
                 state: location.state,
               });
             }}
-            
-          >
+            style={{
+              backgroundColor: 'black',
+              color: 'white', // Para o texto preto
+              border: 'none', // Remove a borda
+              padding: '10px 10px', // Ajuste do padding
+              cursor: isLoading ? 'not-allowed' : 'pointer' // Altera o cursor
+            }}>
             <span>CONFIGURAR GRUA</span>
           </Button>
           <Button className="PagamentosSearch_header_editBtn" 
