@@ -109,7 +109,7 @@ const EditGarraManualGarraForteCliente = (props) => {
             <div className="AddMachine_container">
                 <div className="AddMachine_header">
                     <div className="AddMachine_header_title">
-                       ALTERAR GARRA FORTE {maquinaInfos.nome}
+                    ALTERAR MANUAL GARRA FORTE {maquinaInfos.nome}
                     </div>
                     <div className="AddMachine_header_back" onClick={() => {
                         navigate(`${links.FORNECEDOR_SEARCH_CANAIS}/${id}`, { state: location.state });
