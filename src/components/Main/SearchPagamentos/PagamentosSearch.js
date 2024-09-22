@@ -315,7 +315,7 @@ const formatNumberWithLeadingZeros = (number, length) => {
               cursor: isLoading ? 'not-allowed' : 'pointer' // Altera o cursor
             }}>
             <AiOutlineEdit />
-            <span>Editar</span>
+            <span>EDITAR</span>
           </Button>
           <Button
             className="PagamentosSearch_header_editBtn"
@@ -332,7 +332,7 @@ const formatNumberWithLeadingZeros = (number, length) => {
               cursor: isLoading ? 'not-allowed' : 'pointer' // Altera o cursor
             }}>
             <AiFillDelete />
-            <span>Excluir Pagamentos</span>
+            <span>EXCLUIR PAGAMENTOS</span>
           </Button>
           {/*<Link to={links.REMOTE_CREDIT.replace(':id', id)}>*/}
           {/*   */}
@@ -352,7 +352,7 @@ const formatNumberWithLeadingZeros = (number, length) => {
           cursor: isLoading ? 'not-allowed' : 'pointer' // Altera o cursor
         }}>
             <AiFillDollarCircle />
-            <span>credito remoto</span>
+            <span>CREDITO REMOTO</span>
           </Button>
           <Button
             className="PagamentosSearch_header_editBtn"
