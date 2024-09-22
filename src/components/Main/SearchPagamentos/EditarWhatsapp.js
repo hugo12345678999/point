@@ -323,30 +323,7 @@ const EditarWhatsapp = (props) => {
             <div className="Update_Pagamento_itemFieldError">{errors.apikey}</div>
           )}
         </div>
-        <div className="Update_Pagamento_itemField">
-          <label className="Update_Pagamento_itemFieldLabel" htmlFor="contadorcredito">
-            ESTOQUE:
-          </label>
-          <Input
-            placeholder={"1,50"}
-            value={data.contadorpelucia}
-            id="contadorpelucia"
-            type="number"
-            name="contadorpelucia"
-            autoComplete="contadorpelucia"
-            onChange={(event) => {
-              handleChange("contadorpelucia", event.target.value);
-            }}
-            className={`${
-              !!errors.contadorpelucia ? "Update_Pagamento_inputError" : ""
-            }`}
-          />
-          {errors.contadorpelucia && (
-            <div className="Update_Pagamento_itemFieldError">
-              {errors.contadorspelucia}
-            </div>
-          )}
-        </div>
+       
 
         <div className="Update_Pagamento_itemField">
           <Button
