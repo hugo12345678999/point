@@ -124,7 +124,14 @@ const RemoteCredit = (props) => {
                     </div>
                     <Button className="AddMachine_saveBtn" onClick={() => {
                         if (!isLoading) onSave()
-                    }} disabled={isLoading}>
+                    }} disabled={isLoading}
+                    style={{
+                        backgroundColor: 'black',
+                        color: 'white', // Para o texto preto
+                        border: 'none', // Remove a borda
+                        padding: '10px 10px', // Ajuste do padding
+                        cursor: isLoading ? 'not-allowed' : 'pointer' // Altera o cursor
+                      }}>
                         ENVIAR
                     </Button>
                 </div>
