@@ -414,7 +414,7 @@ const formatNumberWithLeadingZeros = (number, length) => {
           cursor: isLoading ? 'not-allowed' : 'pointer' // Altera o cursor
         }}>
             
-            <span>Relatório</span>
+            <span>RELATORIO</span>
           </Button>
         </div>
         <Link

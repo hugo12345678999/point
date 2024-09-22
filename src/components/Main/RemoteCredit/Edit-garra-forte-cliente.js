@@ -176,7 +176,8 @@ const EditGarraForteCliente = (props) => {
                             <div className="AddMachine_itemFieldError">{errors.valor}</div>
                         )}
                     </div>
-                    <Button className="AddMachine_saveBtn" onClick={() => {
+                    <Button className="AddMachine_saveBtn" 
+                    onClick={() => {
                         if (!isLoading) onSave()
                     }} disabled={isLoading}>
                         ENVIAR
