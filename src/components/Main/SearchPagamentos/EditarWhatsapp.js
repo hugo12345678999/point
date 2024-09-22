@@ -62,9 +62,7 @@ const EditarWhatsapp = (props) => {
     if (data.apikey.trim() === "") {
       errorsTemp.apikey = "API Key é obrigatória";
     }
-    if (data.contadorpelucia.trim() === "") {
-      errorsTemp.contadorpelucia = "contadorpelucia é obrigatória";
-    }
+
     if (Object.keys(errorsTemp).length > 0) {
       setErrors(errorsTemp);
       return;
@@ -82,7 +80,7 @@ const EditarWhatsapp = (props) => {
           descricao: data.descricao,
           whatsapp: data.whatsapp,
           apikey: data.apikey,
-          contadorpelucia: data.contadorpelucia,
+          
         },
         {
           headers: {
