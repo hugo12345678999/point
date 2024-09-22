@@ -325,7 +325,7 @@ const formatNumberWithLeadingZeros = (number, length) => {
               });
             }}
             style={{
-              backgroundColor: 'black',
+              backgroundColor: 'red',
               color: 'white', // Para o texto preto
               border: 'none', // Remove a borda
               padding: '10px 10px', // Ajuste do padding
