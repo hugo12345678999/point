@@ -173,7 +173,7 @@ const SignIn = (props) => {
           },
         ]}
         authSubmit={"Entrar"}
-        textImage={"PIX GRUA"}
+        textImage={"VEND PRO MAX"}
         // authFooter={[
         //     {
         //         text1: 'Registre-se como um',
