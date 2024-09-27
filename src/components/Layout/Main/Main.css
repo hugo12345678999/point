@@ -29,7 +29,7 @@ button {
 
 .sidebar-burger {
   width: 60px;
-  height: 60px;
+  height: 40px;
   display: grid;
   place-items: center;
   background-color: #f9f9f9;
