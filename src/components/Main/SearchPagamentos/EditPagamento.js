@@ -80,8 +80,7 @@ const EditPagamento = (props) => {
           nome: data.nome,
           descricao: data.descricao,
         
-          estoque5: Number(data.estoque5),
-       
+         
           contadorcreditobaixo: Number(data.contadorcreditobaixo),
           contadorpelucia: Number(data.contadorpelucia),
           contadorpeluciabaixo: Number(data.contadorpeluciabaixo),
@@ -125,8 +124,129 @@ const EditPagamento = (props) => {
       });
   };
  
- 
+  const credito = () => {
+    // check require
+    let errorsTemp = {};
 
+  
+
+  
+    if (data.contadorcredito < 0) {
+      errorsTemp.contadorcredito = "RELOGIOO CREDITO é obrigatório";
+    }
+    if (Object.keys(errorsTemp).length > 0) {
+      setErrors(errorsTemp);
+      return;
+    }
+
+    setIsLoading(true);
+    axios
+      .put(
+        `${process.env.REACT_APP_SERVIDOR}/maquina-cliente`,
+        {
+          id,
+
+          contadorcredito: Number(data.contadorcredito),
+         
+        },
+        {
+          headers: {
+            "x-access-token": token,
+            "content-type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        setIsLoading(false);
+        navigate(links.DASHBOARD_FORNECEDOR);
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        if ([401, 403].includes(err.response.status)) {
+          setNotiMessage({
+            type: "error",
+            message:
+              "A sua sessão expirou, para continuar faça login novamente.",
+          });
+        } else if (err.response.status === 400) {
+          setNotiMessage({
+            type: "error",
+            message: "Já existe uma máquina com esse nome",
+          });
+          setErrors((prev) => ({
+            ...prev,
+            nome: "Já existe uma máquina com esse nome",
+          }));
+        } else {
+          setNotiMessage({
+            type: "error",
+            message: "Um erro ocorreu",
+          });
+        }
+      });
+  };
+
+  const pelucia = () => {
+    // check require
+    let errorsTemp = {};
+
+  
+
+  
+    if (data.contadorcredito < 0) {
+      errorsTemp.estoque = "Estoque é obrigatório";
+    }
+    if (Object.keys(errorsTemp).length > 0) {
+      setErrors(errorsTemp);
+      return;
+    }
+
+    setIsLoading(true);
+    axios
+      .put(
+        `${process.env.REACT_APP_SERVIDOR}/maquina-cliente`,
+        {
+          id,
+
+          estoque: Number(data.estoque),
+         
+        },
+        {
+          headers: {
+            "x-access-token": token,
+            "content-type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        setIsLoading(false);
+        navigate(links.DASHBOARD_FORNECEDOR);
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        if ([401, 403].includes(err.response.status)) {
+          setNotiMessage({
+            type: "error",
+            message:
+              "A sua sessão expirou, para continuar faça login novamente.",
+          });
+        } else if (err.response.status === 400) {
+          setNotiMessage({
+            type: "error",
+            message: "Já existe uma máquina com esse nome",
+          });
+          setErrors((prev) => ({
+            ...prev,
+            nome: "Já existe uma máquina com esse nome",
+          }));
+        } else {
+          setNotiMessage({
+            type: "error",
+            message: "Um erro ocorreu",
+          });
+        }
+      });
+  };
 
 
 
@@ -259,7 +379,72 @@ const EditPagamento = (props) => {
         >
           SALVAR ALTERAÇÕES
         </Button>
-      
+        <div className="Update_Pagamento_itemField">
+          <label className="Update_Pagamento_itemFieldLabel" htmlFor="contadorcredito">
+            RELOGIO CREDITO DEFINITIVO:
+          </label>
+          <Input
+            placeholder={"1.50"}
+            value={data.contadorcredito}
+            id="contadorcredito"
+            type="number"
+            name="contadorcredito"
+            autoComplete="contadorcredito"
+            onChange={(event) => {
+              handleChange("contadorcredito", event.target.value);
+            }}
+            className={`${
+              !!errors.contadorcredito ? "Update_Pagamento_inputError" : ""
+            }`}
+          />
+          {errors.estoque && (
+            <div className="Update_Pagamento_itemFieldError">
+              {errors.contadorcredito}
+            </div>
+          )}
+        </div>
+        <Button
+          className="Update_Pagamento_saveBtn"
+          onClick={() => {
+            if (!isLoading) credito();
+          }}
+          disabled={isLoading}
+        >
+          SALVAR CREDITO
+        </Button>
+        <div className="Update_Pagamento_itemField">
+          <label className="Update_Pagamento_itemFieldLabel" htmlFor="estoque">
+            RELOGIO PELUCIA DEFINITIVO:
+          </label>
+          <Input
+            placeholder={"1.50"}
+            value={data.estoque}
+            id="estoque"
+            type="number"
+            name="estoque"
+            autoComplete="estoque"
+            onChange={(event) => {
+              handleChange("estoque", event.target.value);
+            }}
+            className={`${
+              !!errors.estoque ? "Update_Pagamento_inputError" : ""
+            }`}
+          />
+          {errors.estoque && (
+            <div className="Update_Pagamento_itemFieldError">
+              {errors.estoque}
+            </div>
+          )}
+        </div>
+        <Button
+          className="Update_Pagamento_saveBtn"
+          onClick={() => {
+            if (!isLoading) credito();
+          }}
+          disabled={isLoading}
+        >
+          SALVAR PELUCIA
+        </Button>
         
       </div>
     </div>
