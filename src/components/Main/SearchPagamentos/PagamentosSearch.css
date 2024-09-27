@@ -21,6 +21,17 @@
   font-size: 16px;
   font-weight: 600;
 }
+.PagamentosSearch_nbList12 {
+  margin-left: 5px;
+  margin-bottom: 5px; /* Adiciona 5px de margem abaixo do elemento */
+  background: #000000;
+  color: #FFFFFF;
+  border-radius: 4px;
+  padding: 2px 5px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
 .PagamentosSearch_nbList2 {
   margin-left: 5px;
   background: #595959;
