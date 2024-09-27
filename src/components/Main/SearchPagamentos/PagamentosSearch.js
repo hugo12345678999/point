@@ -332,7 +332,7 @@ const formatNumberWithLeadingZeros = (number, length) => {
               cursor: isLoading ? 'not-allowed' : 'pointer' // Altera o cursor
             }}>
             <AiFillDelete />
-            <span>EXCLUIR PAGAMENTOS</span>
+            <span>LIMPAR HISTORICO</span>
           </Button>
           {/*<Link to={links.REMOTE_CREDIT.replace(':id', id)}>*/}
           {/*   */}
