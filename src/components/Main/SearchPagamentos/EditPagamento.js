@@ -21,9 +21,12 @@ const EditPagamento = (props) => {
     nome: maquinaInfos?.nome ?? "",
     descricao: maquinaInfos?.descricao ?? "",
     estoque: Number(maquinaInfos?.estoque) ?? 0,
+    estoquebaixo: Number(maquinaInfos?.estoquebaixo) ?? 0,
     estado: Number(maquinaInfos?.estado) ?? 0,
     contadorcredito: Number(maquinaInfos?.contadorcredito) ?? 0,
+    contadorcreditobaixo: Number(maquinaInfos?.contadorcreditobaixo) ?? 0,
     contadorpelucia: Number(maquinaInfos?.contadorpelucia) ?? 0,
+    contadorpeluciabaixo: Number(maquinaInfos?.contadorpeluciabaixo) ?? 0,
     store_id: Number(maquinaInfos?.storeId) ?? 0,
     valorDoPulso: maquinaInfos?.pulso ?? 0,
   });
@@ -77,9 +80,11 @@ const EditPagamento = (props) => {
           nome: data.nome,
           descricao: data.descricao,
           estoque: Number(data.estoque),
-
+          estoquebaixo: Number(data.estoquebaixo),
           contadorcredito: Number(data.contadorcredito),
+          contadorcreditobaixo: Number(data.contadorcreditobaixo),
           contadorpelucia: Number(data.contadorpelucia),
+          contadorpeluciabaixo: Number(data.contadorpeluciabaixo),
           store_id: String(data.store_id),
           valorDoPulso: data.valorDoPulso,
         },
@@ -191,7 +196,7 @@ const EditPagamento = (props) => {
        
         <div className="Update_Pagamento_itemField">
           <label className="Update_Pagamento_itemFieldLabel" htmlFor="contadorcredito">
-            RELOGIO CREDITO:
+            RELOGIO CREDITO CIMA:
           </label>
           <Input
             placeholder={"1.50"}
@@ -214,8 +219,32 @@ const EditPagamento = (props) => {
           )}
         </div>
         <div className="Update_Pagamento_itemField">
+          <label className="Update_Pagamento_itemFieldLabel" htmlFor="contadorcreditobaixo">
+            RELOGIO CREDITO BAIXO:
+          </label>
+          <Input
+            placeholder={"1.50"}
+            value={data.contadorcreditobaixo}
+            id="contadorcreditobaixo"
+            type="number"
+            name="contadorcreditobaixo"
+            autoComplete="contadorcreditobaixo"
+            onChange={(event) => {
+              handleChange("contadorcreditobaixo", event.target.value);
+            }}
+            className={`${
+              !!errors.contadorcreditobaixo ? "Update_Pagamento_inputError" : ""
+            }`}
+          />
+          {errors.contadorcreditobaixo && (
+            <div className="Update_Pagamento_itemFieldError">
+              {errors.contadorcreditobaixo}
+            </div>
+          )}
+        </div>
+        <div className="Update_Pagamento_itemField">
           <label className="Update_Pagamento_itemFieldLabel" htmlFor="contadorpelucia">
-            RELOGIO PELUCIA:
+            RELOGIO PELUCIA CIMA:
           </label>
           <Input
             placeholder={"1.50"}
@@ -234,6 +263,30 @@ const EditPagamento = (props) => {
           {errors.estoque && (
             <div className="Update_Pagamento_itemFieldError">
               {errors.estoque}
+            </div>
+          )}
+        </div>
+        <div className="Update_Pagamento_itemField">
+          <label className="Update_Pagamento_itemFieldLabel" htmlFor="contadorpelucia">
+            RELOGIO PELUCIA BAIXO:
+          </label>
+          <Input
+            placeholder={"1.50"}
+            value={data.estoquebaixo}
+            id="estoquebaixo"
+            type="number"
+            name="estoquebaixo"
+            autoComplete="estoquebaixo"
+            onChange={(event) => {
+              handleChange("estoquebaixo", event.target.value);
+            }}
+            className={`${
+              !!errors.estoquebaixo ? "Update_Pagamento_inputError" : ""
+            }`}
+          />
+          {errors.estoque && (
+            <div className="Update_Pagamento_itemFieldError">
+              {errors.estoquebaixo}
             </div>
           )}
         </div>
