@@ -159,8 +159,6 @@ const EditPagamento = (props) => {
           contadorcredito: Number(data.contadorcredito),
        
          
-          store_id: String(data.store_id),
-          valorDoPulso: data.valorDoPulso,
         },
         {
           headers: {
@@ -234,8 +232,6 @@ const EditPagamento = (props) => {
        
        
          
-          store_id: String(data.store_id),
-          valorDoPulso: data.valorDoPulso,
         },
         {
           headers: {
