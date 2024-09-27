@@ -21,7 +21,9 @@ const AdminEditPagamento = (props) => {
     nome: maquinaInfos?.nome ?? "",
     descricao: maquinaInfos?.descricao ?? "",
     estoque: Number(maquinaInfos?.estoque) ?? 0,
+    estoquebaixo: Number(maquinaInfos?.estoquebaixo) ?? 0,
     contadorcredito: Number(maquinaInfos?.contadorcredito) ?? 0,
+    contadorcreditobaixo: Number(maquinaInfos?.contadorcreditobaixo) ?? 0,
     contadorpelucia: Number(maquinaInfos?.contadorpelucia) ?? 0,
     store_id: Number(maquinaInfos?.store_id) ?? 0,
     valorDoPulso: maquinaInfos?.pulso ?? 0,
@@ -75,6 +77,8 @@ const AdminEditPagamento = (props) => {
           nome: data.nome,
           descricao: data.descricao,
           estoque: Number(data.estoque),
+          estoquebaixo: Number(data.estoquebaixo),
+          contadorcreditobaixo: Number(data.contadorcreditobaixo),
           contadorcredito: Number(data.contadorcredito),
           contadorpelucia: Number(data.contadorpelucia),
           store_id: String(data.store_id),
@@ -351,7 +355,7 @@ const AdminEditPagamento = (props) => {
             className="Admin_Update_Pagamento_itemFieldLabel"
             htmlFor="estoque"
           >
-            Estoque:
+            RELOGIO PELUCIA:
           </label>
           <Input
             placeholder={"0"}
@@ -373,6 +377,32 @@ const AdminEditPagamento = (props) => {
           )}
         </div>
 
+        <div className="Admin_Update_Pagamento_itemField">
+          <label
+            className="Admin_Update_Pagamento_itemFieldLabel"
+            htmlFor="estoque"
+          >
+            RELOGIO CREDITO:
+          </label>
+          <Input
+            placeholder={"0"}
+            value={data.contadorcreditobaixo}
+            id="contadorcreditobaixo"
+            type="number"
+            min={0}
+            name="contadorcreditobaixo"
+            autoComplete="contadorcreditobaixo"
+            onChange={(event) => {
+              handleChange("contadorcreditobaixo", event.target.value);
+            }}
+            className={!!errors.contadorcreditobaixo ? "Admin_Update_Pagamento_inputError" : ""}
+          />
+          {errors.contadorcreditobaixo && (
+            <div className="Admin_Update_Pagamento_itemFieldError">
+              {errors.contadorcreditobaixo}
+            </div>
+          )}
+        </div>
         <Button
           className="Admin_Update_Pagamento_saveBtn"
           onClick={() => {
