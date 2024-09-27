@@ -57,7 +57,7 @@ const Main = (props) => {
             )}
           </button>
           <div className={`Main_menuProfile ${isOpen ? "open" : ""}`}>
-            <div className="circle-icon">
+            <div className="square-icon">
               <span>VEND PRO MAX</span>
             </div>
           </div>
