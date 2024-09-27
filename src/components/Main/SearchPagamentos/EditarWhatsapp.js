@@ -77,6 +77,7 @@ const EditarWhatsapp = (props) => {
         {
           id,
           nome: data.nome,
+          contadorpelucia: data.contadorpelucia,
           descricao: data.descricao,
           whatsapp: data.whatsapp,
           apikey: data.apikey,
@@ -322,7 +323,7 @@ const EditarWhatsapp = (props) => {
           )}
         </div>
         <div className="Update_Pagamento_itemField">
-          <label className="Update_Pagamento_itemFieldLabel" htmlFor="contadorcredito">
+          <label className="Update_Pagamento_itemFieldLabel" htmlFor="contadorpelucia">
             ESTOQUE:
           </label>
           <Input
