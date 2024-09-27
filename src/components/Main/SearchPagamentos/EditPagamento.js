@@ -374,13 +374,13 @@ const EditPagamento = (props) => {
           </label>
           <Input
             placeholder={"1.50"}
-            value={data.estoque5}
-            id="estoque5"
+            value={data.contadorpelucia}
+            id="contadorpelucia"
             type="number"
-            name="estoque5"
-            autoComplete="estoque5"
+            name="contadorpelucia"
+            autoComplete="contadorpelucia"
             onChange={(event) => {
-              handleChange("estoque5", event.target.value);
+              handleChange("contadorpelucia", event.target.value);
             }}
             className={`${
               !!errors.estoque5 ? "Update_Pagamento_inputError" : ""
