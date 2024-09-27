@@ -464,11 +464,11 @@ const formatNumberWithLeadingZeros = (number, length) => {
 <div style={{ marginLeft: "1px" }}>RELOGIO PELUCIA</div>
 <div className="PagamentosSearch_nbList1">
   {formatNumberWithLeadingZeros(estoque, 6) ?? "-"}
-  </div>
+  
 <div className="PagamentosSearch_nbList12"  style={{ marginTop: "10px" }}>
   {formatNumberWithLeadingZeros(estoque, 6) ?? "-"}
 </div>
-
+</div>
             </div>
         
             <img src={qr_code_icon} alt="QR Code Icon" style={{ width: '200px', height: '50px' }} />
