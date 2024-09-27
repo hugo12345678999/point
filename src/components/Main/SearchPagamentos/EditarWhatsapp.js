@@ -56,12 +56,7 @@ const EditarWhatsapp = (props) => {
     // Verificação de campos obrigatórios
     let errorsTemp = {};
   
-    if (data.whatsapp.trim() === "") {
-      errorsTemp.whatsapp = "Este campo é obrigatório";
-    }
-    if (data.apikey.trim() === "") {
-      errorsTemp.apikey = "API Key é obrigatória";
-    }
+
 
     if (Object.keys(errorsTemp).length > 0) {
       setErrors(errorsTemp);
@@ -163,6 +158,40 @@ const EditarWhatsapp = (props) => {
   
 
 
+  const estoque = () => {
+    setIsLoading(true);
+  
+    // Primeira requisição POST para registrar entrada de pelúcia
+    axios
+      .post(
+        `${process.env.REACT_APP_SERVIDOR}/contador-pelucia-baixo/${id}/?valor=${data.contadorpelucia}`,
+        {
+        
+        },
+        {
+          headers: {
+            "x-access-token": token,
+            "content-type": "application/json",
+          },
+        }
+      )
+     
+      .then((res) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "success",
+          message: "Entrada do produto registrada e estoque atualizado com sucesso!",
+        });
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "error",
+          message: "Um erro ocorreu ao registrar a entrada do produto ou atualizar o estoque",
+        });
+      });
+  };
+  
 
 
   const onEntradaPelucia = () => {
@@ -322,6 +351,13 @@ const EditarWhatsapp = (props) => {
             <div className="Update_Pagamento_itemFieldError">{errors.apikey}</div>
           )}
         </div>
+        <Button
+            type="primary"
+            onClick={onSave}
+            className="Update_Pagamento_saveBtn"
+          >
+            SALVAR ALTERAÇÕES
+          </Button>
         <div className="Update_Pagamento_itemField">
           <label className="Update_Pagamento_itemFieldLabel" htmlFor="contadorpelucia">
             ESTOQUE:
@@ -350,10 +386,10 @@ const EditarWhatsapp = (props) => {
         <div className="Update_Pagamento_itemField">
           <Button
             type="primary"
-            onClick={onSave}
+            onClick={estoque}
             className="Update_Pagamento_saveBtn"
           >
-            SALVAR ALTERAÇÕES
+            SALVAR ESTOQUE
           </Button>
         </div>
 
