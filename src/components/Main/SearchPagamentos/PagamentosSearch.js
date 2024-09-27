@@ -38,7 +38,9 @@ const PagamentosSearch = (props) => {
   const [estornos, setEstornos] = useState("");
   const [probabilidade, setprobabilidade] = useState("");
   const [estoque, setEstoque] = useState("");
+  const [estoquebaixo, setEstoqueBaixo] = useState("");
   const [contadorcredito, setContadorCredito] = useState("");
+  const [contadorcreditobaixo, setContadorCreditoBaixo] = useState("");
   const [contadorpelucia, setContadorPelucia] = useState("");
   const [cash, setCash] = useState("");
   const [total, setTotal] = useState("");
@@ -119,8 +121,10 @@ const PagamentosSearch = (props) => {
           setCash(res?.data?.cash);
           setprobabilidade(res?.data?.probababilidade);
           setEstoque(res?.data?.estoque);
+          setEstoqueBaixo(res?.data?.estoquebaixo);
           setEstado(res?.data?.estado);
           setContadorCredito(res?.data?.contadorcredito);
+          setContadorCreditoBaixo(res?.data?.contadorcreditobaixo);
           setContadorPelucia(res?.data?.contadorpelucia);
           setTotal(res.data.total);
           if (res.status === 200 && Array.isArray(res.data.pagamentos)) {
