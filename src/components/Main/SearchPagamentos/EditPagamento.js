@@ -297,6 +297,65 @@ const EditPagamento = (props) => {
           )}
         </div>
        
+    
+        <div className="Update_Pagamento_itemField">
+          <label className="Update_Pagamento_itemFieldLabel" htmlFor="contadorcreditobaixo">
+            RELOGIO CREDITO BAIXO:
+          </label>
+          <Input
+            placeholder={"1.50"}
+            value={data.contadorcreditobaixo}
+            id="contadorcreditobaixo"
+            type="number"
+            name="contadorcreditobaixo"
+            autoComplete="contadorcreditobaixo"
+            onChange={(event) => {
+              handleChange("contadorcreditobaixo", event.target.value);
+            }}
+            className={`${
+              !!errors.contadorcreditobaixo ? "Update_Pagamento_inputError" : ""
+            }`}
+          />
+          {errors.contadorcreditobaixo && (
+            <div className="Update_Pagamento_itemFieldError">
+              {errors.contadorcreditobaixo}
+            </div>
+          )}
+        </div>
+       
+        <div className="Update_Pagamento_itemField">
+          <label className="Update_Pagamento_itemFieldLabel" htmlFor="contadorpelucia">
+            RELOGIO PELUCIA BAIXO:
+          </label>
+          <Input
+            placeholder={"1.50"}
+            value={data.estoque5}
+            id="estoque5"
+            type="number"
+            name="estoque5"
+            autoComplete="estoque5"
+            onChange={(event) => {
+              handleChange("estoque5", event.target.value);
+            }}
+            className={`${
+              !!errors.estoque5 ? "Update_Pagamento_inputError" : ""
+            }`}
+          />
+          {errors.estoque && (
+            <div className="Update_Pagamento_itemFieldError">
+              {errors.estoque5}
+            </div>
+          )}
+        </div>
+        <Button
+          className="Update_Pagamento_saveBtn"
+          onClick={() => {
+            if (!isLoading) onSave();
+          }}
+          disabled={isLoading}
+        >
+          SALVAR ALTERAÇÕES
+        </Button>
         <div className="Update_Pagamento_itemField">
           <label className="Update_Pagamento_itemFieldLabel" htmlFor="contadorcredito">
             RELOGIO CREDITO CIMA:
@@ -363,65 +422,6 @@ const EditPagamento = (props) => {
         >
           SALVAR RELOGIO PELUCIA
         </Button>
-        <div className="Update_Pagamento_itemField">
-          <label className="Update_Pagamento_itemFieldLabel" htmlFor="contadorcreditobaixo">
-            RELOGIO CREDITO BAIXO:
-          </label>
-          <Input
-            placeholder={"1.50"}
-            value={data.contadorcreditobaixo}
-            id="contadorcreditobaixo"
-            type="number"
-            name="contadorcreditobaixo"
-            autoComplete="contadorcreditobaixo"
-            onChange={(event) => {
-              handleChange("contadorcreditobaixo", event.target.value);
-            }}
-            className={`${
-              !!errors.contadorcreditobaixo ? "Update_Pagamento_inputError" : ""
-            }`}
-          />
-          {errors.contadorcreditobaixo && (
-            <div className="Update_Pagamento_itemFieldError">
-              {errors.contadorcreditobaixo}
-            </div>
-          )}
-        </div>
-       
-        <div className="Update_Pagamento_itemField">
-          <label className="Update_Pagamento_itemFieldLabel" htmlFor="contadorpelucia">
-            RELOGIO PELUCIA BAIXO:
-          </label>
-          <Input
-            placeholder={"1.50"}
-            value={data.estoque5}
-            id="estoque5"
-            type="number"
-            name="estoque5"
-            autoComplete="estoque5"
-            onChange={(event) => {
-              handleChange("estoque5", event.target.value);
-            }}
-            className={`${
-              !!errors.estoque5 ? "Update_Pagamento_inputError" : ""
-            }`}
-          />
-          {errors.estoque && (
-            <div className="Update_Pagamento_itemFieldError">
-              {errors.estoque5}
-            </div>
-          )}
-        </div>
-        <Button
-          className="Update_Pagamento_saveBtn"
-          onClick={() => {
-            if (!isLoading) onSave();
-          }}
-          disabled={isLoading}
-        >
-          SALVAR ALTERAÇÕES
-        </Button>
-
       </div>
     </div>
   );
