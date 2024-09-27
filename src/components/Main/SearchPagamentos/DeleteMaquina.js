@@ -76,7 +76,7 @@ const DeleteMaquina = (props) => {
                         deleteHandler()
                     }}>
 
-                        <span>SIM, EXCLUA</span>
+                        <span>SIM, LIMPE</span>
                     </Button>
                 </div>
             </div>
