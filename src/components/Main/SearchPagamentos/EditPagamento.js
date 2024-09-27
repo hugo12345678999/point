@@ -21,7 +21,7 @@ const EditPagamento = (props) => {
     nome: maquinaInfos?.nome ?? "",
     descricao: maquinaInfos?.descricao ?? "",
     estoque: Number(maquinaInfos?.estoque) ?? 0,
-    estoquebaixo: Number(maquinaInfos?.estoquebaixo) ?? 0,
+    estoque5: Number(maquinaInfos?.estoque5) ?? 0,
     estado: Number(maquinaInfos?.estado) ?? 0,
     contadorcredito: Number(maquinaInfos?.contadorcredito) ?? 0,
     contadorcreditobaixo: Number(maquinaInfos?.contadorcreditobaixo) ?? 0,
@@ -80,7 +80,7 @@ const EditPagamento = (props) => {
           nome: data.nome,
           descricao: data.descricao,
           estoque: Number(data.estoque),
-          estoquebaixo: Number(data.estoquebaixo),
+          estoque5: Number(data.estoque5),
           contadorcredito: Number(data.contadorcredito),
           contadorcreditobaixo: Number(data.contadorcreditobaixo),
           contadorpelucia: Number(data.contadorpelucia),
@@ -247,7 +247,7 @@ const EditPagamento = (props) => {
             RELOGIO PELUCIA CIMA:
           </label>
           <Input
-            placeholder={"1.50"}
+            placeholder={"1"}
             value={data.estoque}
             id="estoque"
             type="number"
@@ -271,22 +271,22 @@ const EditPagamento = (props) => {
             RELOGIO PELUCIA BAIXO:
           </label>
           <Input
-            placeholder={"1.50"}
-            value={data.estoquebaixo}
-            id="estoquebaixo"
+            placeholder={"1"}
+            value={data.estoque5}
+            id="estoque5"
             type="number"
-            name="estoquebaixo"
-            autoComplete="estoquebaixo"
+            name="estoque5"
+            autoComplete="estoque5"
             onChange={(event) => {
-              handleChange("estoquebaixo", event.target.value);
+              handleChange("estoque5", event.target.value);
             }}
             className={`${
-              !!errors.estoquebaixo ? "Update_Pagamento_inputError" : ""
+              !!errors.estoque5 ? "Update_Pagamento_inputError" : ""
             }`}
           />
           {errors.estoque && (
             <div className="Update_Pagamento_itemFieldError">
-              {errors.estoquebaixo}
+              {errors.estoque5}
             </div>
           )}
         </div>
