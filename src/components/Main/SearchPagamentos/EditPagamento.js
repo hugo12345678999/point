@@ -441,7 +441,7 @@ const EditPagamento = (props) => {
           onClick={() => {
             if (!isLoading) pelucia();
           }}
-          disabled={isLoading}
+      
         >
           SALVAR PELUCIA
         </Button>
