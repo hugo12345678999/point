@@ -20,8 +20,10 @@
   padding: 2px 5px;
   font-size: 16px;
   font-weight: 600;
-  margin-bottom: 10px; /* Adiciona espaço entre os elementos */
+  border: 2px solid #FFFFFF; /* Borda branca */
+  display: block; /* Garante que os elementos fiquem em blocos separados */
 }
+
 
 .PagamentosSearch_nbList12 {
   margin-left: 5px;
