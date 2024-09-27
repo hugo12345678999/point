@@ -456,8 +456,7 @@ const formatNumberWithLeadingZeros = (number, length) => {
                   currency: "BRL",
                 }).format(cash)}
               </div>
-              <div style={{ marginLeft: "20px" }}>Store ID</div>
-<div className="PagamentosSearch_nbList2">{maquinaInfos.storeId}</div>
+      
 <div style={{ marginLeft: "1px" }}>RELOGIO CREDITO</div>
 
 <div style={{ display: "flex", flexDirection: "column" }}>
