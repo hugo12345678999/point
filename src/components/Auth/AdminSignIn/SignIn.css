@@ -12,6 +12,7 @@
 .Admin_SignIn_textTitle {
   font-weight: 700;
   font-size: 40px;
+  color: rgb(0, 0, 0);
   text-align: left;
 }
 
@@ -19,6 +20,7 @@
   font-weight: 700;
   font-size: 24px;
   line-height: 44px;
+
   text-align: left;
   max-width: 500px;
 }
