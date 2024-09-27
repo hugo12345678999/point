@@ -465,7 +465,7 @@ const formatNumberWithLeadingZeros = (number, length) => {
 <div className="PagamentosSearch_nbList1">
   {formatNumberWithLeadingZeros(estoque, 6) ?? "-"}
   </div>
-<div className="PagamentosSearch_nbList12"  style={{ marginTop: "5px" }}>
+<div className="PagamentosSearch_nbList12"  style={{ marginTop: "10px" }}>
   {formatNumberWithLeadingZeros(estoque, 6) ?? "-"}
 </div>
 
