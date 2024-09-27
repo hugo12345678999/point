@@ -79,9 +79,9 @@ const EditPagamento = (props) => {
           id,
           nome: data.nome,
           descricao: data.descricao,
-          estoque: Number(data.estoque),
+        
           estoque5: Number(data.estoque5),
-          contadorcredito: Number(data.contadorcredito),
+       
           contadorcreditobaixo: Number(data.contadorcreditobaixo),
           contadorpelucia: Number(data.contadorpelucia),
           contadorpeluciabaixo: Number(data.contadorpeluciabaixo),
