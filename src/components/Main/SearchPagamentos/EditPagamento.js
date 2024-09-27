@@ -439,7 +439,7 @@ const EditPagamento = (props) => {
         <Button
           className="Update_Pagamento_saveBtn"
           onClick={() => {
-            if (!isLoading) credito();
+            if (!isLoading) pelucia();
           }}
           disabled={isLoading}
         >
