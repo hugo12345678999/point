@@ -38,7 +38,7 @@ const PagamentosSearch = (props) => {
   const [estornos, setEstornos] = useState("");
   const [probabilidade, setprobabilidade] = useState("");
   const [estoque, setEstoque] = useState("");
-  const [estoque5, setEstoque5] = useState("");
+  const [estoquebaixo, setEstoqueBaixo] = useState("");
   const [contadorcredito, setContadorCredito] = useState("");
   const [contadorcreditobaixo, setContadorCreditoBaixo] = useState("");
   const [contadorpelucia, setContadorPelucia] = useState("");
@@ -121,7 +121,7 @@ const PagamentosSearch = (props) => {
           setCash(res?.data?.cash);
           setprobabilidade(res?.data?.probababilidade);
           setEstoque(res?.data?.estoque);
-          setEstoque5(res?.data?.estoque5);
+          setEstoqueBaixo(res?.data?.estoquebaixo);
           setEstado(res?.data?.estado);
           setContadorCredito(res?.data?.contadorcredito);
           setContadorCreditoBaixo(res?.data?.contadorcreditobaixo);
@@ -477,7 +477,7 @@ const formatNumberWithLeadingZeros = (number, length) => {
   </div>
 
   <div className="PagamentosSearch_nbList1" style={{ marginTop: "10px" }}>
-    {formatNumberWithLeadingZeros(estoque5, 6) ?? "-"}
+    {formatNumberWithLeadingZeros(estoquebaixo, 6) ?? "-"}
   </div>
 </div>
 
