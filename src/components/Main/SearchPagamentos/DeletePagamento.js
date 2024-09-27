@@ -76,7 +76,7 @@ const DeletePagamento = (props) => {
                         deleteHandler()
                     }}>
 
-                        <span>SIM, LIMPE</span>
+                        <span>SIM, LIMPAR</span>
                     </Button>
                 </div>
             </div>
