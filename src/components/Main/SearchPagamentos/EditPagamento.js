@@ -21,7 +21,7 @@ const EditPagamento = (props) => {
     nome: maquinaInfos?.nome ?? "",
     descricao: maquinaInfos?.descricao ?? "",
     estoque: Number(maquinaInfos?.estoque) ?? 0,
-    estoque5: Number(maquinaInfos?.estoque5) ?? 0,
+    estoquebaixo: Number(maquinaInfos?.estoquebaixo) ?? 0,
     estado: Number(maquinaInfos?.estado) ?? 0,
     contadorcredito: Number(maquinaInfos?.contadorcredito) ?? 0,
     contadorcreditobaixo: Number(maquinaInfos?.contadorcreditobaixo) ?? 0,
@@ -124,7 +124,110 @@ const EditPagamento = (props) => {
         }
       });
   };
+  const credito = () => {
+  
+    if (Object.keys(errorsTemp).length > 0) {
+      setErrors(errorsTemp);
+      return;
+    }
 
+    setIsLoading(true);
+    axios
+      .put(
+        `${process.env.REACT_APP_SERVIDOR}/maquina-cliente`,
+        {
+          id,
+          contadorcreditobaixo: Number(data.contadorcreditobaixo),
+         
+        },
+        {
+          headers: {
+            "x-access-token": token,
+            "content-type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        setIsLoading(false);
+        navigate(links.DASHBOARD_FORNECEDOR);
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        if ([401, 403].includes(err.response.status)) {
+          setNotiMessage({
+            type: "error",
+            message:
+              "A sua sessão expirou, para continuar faça login novamente.",
+          });
+        } else if (err.response.status === 400) {
+          setNotiMessage({
+            type: "error",
+            message: "Já existe uma máquina com esse nome",
+          });
+          setErrors((prev) => ({
+            ...prev,
+            nome: "Já existe uma máquina com esse nome",
+          }));
+        } else {
+          setNotiMessage({
+            type: "error",
+            message: "Um erro ocorreu",
+          });
+        }
+      });
+  };
+  const pelucia = () => {
+  
+    if (Object.keys(errorsTemp).length > 0) {
+      setErrors(errorsTemp);
+      return;
+    }
+
+    setIsLoading(true);
+    axios
+      .put(
+        `${process.env.REACT_APP_SERVIDOR}/maquina-cliente`,
+        {
+          id,
+          estoque5: Number(data.estoque5),
+         
+        },
+        {
+          headers: {
+            "x-access-token": token,
+            "content-type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        setIsLoading(false);
+        navigate(links.DASHBOARD_FORNECEDOR);
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        if ([401, 403].includes(err.response.status)) {
+          setNotiMessage({
+            type: "error",
+            message:
+              "A sua sessão expirou, para continuar faça login novamente.",
+          });
+        } else if (err.response.status === 400) {
+          setNotiMessage({
+            type: "error",
+            message: "Já existe uma máquina com esse nome",
+          });
+          setErrors((prev) => ({
+            ...prev,
+            nome: "Já existe uma máquina com esse nome",
+          }));
+        } else {
+          setNotiMessage({
+            type: "error",
+            message: "Um erro ocorreu",
+          });
+        }
+      });
+  };
   return (
     <div className="PagamentosSearch_container">
       {isLoading && <LoadingAction />}
@@ -218,6 +321,48 @@ const EditPagamento = (props) => {
             </div>
           )}
         </div>
+        <Button
+          className="Update_Pagamento_saveBtn"
+          onClick={() => {
+            if (!isLoading) credito();
+          }}
+          disabled={isLoading}
+        >
+          SALVAR RELOGIO CREDITO
+        </Button>
+        <div className="Update_Pagamento_itemField">
+          <label className="Update_Pagamento_itemFieldLabel" htmlFor="contadorpelucia">
+            RELOGIO PELUCIA CIMA:
+          </label>
+          <Input
+            placeholder={"1.50"}
+            value={data.estoque}
+            id="estoque"
+            type="number"
+            name="estoque"
+            autoComplete="estoque"
+            onChange={(event) => {
+              handleChange("estoque", event.target.value);
+            }}
+            className={`${
+              !!errors.estoque ? "Update_Pagamento_inputError" : ""
+            }`}
+          />
+          {errors.estoque && (
+            <div className="Update_Pagamento_itemFieldError">
+              {errors.estoque}
+            </div>
+          )}
+        </div>
+        <Button
+          className="Update_Pagamento_saveBtn"
+          onClick={() => {
+            if (!isLoading) pelucia();
+          }}
+          disabled={isLoading}
+        >
+          SALVAR RELOGIO PELUCIA
+        </Button>
         <div className="Update_Pagamento_itemField">
           <label className="Update_Pagamento_itemFieldLabel" htmlFor="contadorcreditobaixo">
             RELOGIO CREDITO BAIXO:
@@ -242,36 +387,13 @@ const EditPagamento = (props) => {
             </div>
           )}
         </div>
-        <div className="Update_Pagamento_itemField">
-          <label className="Update_Pagamento_itemFieldLabel" htmlFor="contadorpelucia">
-            RELOGIO PELUCIA CIMA:
-          </label>
-          <Input
-            placeholder={"1"}
-            value={data.estoque}
-            id="estoque"
-            type="number"
-            name="estoque"
-            autoComplete="estoque"
-            onChange={(event) => {
-              handleChange("estoque", event.target.value);
-            }}
-            className={`${
-              !!errors.estoque ? "Update_Pagamento_inputError" : ""
-            }`}
-          />
-          {errors.estoque && (
-            <div className="Update_Pagamento_itemFieldError">
-              {errors.estoque}
-            </div>
-          )}
-        </div>
+       
         <div className="Update_Pagamento_itemField">
           <label className="Update_Pagamento_itemFieldLabel" htmlFor="contadorpelucia">
             RELOGIO PELUCIA BAIXO:
           </label>
           <Input
-            placeholder={"1"}
+            placeholder={"1.50"}
             value={data.estoque5}
             id="estoque5"
             type="number"
