@@ -124,8 +124,24 @@ const EditPagamento = (props) => {
         }
       });
   };
+ 
+ 
   const credito = () => {
-  
+    // check require
+    let errorsTemp = {};
+    if (data.nome.trim() === "") {
+      errorsTemp.nome = "Este campo é obrigatório";
+    }
+    if (data.descricao.trim() === "") {
+      errorsTemp.descricao = "Este campo é obrigatório";
+    }
+
+    if (data.valorDoPulso < 0) {
+      errorsTemp.valorDoPulso = "Este campo é obrigatório";
+    }
+    if (data.estoque < 0) {
+      errorsTemp.estoque = "Estoque é obrigatório";
+    }
     if (Object.keys(errorsTemp).length > 0) {
       setErrors(errorsTemp);
       return;
@@ -137,8 +153,14 @@ const EditPagamento = (props) => {
         `${process.env.REACT_APP_SERVIDOR}/maquina-cliente`,
         {
           id,
-          contadorcreditobaixo: Number(data.contadorcreditobaixo),
+          nome: data.nome,
+          descricao: data.descricao,
+        
+          contadorcredito: Number(data.contadorcredito),
+       
          
+          store_id: String(data.store_id),
+          valorDoPulso: data.valorDoPulso,
         },
         {
           headers: {
@@ -176,8 +198,24 @@ const EditPagamento = (props) => {
         }
       });
   };
+
+
   const pelucia = () => {
-  
+    // check require
+    let errorsTemp = {};
+    if (data.nome.trim() === "") {
+      errorsTemp.nome = "Este campo é obrigatório";
+    }
+    if (data.descricao.trim() === "") {
+      errorsTemp.descricao = "Este campo é obrigatório";
+    }
+
+    if (data.valorDoPulso < 0) {
+      errorsTemp.valorDoPulso = "Este campo é obrigatório";
+    }
+    if (data.estoque < 0) {
+      errorsTemp.estoque = "Estoque é obrigatório";
+    }
     if (Object.keys(errorsTemp).length > 0) {
       setErrors(errorsTemp);
       return;
@@ -189,8 +227,15 @@ const EditPagamento = (props) => {
         `${process.env.REACT_APP_SERVIDOR}/maquina-cliente`,
         {
           id,
-          estoque5: Number(data.estoque5),
+          nome: data.nome,
+          descricao: data.descricao,
+          estoque: Number(data.estoque),
+       
+       
+       
          
+          store_id: String(data.store_id),
+          valorDoPulso: data.valorDoPulso,
         },
         {
           headers: {
@@ -228,6 +273,10 @@ const EditPagamento = (props) => {
         }
       });
   };
+
+
+
+
   return (
     <div className="PagamentosSearch_container">
       {isLoading && <LoadingAction />}
