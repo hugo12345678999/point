@@ -25,6 +25,7 @@ const AdminEditPagamento = (props) => {
     contadorcredito: Number(maquinaInfos?.contadorcredito) ?? 0,
     contadorcreditobaixo: Number(maquinaInfos?.contadorcreditobaixo) ?? 0,
     contadorpelucia: Number(maquinaInfos?.contadorpelucia) ?? 0,
+    maquininha_serial: String(maquinaInfos?.maquininha_serial),
     store_id: Number(maquinaInfos?.store_id) ?? 0,
     valorDoPulso: maquinaInfos?.pulso ?? 0,
   });
@@ -423,11 +424,11 @@ const AdminEditPagamento = (props) => {
             onChange={(event) => {
               handleChange("maquininha_serial", event.target.value);
             }}
-            className={!!errors.contadorcredito ? "Admin_Update_Pagamento_inputError" : ""}
+            className={!!errors.maquininha_serial ? "Admin_Update_Pagamento_inputError" : ""}
           />
-          {errors.contadorcredito && (
+          {errors.maquininha_serial && (
             <div className="Admin_Update_Pagamento_itemFieldError">
-              {errors.contadorcredito}
+              {errors.maquininha_serial}
             </div>
           )}
         </div>
