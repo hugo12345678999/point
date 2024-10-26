@@ -29,6 +29,7 @@ const EditPagamento = (props) => {
     contadorpeluciabaixo: Number(maquinaInfos?.contadorpeluciabaixo) ?? 0,
     store_id: Number(maquinaInfos?.storeId) ?? 0,
     valorDoPulso: maquinaInfos?.pulso ?? 0,
+    maquininha_serial: String(maquinaInfos?.maquininha_serial),
   });
   const [errors, setErrors] = useState({});
 
@@ -86,6 +87,7 @@ const EditPagamento = (props) => {
           contadorpeluciabaixo: Number(data.contadorpeluciabaixo),
           store_id: String(data.store_id),
           valorDoPulso: data.valorDoPulso,
+          maquininha_serial: String(data.maquininha_serial),
         },
         {
           headers: {
@@ -367,6 +369,30 @@ const EditPagamento = (props) => {
           {errors.estoque && (
             <div className="Update_Pagamento_itemFieldError">
               {errors.contadorpelucia}
+            </div>
+          )}
+        </div>
+        <div className="Update_Pagamento_itemField">
+          <label className="Update_Pagamento_itemFieldLabel" htmlFor="maquininha_serial">
+           SERIAL MAQUINA PAGSEGURO:
+          </label>
+          <Input
+            placeholder={"1.50"}
+            value={data.maquininha_serial}
+            id="maquininha_serial"
+            type="text"
+            name="maquininha_serial"
+            autoComplete="maquininha_serial"
+            onChange={(event) => {
+              handleChange("maquininha_serial", event.target.value);
+            }}
+            className={`${
+              !!errors.maquininha_serial ? "Update_Pagamento_inputError" : ""
+            }`}
+          />
+          {errors.estoque && (
+            <div className="Update_Pagamento_itemFieldError">
+              {errors.maquininha_serial}
             </div>
           )}
         </div>
