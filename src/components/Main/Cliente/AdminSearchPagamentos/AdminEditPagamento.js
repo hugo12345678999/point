@@ -21,8 +21,12 @@ const AdminEditPagamento = (props) => {
     nome: maquinaInfos?.nome ?? "",
     descricao: maquinaInfos?.descricao ?? "",
     estoque: Number(maquinaInfos?.estoque) ?? 0,
-    store_id: Number(maquinaInfos?.store_id) ?? 0,
+    estoquebaixo: Number(maquinaInfos?.estoquebaixo) ?? 0,
+    contadorcredito: Number(maquinaInfos?.contadorcredito) ?? 0,
+    contadorcreditobaixo: Number(maquinaInfos?.contadorcreditobaixo) ?? 0,
+    contadorpelucia: Number(maquinaInfos?.contadorpelucia) ?? 0,
     maquininha_serial: String(maquinaInfos?.maquininha_serial),
+    store_id: Number(maquinaInfos?.store_id) ?? 0,
     valorDoPulso: maquinaInfos?.pulso ?? 0,
   });
   const [errors, setErrors] = useState({});
@@ -65,8 +69,7 @@ const AdminEditPagamento = (props) => {
       setErrors(errorsTemp);
       return;
     }
-
-    setIsLoading(true);
+   
     axios
       .put(
         `${process.env.REACT_APP_SERVIDOR}/maquina`,
@@ -75,8 +78,12 @@ const AdminEditPagamento = (props) => {
           nome: data.nome,
           descricao: data.descricao,
           estoque: Number(data.estoque),
-          store_id: String(data.store_id),
+          estoquebaixo: Number(data.estoquebaixo),
+          contadorcreditobaixo: Number(data.contadorcreditobaixo),
+          contadorcredito: Number(data.contadorcredito),
+          contadorpelucia: Number(data.contadorpelucia),
           maquininha_serial: String(data.maquininha_serial),
+          store_id: String(data.store_id),
           valorDoPulso: data.valorDoPulso,
         },
         {
@@ -103,7 +110,7 @@ const AdminEditPagamento = (props) => {
         } else if (err.response.status === 400) {
           setNotiMessage({
             type: "error",
-            message: `${err.response.data.error}`,
+            message: "Já existe uma máquina com esse nome",
           });
           setErrors((prev) => ({
             ...prev,
@@ -117,6 +124,93 @@ const AdminEditPagamento = (props) => {
         }
       });
   };
+
+  const handleJoystick = () => {
+    setIsLoading(true);
+    axios
+      .post(
+        `${process.env.REACT_APP_SERVIDOR}/estadojoystick/${id}`,
+        {},
+        {
+          headers: {
+            "x-access-token": token,
+            "content-type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "success",
+          message: "joystick ativada com sucesso.",
+        });
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "error",
+          message: "Erro ao ativar telemetria.",
+        });
+      });
+  };
+
+  const handleWhatsApp = () => {
+    setIsLoading(true);
+    axios
+      .post(
+        `${process.env.REACT_APP_SERVIDOR}/estadowhatsaap/${id}`,
+        {},
+        {
+          headers: {
+            "x-access-token": token,
+            "content-type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "success",
+          message: "WhatsApp ativado com sucesso.",
+        });
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "error",
+          message: "Erro ao ativar WhatsApp.",
+        });
+      });
+  };
+  const handleTelemetria= () => {
+    setIsLoading(true);
+    axios
+      .post(
+        `${process.env.REACT_APP_SERVIDOR}/estadotelemetria/${id}`,
+        {},
+        {
+          headers: {
+            "x-access-token": token,
+            "content-type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "success",
+          message: "telemetria ativado com sucesso.",
+        });
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "error",
+          message: "Erro ao ativar WhatsApp.",
+        });
+      });
+  };
+
 
   return (
     <div className="Admin_PagamentosSearch_container">
@@ -156,9 +250,7 @@ const AdminEditPagamento = (props) => {
             onChange={(event) => {
               handleChange("nome", event.target.value);
             }}
-            className={`${
-              !!errors.nome ? "Admin_Update_Pagamento_inputError" : ""
-            }`}
+            className={!!errors.nome ? "Admin_Update_Pagamento_inputError" : ""}
           />
           {errors.nome && (
             <div className="Admin_Update_Pagamento_itemFieldError">
@@ -171,7 +263,7 @@ const AdminEditPagamento = (props) => {
             className="Admin_Update_Pagamento_itemFieldLabel"
             htmlFor="descricao"
           >
-            Descricão:
+            Descrição:
           </label>
           <Input
             placeholder={"Máquina da padaria de juquinha"}
@@ -183,9 +275,7 @@ const AdminEditPagamento = (props) => {
             onChange={(event) => {
               handleChange("descricao", event.target.value);
             }}
-            className={`${
-              !!errors.descricao ? "Admin_Update_Pagamento_inputError" : ""
-            }`}
+            className={!!errors.descricao ? "Admin_Update_Pagamento_inputError" : ""}
           />
           {errors.descricao && (
             <div className="Admin_Update_Pagamento_itemFieldError">
@@ -213,11 +303,7 @@ const AdminEditPagamento = (props) => {
               }}
               disabled={isLoading}
             >
-              <img
-                className="Admin_Edit_Pagamento_Icon"
-                src={question_icon}
-                alt="question icon"
-              />
+              <img src={question_icon} alt="Help" />
             </Button>
           </label>
           <Input
@@ -230,9 +316,7 @@ const AdminEditPagamento = (props) => {
             onChange={(event) => {
               handleChange("store_id", event.target.value);
             }}
-            className={`${
-              !!errors.store_id ? "Admin_Update_Pagamento_inputError" : ""
-            }`}
+            className={!!errors.store_id ? "Admin_Update_Pagamento_inputError" : ""}
           />
           {errors.store_id && (
             <div className="Admin_Update_Pagamento_itemFieldError">
@@ -240,46 +324,26 @@ const AdminEditPagamento = (props) => {
             </div>
           )}
         </div>
-        <div className="AddMachine_itemField">
-            <label className="AddMachine_itemFieldLabel" htmlFor="maquininha_serial">
-              Maquininha_serial:
-            </label>
-            <Input
-              placeholder={""}
-              value={data.maquininha_serial}
-              id="maquininha_serial"
-              name="maquininha_serial"
-              min={0}
-              autoComplete="maquininha_serial"
-              onChange={(event) => {
-                handleChange("maquininha_serial", event.target.value);
-              }}
-              className={`${!!errors.maquininha_serial ? "AddMachine_inputError" : ""}`}
-            />
-            {errors.maquininha_serial && (
-              <div className="AddMachine_itemFieldError">{errors.maquininha_serial}</div>
-            )}
-          </div>
+
         <div className="Admin_Update_Pagamento_itemField">
           <label
             className="Admin_Update_Pagamento_itemFieldLabel"
             htmlFor="valorDoPulso"
           >
-            Valor Do Pulso R$:
+            Valor do Pulso:
           </label>
           <Input
-            placeholder={"1.50"}
+            placeholder={"0.00"}
             value={data.valorDoPulso}
             id="valorDoPulso"
             type="number"
+            min={0}
             name="valorDoPulso"
             autoComplete="valorDoPulso"
             onChange={(event) => {
               handleChange("valorDoPulso", event.target.value);
             }}
-            className={`${
-              !!errors.valorDoPulso ? "Admin_Update_Pagamento_inputError" : ""
-            }`}
+            className={!!errors.valorDoPulso ? "Admin_Update_Pagamento_inputError" : ""}
           />
           {errors.valorDoPulso && (
             <div className="Admin_Update_Pagamento_itemFieldError">
@@ -287,30 +351,84 @@ const AdminEditPagamento = (props) => {
             </div>
           )}
         </div>
+
         <div className="Admin_Update_Pagamento_itemField">
           <label
             className="Admin_Update_Pagamento_itemFieldLabel"
             htmlFor="estoque"
           >
-            Estoque:
+            RELOGIO PELUCIA:
           </label>
           <Input
-            placeholder={"1.50"}
+            placeholder={"0"}
             value={data.estoque}
             id="estoque"
             type="number"
+            min={0}
             name="estoque"
             autoComplete="estoque"
             onChange={(event) => {
               handleChange("estoque", event.target.value);
             }}
-            className={`${
-              !!errors.estoque ? "Admin_Update_Pagamento_inputError" : ""
-            }`}
+            className={!!errors.estoque ? "Admin_Update_Pagamento_inputError" : ""}
           />
           {errors.estoque && (
             <div className="Admin_Update_Pagamento_itemFieldError">
               {errors.estoque}
+            </div>
+          )}
+        </div>
+
+        <div className="Admin_Update_Pagamento_itemField">
+          <label
+            className="Admin_Update_Pagamento_itemFieldLabel"
+            htmlFor="estoque"
+          >
+            RELOGIO CREDITO:
+          </label>
+          <Input
+            placeholder={"0"}
+            value={data.contadorcredito}
+            id="contadorcredito"
+            type="number"
+            min={0}
+            name="contadorcredito"
+            autoComplete="contadorcredito"
+            onChange={(event) => {
+              handleChange("contadorcredito", event.target.value);
+            }}
+            className={!!errors.contadorcredito ? "Admin_Update_Pagamento_inputError" : ""}
+          />
+          {errors.contadorcredito && (
+            <div className="Admin_Update_Pagamento_itemFieldError">
+              {errors.contadorcredito}
+            </div>
+          )}
+        </div>
+        
+        <div className="Admin_Update_Pagamento_itemField">
+          <label
+            className="Admin_Update_Pagamento_itemFieldLabel"
+            htmlFor="maquininha_serial"
+          >
+            SERIAL MAQUINA PAGSEGURO:
+          </label>
+          <Input
+            placeholder={"0"}
+            value={data.maquininha_serial}
+            id="maquininha_serial"
+            type="text"
+            min={0}
+            name="maquininha_serial"
+            autoComplete="maquininha_serial"
+            onChange={(event) => {
+              handleChange("maquininha_serial", event.target.value);
+            }}
+            className={!!errors.maquininha_serial ? "Admin_Update_Pagamento_inputError" : ""}
+          />
+          {errors.maquininha_serial && (
+            <div className="Admin_Update_Pagamento_itemFieldError">
+              {errors.maquininha_serial}
             </div>
           )}
         </div>
@@ -333,6 +451,29 @@ const AdminEditPagamento = (props) => {
           disabled={isLoading}
         >
           EXCLUIR MÁQUINA
+        </Button>
+
+        {/* New buttons */}
+        <Button
+          className="Admin_Update_Pagamento_saveBtn"
+          onClick={handleJoystick}
+          disabled={isLoading}
+        >
+          ATIVAR JOYSTICK
+        </Button>
+        <Button
+          className="Admin_Update_Pagamento_saveBtn"
+          onClick={handleWhatsApp}
+          disabled={isLoading}
+        >
+          ATIVAR WHATSAPP
+        </Button>
+        <Button
+          className="Admin_Update_Pagamento_saveBtn"
+          onClick={handleTelemetria}
+          disabled={isLoading}
+        >
+          ATIVAR TELEMETRIA
         </Button>
       </div>
     </div>
