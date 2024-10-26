@@ -188,7 +188,7 @@ const PagamentosSearchApp = (props) => {
       key: "tipo",
       render: (tipo, record) => (
         <span>
-          {tipo === "bank_transfer"
+         {tipo === "bank_transfer"
             ? "PIX"
             : tipo === "CASH"
             ? "Especie"
@@ -196,7 +196,14 @@ const PagamentosSearchApp = (props) => {
             ? "Débito"
             : tipo === "credit_card"
             ? "Crédito"
+            : tipo === "1"
+            ? "Crédito"
+            : tipo === "11"
+            ? "PIX"
+            : tipo === "8"
+            ? "Débito"
             : ""}
+           
         </span>
       ),
     },
