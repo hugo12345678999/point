@@ -219,18 +219,7 @@ const EditCliente = (props) => {
             >
               Token Mercado Pago
             </label>
-            <img
-              src={question_icon}
-              alt="question icon"
-              className="Edit_Cliente_Icon"
-              onClick={() =>
-                navigate(`${links.TOKEN_HELP_PAGE}`, {
-                  state: {
-                    redirect_url: `${links.EDITAR_CLIENTES}/${cliente.id}`,
-                  },
-                })
-              }
-            />
+        
           </div>
 
           <Input
@@ -258,24 +247,7 @@ const EditCliente = (props) => {
             <label className="Edit_Cliente_itemFieldLabel" htmlFor="pagbankToken">
               Token Pagbank
             </label>
-            <Tooltip title={
-              <>
-                Acesse: <br />
-                https://pagseguro.uol.com.br/ <br />
-                Entrar <br />
-                Menu esquerdo (VENDAS) <br />
-                Role para baixo um pouco a tela, na opção: <br />
-                Plataformas e Checkout <br />
-                Clique em Integrações <br />
-                Clique no botão Gerar token
-              </>
-            }>
-              <img
-                src={question_icon}
-                alt="question icon"
-                className="AddCliente_Icon"
-              />
-            </Tooltip>
+         
           </div>
           <Input
             placeholder={"Token do PagBank"}
@@ -331,11 +303,7 @@ const EditCliente = (props) => {
               Data de Vencimento
             </label>
             <Tooltip title="A data de vencimento do cliente é uma data que após 10 dias é feito a trava das máquinas do cliente para receber pagamentos. Ideal para quem cobra mensalidade, se não definida por padrão colocamos 1 (um) ano. se não quiser usar coloque uma data maior">
-              <img
-                src={question_icon}
-                alt="question icon"
-                className="AddCliente_Icon"
-              />
+            
             </Tooltip>
           </div>
           <DatePicker
