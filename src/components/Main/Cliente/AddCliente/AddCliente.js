@@ -76,6 +76,8 @@ const AddCliente = (props) => {
           senha: data.senha,
           mercadoPagoToken: data.mercadoPagoToken,
           dataVencimento: new Date(data.dataVencimento),
+          pagbankToken: data.pagbankToken,
+          pagbankEmail: data.pagbankEmail,
         },
         {
           headers: {
@@ -238,7 +240,75 @@ const AddCliente = (props) => {
               </div>
             )}
           </div>
+          <div className="AddCliente_itemFieldPagbank">
+            <div className="AddCliente_Label_Icon">
+              <label className="AddCliente_itemFieldLabel" htmlFor="pagbankToken">
+                Token Pagbank
+              </label>
+              <Tooltip title={
+                <>
+                  Acesse: <br />
+                  https://pagseguro.uol.com.br/ <br />
+                  Entrar <br />
+                  Menu esquerdo (VENDAS) <br />
+                  Role para baixo um pouco a tela, na opção: <br />
+                  Plataformas e Checkout <br />
+                  Clique em Integrações <br />
+                  Clique no botão Gerar token
+                </>
+              }>
+                <img
+                  src={question_icon}
+                  alt="question icon"
+                  className="AddCliente_Icon"
+                />
+              </Tooltip>
+            </div>
+            <Input
+              placeholder={"Token do PagBank"}
+              value={data.pagbankToken}
+              id="pagbankToken"
+              type="text"
+              name="pagbankToken"
+              autoComplete="pagbankToken"
+              onChange={(event) => {
+                handleChange("pagbankToken", event.target.value);
+              }}
+              className={`${
+                !!errors.pagbankToken ? "AddCliente_inputError" : ""
+              }`}
+            />
+            {errors.pagbankToken && (
+              <div className="AddCliente_itemFieldError">
+                {errors.pagbankToken}
+              </div>
+            )}
+          </div>
 
+          <div className="AddCliente_itemFieldPagbank">
+            <label className="AddCliente_itemFieldLabel" htmlFor="pagbankEmail">
+              Email Pagbank
+            </label>
+            <Input
+              placeholder={"email@pagbank.com"}
+              value={data.pagbankEmail}
+              id="pagbankEmail"
+              type="email"
+              name="pagbankEmail"
+              autoComplete="pagbankEmail"
+              onChange={(event) => {
+                handleChange("pagbankEmail", event.target.value);
+              }}
+              className={`${
+                !!errors.pagbankEmail ? "AddCliente_inputError" : ""
+              }`}
+            />
+            {errors.pagbankEmail && (
+              <div className="AddCliente_itemFieldError">
+                {errors.pagbankEmail}
+              </div>
+            )}
+          </div>
           <div className="AddCliente_itemField">
             <div className="AddCliente_Label_Icon">
               <label

@@ -81,6 +81,7 @@ const AdminEditPagamento = (props) => {
           contadorcreditobaixo: Number(data.contadorcreditobaixo),
           contadorcredito: Number(data.contadorcredito),
           contadorpelucia: Number(data.contadorpelucia),
+          maquininha_serial: String(data.maquininha_serial),
           store_id: String(data.store_id),
           valorDoPulso: data.valorDoPulso,
         },
@@ -394,6 +395,33 @@ const AdminEditPagamento = (props) => {
             autoComplete="contadorcredito"
             onChange={(event) => {
               handleChange("contadorcredito", event.target.value);
+            }}
+            className={!!errors.contadorcredito ? "Admin_Update_Pagamento_inputError" : ""}
+          />
+          {errors.contadorcredito && (
+            <div className="Admin_Update_Pagamento_itemFieldError">
+              {errors.contadorcredito}
+            </div>
+          )}
+        </div>
+        
+        <div className="Admin_Update_Pagamento_itemField">
+          <label
+            className="Admin_Update_Pagamento_itemFieldLabel"
+            htmlFor="maquininha_serial"
+          >
+            SERIAL MAQUINA PAGSEGURO:
+          </label>
+          <Input
+            placeholder={"0"}
+            value={data.maquininha_serial}
+            id="maquininha_serial"
+            type="text"
+            min={0}
+            name="maquininha_serial"
+            autoComplete="maquininha_serial"
+            onChange={(event) => {
+              handleChange("maquininha_serial", event.target.value);
             }}
             className={!!errors.contadorcredito ? "Admin_Update_Pagamento_inputError" : ""}
           />

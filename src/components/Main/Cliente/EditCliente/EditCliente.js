@@ -27,6 +27,8 @@ const EditCliente = (props) => {
     dataVencimento: cliente?.dataVencimento
       ? moment(cliente?.dataVencimento)
       : currentDate.add(1, "years"),
+    pagbankToken: cliente?.pagbankToken,
+    pagbankEmail: cliente?.pagbankEmail,
   });
   const [errors, setErrors] = useState({});
 
@@ -67,10 +69,24 @@ const EditCliente = (props) => {
     };
 
     if (
-      data.mercadoPagoToken &&
-      data.mercadoPagoToken.toString() !== cliente.mercadoPagoToken.toString()
-    )
+      data.mercadoPagoToken !== undefined &&
+      (cliente.mercadoPagoToken === undefined || 
+       data.mercadoPagoToken.toString() !== cliente.mercadoPagoToken?.toString())
+    ) {
       body.mercadoPagoToken = data.mercadoPagoToken;
+    }
+
+    if (
+      data.pagbankToken &&
+      data.pagbankToken.toString() !== cliente.pagbankToken.toString()
+    )
+      body.pagbankToken = data.pagbankToken;
+
+    if (
+      data.pagbankEmail &&
+      data.pagbankEmail.toString() !== cliente.pagbankEmail.toString()
+    )
+      body.pagbankEmail = data.pagbankEmail;
 
     setIsLoading(true);
     axios
@@ -101,7 +117,7 @@ const EditCliente = (props) => {
         } else if (err.response.status === 400) {
           setNotiMessage({
             type: "error",
-            message: "Já existe uma máquina com esse nome",
+            message: `${err.response.data.error}`,
           });
           setErrors((prev) => ({
             ...prev,
@@ -172,7 +188,7 @@ const EditCliente = (props) => {
             Nome:
           </label>
           <Input
-            placeholder={"nome"}
+            placeholder={"Jukinha da Silva"}
             value={data.nome}
             id="nome"
             type="text"
@@ -188,7 +204,7 @@ const EditCliente = (props) => {
           )}
         </div>
 
-        <div className="Edit_Cliente_itemField">
+        <div className="Edit_Cliente_itemFieldMercadoPago">
           {/* <label
             className="Edit_Cliente_itemFieldLabel"
             htmlFor="mercadoPagoToken"
@@ -201,9 +217,20 @@ const EditCliente = (props) => {
               className="Edit_Cliente_itemFieldLabel"
               htmlFor="mercadoPagoToken"
             >
-              Token
+              Token Mercado Pago
             </label>
-            
+            <img
+              src={question_icon}
+              alt="question icon"
+              className="Edit_Cliente_Icon"
+              onClick={() =>
+                navigate(`${links.TOKEN_HELP_PAGE}`, {
+                  state: {
+                    redirect_url: `${links.EDITAR_CLIENTES}/${cliente.id}`,
+                  },
+                })
+              }
+            />
           </div>
 
           <Input
@@ -226,7 +253,75 @@ const EditCliente = (props) => {
             </div>
           )}
         </div>
+        <div className="Edit_Cliente_itemFieldPagbank">
+          <div className="AddCliente_Label_Icon">
+            <label className="Edit_Cliente_itemFieldLabel" htmlFor="pagbankToken">
+              Token Pagbank
+            </label>
+            <Tooltip title={
+              <>
+                Acesse: <br />
+                https://pagseguro.uol.com.br/ <br />
+                Entrar <br />
+                Menu esquerdo (VENDAS) <br />
+                Role para baixo um pouco a tela, na opção: <br />
+                Plataformas e Checkout <br />
+                Clique em Integrações <br />
+                Clique no botão Gerar token
+              </>
+            }>
+              <img
+                src={question_icon}
+                alt="question icon"
+                className="AddCliente_Icon"
+              />
+            </Tooltip>
+          </div>
+          <Input
+            placeholder={"Token do PagBank"}
+            value={data.pagbankToken}
+            id="pagbankToken"
+            type="text"
+            name="pagbankToken"
+            autoComplete="pagbankToken"
+            onChange={(event) => {
+              handleChange("pagbankToken", event.target.value);
+            }}
+            className={`${
+              !!errors.pagbankToken ? "Edit_Cliente_inputError" : ""
+            }`}
+          />
+          {errors.pagbankToken && (
+            <div className="Edit_Cliente_itemFieldError">
+              {errors.pagbankToken}
+            </div>
+          )}
+        </div>
 
+        <div className="Edit_Cliente_itemFieldPagbank">
+          <label className="Edit_Cliente_itemFieldLabel" htmlFor="pagbankEmail">
+            Email Pagbank
+          </label>
+          <Input
+            placeholder={"email@pagbank.com"}
+            value={data.pagbankEmail}
+            id="pagbankEmail"
+            type="email"
+            name="pagbankEmail"
+            autoComplete="pagbankEmail"
+            onChange={(event) => {
+              handleChange("pagbankEmail", event.target.value);
+            }}
+            className={`${
+              !!errors.pagbankEmail ? "Edit_Cliente_inputError" : ""
+            }`}
+          />
+          {errors.pagbankEmail && (
+            <div className="Edit_Cliente_itemFieldError">
+              {errors.pagbankEmail}
+            </div>
+          )}
+        </div>
         <div className="Edit_Cliente_itemField">
           <div className="AddCliente_Label_Icon">
             <label
