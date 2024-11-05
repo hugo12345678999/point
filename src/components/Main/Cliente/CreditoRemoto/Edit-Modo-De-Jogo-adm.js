@@ -62,7 +62,7 @@ const EditModoDeJogoAdm = (props) => {
       return;
     }
     let VALOR_BASE;
-    if (data.valor < 10) {
+    if (data.valor < 10) {//vdv
       VALOR_BASE = 200;
     } else {
       VALOR_BASE = 20;
