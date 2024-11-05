@@ -35,7 +35,7 @@ const GruaAdm = (props) => {
       state: location.state,
     });
   };
-  const botaoMODODEJOGO = () => {
+  const botaomododejogo = () => {
     navigate(`${links.EDIT_MODO_DE_JOGO_ADM}/${maquinaInfos.id}`, {
       state: location.state,
     });
@@ -83,7 +83,7 @@ const GruaAdm = (props) => {
           </Button>
           <Button
             className="Admin_PagamentosSearch_header_editBtn"
-            onClick={ botaoMODODEJOGO}
+            onClick={ botaomododejogo}
           >
             <AiOutlineEdit />
             <span>MODO DE JOGO</span>
