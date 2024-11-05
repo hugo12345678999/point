@@ -91,6 +91,7 @@ export const EDIT_GARRA_FORTE_ADM = "/cliente-maquinas/edit-forca-forte-adm";
 export const EDIT_GARRA_MEDIA_ADM = "/cliente-maquinas/edit-forca-media-adm";
 export const EDIT_GARRA_FRACA_ADM = "/cliente-maquinas/edit-forca-fraca-adm";
 export const EDIT_GARRA_PREMIO_ADM = "/cliente-maquinas/edit-forca-premio-adm";
+export const EDIT_MODO_DE_JOGO_ADM = "/cliente-maquinas/edit-modo-de-jogo-adm";
 
 export const EDIT_GARRA_MANUAL_ADM = "/cliente-maquinas/edit-garra-manual-adm";
 export const EDIT_GARRA_MANUAL_PROBABILIDADE_ADM = "/cliente-maquinas/edit-garra-manual-probabilidade-adm";
@@ -98,6 +99,7 @@ export const EDIT_GARRA_MANUAL_GARRA_FORTE_ADM = "/cliente-maquinas/edit-garra-m
 export const EDIT_GARRA_MANUAL_GARRA_MEDIA_ADM = "/cliente-maquinas/edit-garra-manual-garra-media-adm";
 export const EDIT_GARRA_MANUAL_GARRA_FRACA_ADM = "/cliente-maquinas/edit-garra-manual-garra-fraca-adm";
 export const EDIT_GARRA_MANUAL_GARRA_PREMIO_ADM = "/cliente-maquinas/edit-garra-manual-garra-premio-adm";
+export const EDIT_MODO_DE_JOGO_MANUAL_ADM = "/cliente-maquinas/edit-modo-de-jogo-manual-adm";
 
 export const RELATORIO = "/relatorio";
 export const RELATORIO_ADMIN = "/cliente-maquinas/pagamentos/relatorio-adm";

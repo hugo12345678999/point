@@ -67,6 +67,8 @@ import EditGarraManualGarraForteAdm from "./components/Main/Cliente/CreditoRemot
 import EditGarraManualGarraMediaAdm from "./components/Main/Cliente/CreditoRemoto/Edit-garra-manual-garra-media-adm";
 import EditGarraManualGarraFracaAdm from "./components/Main/Cliente/CreditoRemoto/Edit-garra-manual-garra-fraca-adm";
 import EditGarraManualGarraPremioAdm from "./components/Main/Cliente/CreditoRemoto/Edit-garra-manual-garra-premio-adm";
+import EditModoDeJogoAdm from "./components/Main/Cliente/CreditoRemoto/Edit-Modo-De-Jogo-adm";
+import EditModoDeJogoManualAdm from "./components/Main/Cliente/CreditoRemoto/Edit-Modo-De-Jogo-manual-adm";
 import PointAdm from "./components/Main/Cliente/AdminSearchPagamentos/point-adm";
 import GruaAdm from "./components/Main/Cliente/AdminSearchPagamentos/grua-adm";
 import GruaManualAdm from "./components/Main/Cliente/AdminSearchPagamentos/admin-edit-garra-manual";
@@ -232,6 +234,29 @@ function App() {
                 <PrivateRoute>
                   <Main>
                     <GruaManualAdm />
+                  </Main>
+                </PrivateRoute>
+              }
+
+            />
+             
+             <Route
+              path={`${links.EDIT_MODO_DE_JOGO_ADM}/:id`}
+              element={
+                <PrivateRoute>
+                  <Main>
+                    <EditModoDeJogoAdm />
+                  </Main>
+                </PrivateRoute>
+              }
+
+            />
+             <Route
+              path={`${links.EDIT_MODO_DE_JOGO_MANUAL_ADM}/:id`}
+              element={
+                <PrivateRoute>
+                  <Main>
+                    <EditModoDeJogoManualAdm />
                   </Main>
                 </PrivateRoute>
               }

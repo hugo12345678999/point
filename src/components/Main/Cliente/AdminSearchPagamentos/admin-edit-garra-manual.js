@@ -36,6 +36,13 @@ const GruaManualAdm = (props) => {
     });
   };
 
+  const botaoMODOdejogo = () => {
+    navigate(`${links.EDIT_MODO_DE_JOGO_MANUAL_ADM}/${maquinaInfos.id}`, {
+      state: location.state,
+    });
+  };
+
+
 
   return (
     <div className="Admin_PagamentosSearch_container">
@@ -75,6 +82,13 @@ const GruaManualAdm = (props) => {
           >
             <AiOutlineEdit />
             <span>ALTERAR FORCA PREMIO</span>
+          </Button>
+          <Button
+            className="Admin_PagamentosSearch_header_editBtn"
+            onClick={botaoMODOdejogo}
+          >
+            <AiOutlineEdit />
+            <span>ALTERAR MODO DE JOGO</span>
           </Button>
           <Button
             className="Admin_PagamentosSearch_header_back"
