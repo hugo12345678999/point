@@ -39,8 +39,8 @@ const EditModoDeJogoManualAdm = (props) => {
     if (data.valor === "") {
       errorsTemp.valor = "Este campo é obrigatório";
     }
-    if(data.valor.trim() < 13){
-      errorsTemp.valor = 'DIGITE UM VALOR MAIOR OU IGUAL 13'
+    if(data.valor.trim() < 1){
+      errorsTemp.valor = 'DIGITE UM VALOR MAIOR OU IGUAL 1'
  
   }else{
       setNotiMessage({
@@ -103,7 +103,7 @@ const EditModoDeJogoManualAdm = (props) => {
       <div>
         <div className="Trocar_header">
           <div className="Trocar_header_title">
-          ALTERAR GARRA FORTE
+          ALTERAR MODO DE JOGO
           </div>
           <Button
             className="Trocar_header_back"
