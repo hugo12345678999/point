@@ -22,6 +22,7 @@ const EditModoDeJogoAdm = (props) => {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [garrapegada, setgarrapegada] = useState(null); // Estado para armazenar o valor da probabilidade
+  const [mododejogo, setmododejogo] = useState(null); // Estado para armazenar o valor da probabilidade
 
   const handleChange = (name, value) => {
     setData((prev) => ({
@@ -98,15 +99,15 @@ const EditModoDeJogoAdm = (props) => {
       });
   };
 
-  const fetchgarrapegada = () => {
-    axios.get(`${process.env.REACT_APP_SERVIDOR}/garra-pegada/${id}`, {
+  const fetchmododejogo = () => {
+    axios.get(`${process.env.REACT_APP_SERVIDOR}/modo-de-jogo/${id}`, {
       headers: {
         "x-access-token": token,
         "content-type": "application/json",
       },
     })
     .then((res) => {
-      setgarrapegada(res.data.garrapegada); // Atualize o estado com o valor da probabilidade recebido
+      setmododejogo(res.data.mododejogo); // Atualize o estado com o valor da probabilidade recebido
     })
     .catch((err) => {
       // Lide com os erros da requisição
@@ -114,7 +115,7 @@ const EditModoDeJogoAdm = (props) => {
   };
 
   useEffect(() => {
-    fetchgarrapegada(); // Fetch da probabilidade ao montar o componente
+    fetchmododejogo(); // Fetch da probabilidade ao montar o componente
   }, [id]); // Execute sempre que o ID mudar
 
   return (
@@ -122,7 +123,7 @@ const EditModoDeJogoAdm = (props) => {
       {isLoading && <LoadingAction />}
       <div>
         <div className="Trocar_header">
-          <div className="Trocar_header_title">GARRA PREMIO</div>
+          <div className="Trocar_header_title">MODO DE JOGO</div>
           <Button
             className="Trocar_header_back"
             onClick={() => {
@@ -169,7 +170,8 @@ const EditModoDeJogoAdm = (props) => {
 
           {/* Exibir o valor da probabilidade */}
           <div className="garrapegadaResult">
-            GARRA PREMIO: {garrapegada !== null ? garrapegada : "Carregando..."}
+           MODO DE JOGO: {mododejogo !== null ? mododejogo : "Carregando..." }
+       
           </div>
         </div>
       </div>
