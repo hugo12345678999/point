@@ -51,8 +51,8 @@ const EditModoDeJogoAdm = (props) => {
       })
 
   }
-  if(data.valor.trim() > 48){
-      errorsTemp.valor = 'DIGITE UM VALOR MENOR OU IGUAL A 48'
+  if(data.valor.trim() > 7){
+      errorsTemp.valor = 'DIGITE UM VALOR MENOR OU IGUAL A 7'
  
   }
   if (parseFloat(data.valor) === garrapegada) {
@@ -63,7 +63,7 @@ const EditModoDeJogoAdm = (props) => {
       return;
     }
     let VALOR_BASE;
-    if (data.valor < 10) {//vdv
+    if (data.valor < 10) {
       VALOR_BASE = 200;
     } else {
       VALOR_BASE = 20;

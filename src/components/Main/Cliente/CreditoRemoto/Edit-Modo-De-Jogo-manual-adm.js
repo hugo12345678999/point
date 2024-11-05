@@ -49,8 +49,8 @@ const EditModoDeJogoManualAdm = (props) => {
       })
 
   }
-  if(data.valor.trim() > 47){
-      errorsTemp.valor = 'DIGITE UM VALOR MENOR OU IGUAL A 47'
+  if(data.valor.trim() > 7){
+      errorsTemp.valor = 'DIGITE UM VALOR MENOR OU IGUAL A 7'
  
   }
 
