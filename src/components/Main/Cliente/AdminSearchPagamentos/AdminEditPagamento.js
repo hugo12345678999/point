@@ -182,6 +182,151 @@ const AdminEditPagamento = (props) => {
         });
       });
   };
+
+
+
+  const handleplacaverde = () => {
+    setIsLoading(true);
+    axios
+      .post(
+        `${process.env.REACT_APP_SERVIDOR}/placa-verde/${id}`,
+        {},
+        {
+          headers: {
+            "x-access-token": token,
+            "content-type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "success",
+          message: "WhatsApp ativado com sucesso.",
+        });
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "error",
+          message: "Erro ao ativar placa-verde.",
+        });
+      });
+  };
+  const handleplacatoymix = () => {
+    setIsLoading(true);
+    axios
+      .post(
+        `${process.env.REACT_APP_SERVIDOR}/placa-toy-mix/${id}`,
+        {},
+        {
+          headers: {
+            "x-access-token": token,
+            "content-type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "success",
+          message: "WhatsApp ativado com sucesso.",
+        });
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "error",
+          message: "Erro ao ativar toy-mix.",
+        });
+      });
+  };
+
+  const handleplacapreta = () => {
+    setIsLoading(true);
+    axios
+      .post(
+        `${process.env.REACT_APP_SERVIDOR}/placa-preta/${id}`,
+        {},
+        {
+          headers: {
+            "x-access-token": token,
+            "content-type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "success",
+          message: "WhatsApp ativado com sucesso.",
+        });
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "error",
+          message: "Erro ao ativar placa-preta.",
+        });
+      });
+  };
+  const handleplacapocet = () => {
+    setIsLoading(true);
+    axios
+      .post(
+        `${process.env.REACT_APP_SERVIDOR}/placa-pocket/${id}`,
+        {},
+        {
+          headers: {
+            "x-access-token": token,
+            "content-type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "success",
+          message: "WhatsApp ativado com sucesso.",
+        });
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "error",
+          message: "Erro ao ativar placa-pocket.",
+        });
+      });
+  };
+
+  const handleplacadark = () => {
+    setIsLoading(true);
+    axios
+      .post(
+        `${process.env.REACT_APP_SERVIDOR}/placa-dark/${id}`,
+        {},
+        {
+          headers: {
+            "x-access-token": token,
+            "content-type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "success",
+          message: "WhatsApp ativado com sucesso.",
+        });
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "error",
+          message: "Erro ao ativar placa-dark.",
+        });
+      });
+  };
   const handleTelemetria= () => {
     setIsLoading(true);
     axios
@@ -474,6 +619,41 @@ const AdminEditPagamento = (props) => {
           disabled={isLoading}
         >
           ATIVAR TELEMETRIA
+        </Button>
+        <Button
+          className="Admin_Update_Pagamento_saveBtn"
+          onClick={handleplacaverde}
+          disabled={isLoading}
+        >
+          PLACA VERDE
+        </Button>
+        <Button
+          className="Admin_Update_Pagamento_saveBtn"
+          onClick={handleplacatoymix}
+          disabled={isLoading}
+        >
+          PLACA TOY MIX
+        </Button>
+        <Button
+          className="Admin_Update_Pagamento_saveBtn"
+          onClick={handleplacapreta}
+          disabled={isLoading}
+        >
+          PLACA PRETA
+        </Button>
+        <Button
+          className="Admin_Update_Pagamento_saveBtn"
+          onClick={handleplacapocet}
+          disabled={isLoading}
+        >
+          PLACA POCKET
+        </Button>
+        <Button
+          className="Admin_Update_Pagamento_saveBtn"
+          onClick={handleplacadark}
+          disabled={isLoading}
+        >
+          PLACA DARK
         </Button>
       </div>
     </div>
