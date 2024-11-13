@@ -72,7 +72,6 @@ const EditarWhatsapp = (props) => {
         {
           id,
           nome: data.nome,
-          contadorpelucia: data.contadorpelucia,
           descricao: data.descricao,
           whatsapp: data.whatsapp,
           apikey: data.apikey,
