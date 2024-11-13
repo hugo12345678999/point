@@ -121,7 +121,7 @@ const EditarWhatsapp = (props) => {
         {
           id,
           nome: data.nome,
-          contadorpelucia: data.contadorpelucia,
+   
           descricao: data.descricao,
           whatsapp: data.whatsapp,
           apikey: data.apikey,
@@ -207,39 +207,7 @@ const EditarWhatsapp = (props) => {
   
 
 
-  const estoque = () => {
-    setIsLoading(true);
-  
-    // Primeira requisição POST para registrar entrada de pelúcia
-    axios
-      .post(
-        `${process.env.REACT_APP_SERVIDOR}/contador-pelucia-baixo/${id}/?valor=${data.contadorpelucia}`,
-        {
-        
-        },
-        {
-          headers: {
-            "x-access-token": token,
-            "content-type": "application/json",
-          },
-        }
-      )
-     
-      .then((res) => {
-        setIsLoading(false);
-        setNotiMessage({
-          type: "success",
-          message: "Entrada do produto registrada e estoque atualizado com sucesso!",
-        });
-      })
-      .catch((err) => {
-        setIsLoading(false);
-        setNotiMessage({
-          type: "error",
-          message: "Um erro ocorreu ao registrar a entrada do produto ou atualizar o estoque",
-        });
-      });
-  };
+
   
 
 
@@ -407,40 +375,7 @@ const EditarWhatsapp = (props) => {
           >
             SALVAR ALTERAÇÕES
           </Button>
-        <div className="Update_Pagamento_itemField">
-          <label className="Update_Pagamento_itemFieldLabel" htmlFor="contadorpelucia">
-            ESTOQUE:
-          </label>
-          <Input
-            placeholder={"1,50"}
-            value={data.contadorpelucia}
-            id="contadorpelucia"
-            type="number"
-            name="contadorpelucia"
-            autoComplete="contadorpelucia"
-            onChange={(event) => {
-              handleChange("contadorpelucia", event.target.value);
-            }}
-            className={`${
-              !!errors.contadorpelucia ? "Update_Pagamento_inputError" : ""
-            }`}
-          />
-          {errors.contadorpelucia && (
-            <div className="Update_Pagamento_itemFieldError">
-              {errors.contadorspelucia}
-            </div>
-          )}
-        </div>
-
-        <div className="Update_Pagamento_itemField">
-          <Button
-            type="primary"
-            onClick={estoque}
-            className="Update_Pagamento_saveBtn"
-          >
-            SALVAR ESTOQUE
-          </Button>
-        </div>
+      
 
         <div className="Update_Pagamento_itemField">
           <label className="Update_Pagamento_itemFieldLabel" htmlFor="mercadoPagoId">
