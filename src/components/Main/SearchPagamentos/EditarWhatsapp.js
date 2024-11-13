@@ -328,7 +328,7 @@ const EditarWhatsapp = (props) => {
 
         <div className="Update_Pagamento_itemField">
           <label className="Update_Pagamento_itemFieldLabel" htmlFor="mercadoPagoId">
-            INFORMACAO DO PRODUTO
+            INFORMACAO DO PRODUTO nao coloque acento 
           </label>
           <Input
             placeholder={"Informação da Pelúcia"}
