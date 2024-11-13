@@ -129,8 +129,8 @@ const EditarWhatsapp = (props) => {
       .post(
         `${process.env.REACT_APP_SERVIDOR}/envia/${id}`,
         {
-          mercadoPagoId: data.mercadoPagoId, // Usando o valor de mercadoPagoId
-          estoque2: data.mercadoPagoId, // Armazenando o valor de mercadoPagoId em estoque2
+          valorAdicional: 10, // Usando o valor de mercadoPagoId
+         
         },
         {
           headers: {
