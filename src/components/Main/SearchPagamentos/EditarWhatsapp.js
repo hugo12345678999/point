@@ -64,7 +64,56 @@ const EditarWhatsapp = (props) => {
     }
   
     setIsLoading(true);
-  
+    axios
+    .post(
+      `${process.env.REACT_APP_SERVIDOR}/apikey/${id}`,
+      {
+      
+        apikey: data.apikey,
+        
+      },
+      {
+        headers: {
+          "x-access-token": token,
+          "content-type": "application/json",
+        },
+      }
+    )
+    .then((res) => {
+      setIsLoading(false);
+      if (res.status === 200) {
+        setNotiMessage({
+          type: "success",
+          message: "Dados salvos com sucesso!",
+        });
+      
+      }
+    })
+    axios
+    .post(
+      `${process.env.REACT_APP_SERVIDOR}/whatsapp/${id}`,
+      {
+      
+        whatsapp: data.whatsapp,
+        
+      },
+      {
+        headers: {
+          "x-access-token": token,
+          "content-type": "application/json",
+        },
+      }
+    )
+    .then((res) => {
+      setIsLoading(false);
+      if (res.status === 200) {
+        setNotiMessage({
+          type: "success",
+          message: "Dados salvos com sucesso!",
+        });
+      
+      }
+    })
     // Requisição PUT para /maquina-cliente
     axios
       .put(
