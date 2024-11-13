@@ -107,15 +107,6 @@ const AdminEditPagamento = (props) => {
             message:
               "A sua sessão expirou, para continuar faça login novamente.",
           });
-        } else if (err.response.status === 400) {
-          setNotiMessage({
-            type: "error",
-            message: "Já existe uma máquina com esse nome",
-          });
-          setErrors((prev) => ({
-            ...prev,
-            nome: "Já existe uma máquina com esse nome",
-          }));
         } else {
           setNotiMessage({
             type: "error",
