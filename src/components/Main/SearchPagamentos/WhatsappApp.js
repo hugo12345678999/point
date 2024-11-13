@@ -214,10 +214,7 @@ const WhatsappApp = (props) => {
           </Button>
 
         </div>
-        <div style={{ marginLeft: "1px" }}>RELOGIO</div>
-              <div className="PagamentosSearch_nbList1">
-                {contadorpelucia ?? "-"}
-                </div>
+       
       </div>
       <div className="PagamentosSearch_content">
         <Row>
