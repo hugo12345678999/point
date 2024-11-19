@@ -29,7 +29,6 @@ const EditCliente = (props) => {
       : currentDate.add(1, "years"),
     pagbankToken: cliente?.pagbankToken,
     pagbankEmail: cliente?.pagbankEmail,
-    novaSenha: data.senha,
   });
   const [errors, setErrors] = useState({});
 
@@ -137,9 +136,7 @@ const EditCliente = (props) => {
     axios
       .put(
         `${process.env.REACT_APP_SERVIDOR}/cliente-trocar-senha`,
-        { 
-          email: cliente?.email,
-          novaSenha: data.senha },
+        { email: cliente?.email },
         {
           headers: {
             "x-access-token": token,
@@ -349,30 +346,6 @@ const EditCliente = (props) => {
         >
           EXCLUIR CLIENTE
         </Button>
-        <div className="Edit_Cliente_itemFieldPagbank">
-          <label className="Edit_Cliente_itemFieldLabel" htmlFor="Senha">
-           Senha
-          </label>
-          <Input
-            placeholder={"Senha"}
-            value={data.Senha}
-            id="Senha"
-            type="Senha"
-            name="Senha"
-            autoComplete="Senha"
-            onChange={(event) => {
-              handleChange("Senha", event.target.value);
-            }}
-            className={`${
-              !!errors.Senha ? "Edit_Cliente_inputError" : ""
-            }`}
-          />
-          {errors.Senha && (
-            <div className="Edit_Cliente_itemFieldError">
-              {errors.Senha}
-            </div>
-          )}
-        </div>
         <Button
           className="Edit_Cliente_ResetBtn"
           onClick={() => {
