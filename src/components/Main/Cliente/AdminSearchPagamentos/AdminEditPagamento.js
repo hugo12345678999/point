@@ -115,7 +115,35 @@ const AdminEditPagamento = (props) => {
         }
       });
   };
-
+  
+  const handletele = () => {
+    setIsLoading(true);
+    axios
+      .post(
+        `${process.env.REACT_APP_SERVIDOR}/ativarmaxpoint/${id}`,
+        {},
+        {
+          headers: {
+            "x-access-token": token,
+            "content-type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "success",
+          message: "joystick ativada com sucesso.",
+        });
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setNotiMessage({
+          type: "error",
+          message: "Erro ao ativar telemetria.",
+        });
+      });
+  };
   const handleJoystick = () => {
     setIsLoading(true);
     axios
@@ -645,6 +673,13 @@ const AdminEditPagamento = (props) => {
           disabled={isLoading}
         >
           PLACA DARK
+        </Button>
+        <Button
+          className="Admin_Update_Pagamento_saveBtn"
+          onClick={handletele}
+          disabled={isLoading}
+        >
+          MAX POINT TELEMETRIA
         </Button>
       </div>
     </div>
