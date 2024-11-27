@@ -186,8 +186,8 @@ const AdminEditPagamento = (props) => {
       // Faz a requisição para o servidor com os valores no corpo
       const response = await axios.post(
         `${process.env.REACT_APP_SERVIDOR}/setar-valor/${id}`,
-        { valorBase:  data.valorBase,
-           incremento:  data.incremento,
+        { valorBase:  [data.valorBase],
+           incremento:  [data.incremento],
           
           
           }, // Corpo da requisição com os valores
