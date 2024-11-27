@@ -49,7 +49,11 @@ const CreditoRemoto = (props) => {
     axios
       .post(
         `${process.env.REACT_APP_SERVIDOR}/credito-remoto`,
-        { id, valor: data.valor },
+        { id,
+           valor: data.valor,
+           creditoremoto: data.valor
+          
+          },
         {
           headers: {
             "x-access-token": token,
