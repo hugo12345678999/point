@@ -165,6 +165,8 @@ const AdminPagamentosSearch = (props) => {
             ? "PIX"
             : tipo === "CASH"
             ? "Especie"
+             : tipo === "CREDITO-REMOTO"
+            ? "Credito-Remoto"
             : tipo === "debit_card"
             ? "Débito"
             : tipo === "credit_card"
@@ -371,6 +373,7 @@ const AdminPagamentosSearch = (props) => {
                   currency: "BRL",
                 }).format(estornos)}
               </div>
+              
               <div style={{ marginLeft: "1px" }}>Espécie</div>
               <div className="Admin_PagamentosSearch_nbList">
                 {Intl.NumberFormat("pt-BR", {
