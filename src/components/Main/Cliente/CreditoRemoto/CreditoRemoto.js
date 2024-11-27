@@ -51,7 +51,7 @@ const CreditoRemoto = (props) => {
         `${process.env.REACT_APP_SERVIDOR}/credito-remoto`,
         { id,
            valor: data.valor,
-           creditoremoto: data.valor
+     
           
           },
         {
