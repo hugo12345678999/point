@@ -22,8 +22,15 @@ const AdminEditPagamento = (props) => {
     descricao: maquinaInfos?.descricao ?? "",
     estoque: Number(maquinaInfos?.estoque) ?? 0,
     estoquebaixo: Number(maquinaInfos?.estoquebaixo) ?? 0,
-    incremento: Number(maquinaInfos?.incremento) ?? 0,
-    valorBase: Number(maquinaInfos?.valorBase) ?? 0,
+    incremento1: Number(maquinaInfos?.incremento1) ?? 0,
+    valorBase1: Number(maquinaInfos?.valorBase1) ?? 0,
+    incremento2: Number(maquinaInfos?.incremento2) ?? 0,
+    valorBase2: Number(maquinaInfos?.valorBase2) ?? 0,
+    incremento3: Number(maquinaInfos?.incremento3) ?? 0,
+    valorBase3: Number(maquinaInfos?.valorBase3) ?? 0,
+    incremento4: Number(maquinaInfos?.incremento4) ?? 0,
+    valorBase4: Number(maquinaInfos?.valorBase4) ?? 0,
+
     contadorcredito: Number(maquinaInfos?.contadorcredito) ?? 0,
     contadorcreditobaixo: Number(maquinaInfos?.contadorcreditobaixo) ?? 0,
     contadorpelucia: Number(maquinaInfos?.contadorpelucia) ?? 0,
@@ -186,8 +193,8 @@ const AdminEditPagamento = (props) => {
       // Faz a requisição para o servidor com os valores no corpo
       const response = await axios.post(
         `${process.env.REACT_APP_SERVIDOR}/setar-valor/${id}`,
-        { valorBase:  [data.valorBase],
-           incremento:  [data.incremento],
+        { valorBase:  [data.valorBase1,data.valorBase2,data.valorBase3,data.valorBase4],
+           incremento:  [data.incremento1,data.incremento2,data.incremento3,data.incremento4],
           
           
           }, // Corpo da requisição com os valores
@@ -664,52 +671,208 @@ const AdminEditPagamento = (props) => {
         <div className="Admin_Update_Pagamento_itemField">
           <label
             className="Admin_Update_Pagamento_itemFieldLabel"
-            htmlFor="valorBase"
+            htmlFor="valorBase1"
           >
-           VALOR BASE:
+           VALOR BASE 1:
           </label>
           <Input
             placeholder={"0"}
-            value={data.valorBase}
-            id="valorBase"
+            value={data.valorBase1}
+            id="valorBase1"
             type="text"
             min={0}
-            name="valorBase"
-            autoComplete="valorBase"
+            name="valorBase1"
+            autoComplete="valorBase1"
             onChange={(event) => {
-              handleChange("valorBase", event.target.value);
+              handleChange("valorBase1", event.target.value);
             }}
-            className={!!errors.valorBase ? "Admin_Update_Pagamento_inputError" : ""}
+            className={!!errors.valorBase1 ? "Admin_Update_Pagamento_inputError" : ""}
           />
-          {errors.valorBase && (
+          {errors.valorBase1 && (
             <div className="Admin_Update_Pagamento_itemFieldError">
-              {errors.valorBase}
+              {errors.valorBase1}
             </div>
           )}
            </div>
            <div className="Admin_Update_Pagamento_itemField">
           <label
             className="Admin_Update_Pagamento_itemFieldLabel"
-            htmlFor="incremento"
+            htmlFor="incremento1"
           >
-           PULSO A MAIS:
+           PULSO 1:
           </label>
           <Input
             placeholder={"0"}
-            value={data.incremento}
-            id="incremento"
+            value={data.incremento1}
+            id="incremento1"
             type="text"
             min={0}
-            name="incremento"
-            autoComplete="incremento"
+            name="incremento1"
+            autoComplete="incremento1"
             onChange={(event) => {
-              handleChange("incremento", event.target.value);
+              handleChange("incremento1", event.target.value);
             }}
-            className={!!errors.incremento ? "Admin_Update_Pagamento_inputError" : ""}
+            className={!!errors.incremento1 ? "Admin_Update_Pagamento_inputError" : ""}
           />
-          {errors.incremento && (
+          {errors.incremento1 && (
             <div className="Admin_Update_Pagamento_itemFieldError">
-              {errors.incremento}
+              {errors.incremento1}
+            </div>
+          )}
+           </div>
+           <div className="Admin_Update_Pagamento_itemField">
+          <label
+            className="Admin_Update_Pagamento_itemFieldLabel"
+            htmlFor="valorBase2"
+          >
+           VALOR BASE 2:
+          </label>
+          <Input
+            placeholder={"0"}
+            value={data.valorBase2}
+            id="valorBase2"
+            type="text"
+            min={0}
+            name="valorBase2"
+            autoComplete="valorBase2"
+            onChange={(event) => {
+              handleChange("valorBase2", event.target.value);
+            }}
+            className={!!errors.valorBase2 ? "Admin_Update_Pagamento_inputError" : ""}
+          />
+          {errors.valorBase2 && (
+            <div className="Admin_Update_Pagamento_itemFieldError">
+              {errors.valorBase2}
+            </div>
+          )}
+           </div>
+           <div className="Admin_Update_Pagamento_itemField">
+          <label
+            className="Admin_Update_Pagamento_itemFieldLabel"
+            htmlFor="incremento2"
+          >
+           PULSO 2:
+          </label>
+          <Input
+            placeholder={"0"}
+            value={data.incremento2}
+            id="incremento2"
+            type="text"
+            min={0}
+            name="incremento2"
+            autoComplete="incremento2"
+            onChange={(event) => {
+              handleChange("incremento2", event.target.value);
+            }}
+            className={!!errors.incremento2 ? "Admin_Update_Pagamento_inputError" : ""}
+          />
+          {errors.incremento2 && (
+            <div className="Admin_Update_Pagamento_itemFieldError">
+              {errors.incremento2}
+            </div>
+          )}
+           </div>
+           <div className="Admin_Update_Pagamento_itemField">
+          <label
+            className="Admin_Update_Pagamento_itemFieldLabel"
+            htmlFor="valorBase3"
+          >
+           VALOR BASE 3:
+          </label>
+          <Input
+            placeholder={"0"}
+            value={data.valorBase3}
+            id="valorBase3"
+            type="text"
+            min={0}
+            name="valorBase3"
+            autoComplete="valorBase3"
+            onChange={(event) => {
+              handleChange("valorBase3", event.target.value);
+            }}
+            className={!!errors.valorBase3 ? "Admin_Update_Pagamento_inputError" : ""}
+          />
+          {errors.valorBase3 && (
+            <div className="Admin_Update_Pagamento_itemFieldError">
+              {errors.valorBase3}
+            </div>
+          )}
+           </div>
+           <div className="Admin_Update_Pagamento_itemField">
+          <label
+            className="Admin_Update_Pagamento_itemFieldLabel"
+            htmlFor="incremento3"
+          >
+           PULSO 3:
+          </label>
+          <Input
+            placeholder={"0"}
+            value={data.incremento3}
+            id="incremento3"
+            type="text"
+            min={0}
+            name="incremento3"
+            autoComplete="incremento3"
+            onChange={(event) => {
+              handleChange("incremento3", event.target.value);
+            }}
+            className={!!errors.incremento3 ? "Admin_Update_Pagamento_inputError" : ""}
+          />
+          {errors.incremento1 && (
+            <div className="Admin_Update_Pagamento_itemFieldError">
+              {errors.incremento3}
+            </div>
+          )}
+           </div>
+           <div className="Admin_Update_Pagamento_itemField">
+          <label
+            className="Admin_Update_Pagamento_itemFieldLabel"
+            htmlFor="valorBase4"
+          >
+           VALOR BASE 4:
+          </label>
+          <Input
+            placeholder={"0"}
+            value={data.valorBase4}
+            id="valorBase4"
+            type="text"
+            min={0}
+            name="valorBase4"
+            autoComplete="valorBase4"
+            onChange={(event) => {
+              handleChange("valorBase4", event.target.value);
+            }}
+            className={!!errors.valorBase4 ? "Admin_Update_Pagamento_inputError" : ""}
+          />
+          {errors.valorBase4 && (
+            <div className="Admin_Update_Pagamento_itemFieldError">
+              {errors.valorBase4}
+            </div>
+          )}
+           </div>
+           <div className="Admin_Update_Pagamento_itemField">
+          <label
+            className="Admin_Update_Pagamento_itemFieldLabel"
+            htmlFor="incremento4"
+          >
+           PULSO 4:
+          </label>
+          <Input
+            placeholder={"0"}
+            value={data.incremento4}
+            id="incremento4"
+            type="text"
+            min={0}
+            name="incremento4"
+            autoComplete="incremento4"
+            onChange={(event) => {
+              handleChange("incremento4", event.target.value);
+            }}
+            className={!!errors.incremento4 ? "Admin_Update_Pagamento_inputError" : ""}
+          />
+          {errors.incremento4 && (
+            <div className="Admin_Update_Pagamento_itemFieldError">
+              {errors.incremento4}
             </div>
           )}
            </div>
