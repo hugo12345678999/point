@@ -679,7 +679,7 @@ const AdminEditPagamento = (props) => {
             placeholder={"0"}
             value={data.valorBase1}
             id="valorBase1"
-            type="text"
+            type="number"
             min={0}
             name="valorBase1"
             autoComplete="valorBase1"
@@ -705,7 +705,7 @@ const AdminEditPagamento = (props) => {
             placeholder={"0"}
             value={data.incremento1}
             id="incremento1"
-            type="text"
+            type="number"
             min={0}
             name="incremento1"
             autoComplete="incremento1"
@@ -731,7 +731,7 @@ const AdminEditPagamento = (props) => {
             placeholder={"0"}
             value={data.valorBase2}
             id="valorBase2"
-            type="text"
+            type="number"
             min={0}
             name="valorBase2"
             autoComplete="valorBase2"
@@ -757,7 +757,7 @@ const AdminEditPagamento = (props) => {
             placeholder={"0"}
             value={data.incremento2}
             id="incremento2"
-            type="text"
+            type="number"
             min={0}
             name="incremento2"
             autoComplete="incremento2"
@@ -783,7 +783,7 @@ const AdminEditPagamento = (props) => {
             placeholder={"0"}
             value={data.valorBase3}
             id="valorBase3"
-            type="text"
+            type="number"
             min={0}
             name="valorBase3"
             autoComplete="valorBase3"
@@ -809,7 +809,7 @@ const AdminEditPagamento = (props) => {
             placeholder={"0"}
             value={data.incremento3}
             id="incremento3"
-            type="text"
+            type="number"
             min={0}
             name="incremento3"
             autoComplete="incremento3"
@@ -835,7 +835,7 @@ const AdminEditPagamento = (props) => {
             placeholder={"0"}
             value={data.valorBase4}
             id="valorBase4"
-            type="text"
+            type="number"
             min={0}
             name="valorBase4"
             autoComplete="valorBase4"
@@ -861,7 +861,7 @@ const AdminEditPagamento = (props) => {
             placeholder={"0"}
             value={data.incremento4}
             id="incremento4"
-            type="text"
+            type="number"
             min={0}
             name="incremento4"
             autoComplete="incremento4"
