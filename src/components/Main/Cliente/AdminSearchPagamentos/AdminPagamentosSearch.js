@@ -34,6 +34,7 @@ const AdminPagamentosSearch = (props) => {
   const [searchText, setSearchText] = useState("");
   const [listCanals, setListCanals] = useState([]);
   const [estornos, setEstornos] = useState("");
+  const [Credito, setCredito] = useState("");
   const [probabilidade, setprobabilidade] = useState("");
   const [estoque, setEstoque] = useState("");
   const [contadorcredito, setContadorCredito] = useState("");
@@ -76,6 +77,7 @@ const AdminPagamentosSearch = (props) => {
           console.log(res.data); // Verificar a estrutura dos dados recebidos
           setLoadingTable(false);
           setEstornos(res.data.estornos);
+          setCredito(res.data.Credito);
           setCash(res?.data?.cash);
           setprobabilidade(res?.data?.probabilidade);
           setEstoque(res?.data?.estoque);
@@ -125,6 +127,7 @@ const AdminPagamentosSearch = (props) => {
         .then((res) => {
           setLoadingTable(false);
           setEstornos(res.data.estornos);
+          setCredito(res.data.Credito);
           setCash(res?.data?.cash);
           setTotal(res.data.total);
           if (res.status === 200 && Array.isArray(res.data.pagamentos)) {
@@ -372,6 +375,13 @@ const AdminPagamentosSearch = (props) => {
                   style: "currency",
                   currency: "BRL",
                 }).format(estornos)}
+              </div>
+              <div style={{ marginLeft: "1px" }}>Credito-remoto</div>
+              <div className="Admin_PagamentosSearch_nbList">
+                {Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                }).format(Credito)}
               </div>
               
               <div style={{ marginLeft: "1px" }}>Espécie</div>
