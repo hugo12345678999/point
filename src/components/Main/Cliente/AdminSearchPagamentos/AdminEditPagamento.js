@@ -186,7 +186,11 @@ const AdminEditPagamento = (props) => {
       // Faz a requisição para o servidor com os valores no corpo
       const response = await axios.post(
         `${process.env.REACT_APP_SERVIDOR}/setar-valor/${id}`,
-        { valorBase, incremento }, // Corpo da requisição com os valores
+        { valorBase:  data.valorBase,
+           incremento:  data.incremento,
+          
+          
+          }, // Corpo da requisição com os valores
         {
           headers: {
             "x-access-token": token,
@@ -213,7 +217,7 @@ const AdminEditPagamento = (props) => {
       // Define a mensagem de erro
       setNotiMessage({
         type: "error",
-        message: "Erro ao ativar telemetria.",
+        message: "Erro ao ativar telemetrijjjja.",
       });
   
       // Exibe detalhes do erro no console
