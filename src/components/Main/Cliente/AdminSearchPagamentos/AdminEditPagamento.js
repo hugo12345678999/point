@@ -22,6 +22,8 @@ const AdminEditPagamento = (props) => {
     descricao: maquinaInfos?.descricao ?? "",
     estoque: Number(maquinaInfos?.estoque) ?? 0,
     estoquebaixo: Number(maquinaInfos?.estoquebaixo) ?? 0,
+    incremento: Number(maquinaInfos?.incremento) ?? 0,
+    valorBase: Number(maquinaInfos?.valorBase) ?? 0,
     contadorcredito: Number(maquinaInfos?.contadorcredito) ?? 0,
     contadorcreditobaixo: Number(maquinaInfos?.contadorcreditobaixo) ?? 0,
     contadorpelucia: Number(maquinaInfos?.contadorpelucia) ?? 0,
@@ -172,6 +174,55 @@ const AdminEditPagamento = (props) => {
         });
       });
   };
+
+
+
+
+  const incrementoe = async (valorBase, incremento) => {
+    try {
+      // Define o estado de carregamento como verdadeiro
+      setIsLoading(true);
+  
+      // Faz a requisição para o servidor com os valores no corpo
+      const response = await axios.post(
+        `${process.env.REACT_APP_SERVIDOR}/setar-valor/${id}`,
+        { valorBase, incremento }, // Corpo da requisição com os valores
+        {
+          headers: {
+            "x-access-token": token,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+  
+      // Define o estado de carregamento como falso
+      setIsLoading(false);
+  
+      // Define a mensagem de sucesso
+      setNotiMessage({
+        type: "success",
+        message: "Joystick ativado com sucesso!",
+      });
+  
+      // Opcional: log da resposta do servidor
+      console.log("Resposta do servidor:", response.data);
+    } catch (error) {
+      // Define o estado de carregamento como falso
+      setIsLoading(false);
+  
+      // Define a mensagem de erro
+      setNotiMessage({
+        type: "error",
+        message: "Erro ao ativar telemetria.",
+      });
+  
+      // Exibe detalhes do erro no console
+      console.error("Erro ao ativar joystick:", error);
+    }
+  };
+  
+
+
 
   const handleWhatsApp = () => {
     setIsLoading(true);
@@ -595,6 +646,7 @@ const AdminEditPagamento = (props) => {
               {errors.maquininha_serial}
             </div>
           )}
+
         </div>
         <Button
           className="Admin_Update_Pagamento_saveBtn"
@@ -604,6 +656,67 @@ const AdminEditPagamento = (props) => {
           disabled={isLoading}
         >
           SALVAR ALTERAÇÕES
+        </Button>
+        <div className="Admin_Update_Pagamento_itemField">
+          <label
+            className="Admin_Update_Pagamento_itemFieldLabel"
+            htmlFor="valorBase"
+          >
+           VALOR BASE:
+          </label>
+          <Input
+            placeholder={"0"}
+            value={data.valorBase}
+            id="valorBase"
+            type="text"
+            min={0}
+            name="valorBase"
+            autoComplete="valorBase"
+            onChange={(event) => {
+              handleChange("valorBase", event.target.value);
+            }}
+            className={!!errors.valorBase ? "Admin_Update_Pagamento_inputError" : ""}
+          />
+          {errors.valorBase && (
+            <div className="Admin_Update_Pagamento_itemFieldError">
+              {errors.valorBase}
+            </div>
+          )}
+           </div>
+           <div className="Admin_Update_Pagamento_itemField">
+          <label
+            className="Admin_Update_Pagamento_itemFieldLabel"
+            htmlFor="incremento"
+          >
+           PULSO A MAIS:
+          </label>
+          <Input
+            placeholder={"0"}
+            value={data.incremento}
+            id="incremento"
+            type="text"
+            min={0}
+            name="incremento"
+            autoComplete="incremento"
+            onChange={(event) => {
+              handleChange("incremento", event.target.value);
+            }}
+            className={!!errors.incremento ? "Admin_Update_Pagamento_inputError" : ""}
+          />
+          {errors.incremento && (
+            <div className="Admin_Update_Pagamento_itemFieldError">
+              {errors.incremento}
+            </div>
+          )}
+           </div>
+           <Button
+          className="Admin_Update_Pagamento_saveBtn"
+          onClick={() => {
+            if (!isLoading) incrementoe();
+          }}
+          disabled={isLoading}
+        >
+          SALVAR CREDITO
         </Button>
         <Button
           className="Admin_Update_Pagamento_deleteBtn"
