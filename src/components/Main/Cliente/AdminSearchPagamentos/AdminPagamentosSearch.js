@@ -34,7 +34,7 @@ const AdminPagamentosSearch = (props) => {
   const [searchText, setSearchText] = useState("");
   const [listCanals, setListCanals] = useState([]);
   const [estornos, setEstornos] = useState("");
-  const [totalCreditoRemoto, settotalCreditoRemoto] = useState("");
+  const [totalCreditoRemoto, setTotalCreditoRemoto] = useState("");
   const [probabilidade, setprobabilidade] = useState("");
   const [estoque, setEstoque] = useState("");
   const [contadorcredito, setContadorCredito] = useState("");
@@ -77,7 +77,7 @@ const AdminPagamentosSearch = (props) => {
           console.log(res.data); // Verificar a estrutura dos dados recebidos
           setLoadingTable(false);
           setEstornos(res.data.estornos);
-          settotalCreditoRemoto(res.data.totalCreditoRemoto);
+          setTotalCreditoRemoto(res.data.totalCreditoRemoto);
           setCash(res?.data?.cash);
           setprobabilidade(res?.data?.probabilidade);
           setEstoque(res?.data?.estoque);
@@ -127,6 +127,7 @@ const AdminPagamentosSearch = (props) => {
         .then((res) => {
           setLoadingTable(false);
           setEstornos(res.data.estornos);
+          setTotalCreditoRemoto(res.data.totalCreditoRemoto);
           setCredito(res.data.Credito);
           setCash(res?.data?.cash);
           setTotal(res.data.total);

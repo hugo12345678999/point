@@ -37,6 +37,7 @@ const PagamentosSearch = (props) => {
   const [listCanals, setListCanals] = useState([]);
   const [estornos, setEstornos] = useState("");
   const [probabilidade, setprobabilidade] = useState("");
+  const [totalCreditoRemoto, settotalCreditoRemoto] = useState("");
   const [estoque, setEstoque] = useState("");
   const [estoquebaixo, setEstoqueBaixo] = useState("");
   const [contadorcredito, setContadorCredito] = useState("");
@@ -120,6 +121,7 @@ const PagamentosSearch = (props) => {
           setEstornos(res.data.estornos);
           setCash(res?.data?.cash);
           setprobabilidade(res?.data?.probababilidade);
+          settotalCreditoRemoto(res?.data?.totalCreditoRemoto);
           setEstoque(res?.data?.estoque);
           setEstoqueBaixo(res?.data?.estoquebaixo);
           setEstado(res?.data?.estado);
@@ -455,6 +457,14 @@ const formatNumberWithLeadingZeros = (number, length) => {
                   style: "currency",
                   currency: "BRL",
                 }).format(cash)}
+              </div>
+              
+              <div style={{ marginLeft: "20px" }}>CREDITO_REMOTO</div>
+              <div className="PagamentosSearch_nbList2">
+                {Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                }).format(totalCreditoRemoto)}
               </div>
       
 <div style={{ marginLeft: "1px" }}>RELOGIO CREDITO</div>
