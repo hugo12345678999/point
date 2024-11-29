@@ -128,7 +128,7 @@ const AdminPagamentosSearch = (props) => {
           setLoadingTable(false);
           setEstornos(res.data.estornos);
           setTotalCreditoRemoto(res.data.totalCreditoRemoto);
-          setCredito(res.data.Credito);
+        
           setCash(res?.data?.cash);
           setTotal(res.data.total);
           if (res.status === 200 && Array.isArray(res.data.pagamentos)) {
