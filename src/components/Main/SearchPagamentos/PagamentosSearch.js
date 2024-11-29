@@ -36,6 +36,7 @@ const PagamentosSearch = (props) => {
   const [searchText, setSearchText] = useState("");
   const [listCanals, setListCanals] = useState([]);
   const [estornos, setEstornos] = useState("");
+  const [pulsoextra, setPulsoExtra] = useState("");
   const [probabilidade, setprobabilidade] = useState("");
   const [totalCreditoRemoto, setTotalCreditoRemoto] = useState("");
   const [estoque, setEstoque] = useState("");
@@ -118,6 +119,7 @@ const PagamentosSearch = (props) => {
         })
         .then((res) => {
           setLoadingTable(false);
+          setPulsoExtra(res.data.pulsoextra);
           setEstornos(res.data.estornos);
           setCash(res?.data?.cash);
           setprobabilidade(res?.data?.probababilidade);
@@ -187,6 +189,7 @@ const PagamentosSearch = (props) => {
         )
         .then((res) => {
           setLoadingTable(false);
+          setPulsoExtra(res.data.pulsoextra);
           setEstornos(res.data.estornos);
           setTotalCreditoRemoto(res.data.totalCreditoRemoto);
           setCash(res?.data?.cash);
@@ -466,6 +469,13 @@ const formatNumberWithLeadingZeros = (number, length) => {
                   style: "currency",
                   currency: "BRL",
                 }).format(totalCreditoRemoto)}
+              </div>
+              <div style={{ marginLeft: "20px" }}>pulso bonus</div>
+              <div className="PagamentosSearch_nbList2">
+                {Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                }).format(pulsoextra)}
               </div>
       
 <div style={{ marginLeft: "1px" }}>RELOGIO CREDITO</div>

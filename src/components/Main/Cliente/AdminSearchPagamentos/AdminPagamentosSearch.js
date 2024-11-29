@@ -34,6 +34,7 @@ const AdminPagamentosSearch = (props) => {
   const [searchText, setSearchText] = useState("");
   const [listCanals, setListCanals] = useState([]);
   const [estornos, setEstornos] = useState("");
+  const [pulsoextra, setPulsoExtra] = useState("");
   const [totalCreditoRemoto, setTotalCreditoRemoto] = useState("");
   const [probabilidade, setprobabilidade] = useState("");
   const [estoque, setEstoque] = useState("");
@@ -76,6 +77,8 @@ const AdminPagamentosSearch = (props) => {
         .then((res) => {
           console.log(res.data); // Verificar a estrutura dos dados recebidos
           setLoadingTable(false);
+          setPulsoExtra(res.data.pulsoextra);
+          
           setEstornos(res.data.estornos);
           setTotalCreditoRemoto(res.data.totalCreditoRemoto);
           setCash(res?.data?.cash);
@@ -126,6 +129,7 @@ const AdminPagamentosSearch = (props) => {
         )
         .then((res) => {
           setLoadingTable(false);
+          setPulsoExtra(res.data.pulsoextra);
           setEstornos(res.data.estornos);
           setTotalCreditoRemoto(res.data.totalCreditoRemoto);
         
@@ -383,6 +387,13 @@ const AdminPagamentosSearch = (props) => {
                   style: "currency",
                   currency: "BRL",
                 }).format(totalCreditoRemoto)}
+              </div>
+              <div style={{ marginLeft: "1px" }}>pulso bonus</div>
+              <div className="Admin_PagamentosSearch_nbList">
+                {Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                }).format(pulsoextra)}
               </div>
               
               <div style={{ marginLeft: "1px" }}>Espécie</div>
